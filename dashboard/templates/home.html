@@ -1,0 +1,70 @@
+{% extends "base.html"%}
+
+{% load i18n %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/home_theme.css" />
+	<link rel="stylesheet" type="text/css" href="https://serverapi.arcgisonline.com/jsapi/arcgis/2.1/js/dojo/dijit/themes/tundra/tundra.css" />
+{% endblock stylesheet %}
+
+{% block left_side %}
+
+		    <table class="list-view">
+			{% for p in projects %}
+			    {% if p.app = 'Questionnaires' %}
+
+				<tr>
+				    <td id="row-blue" class="{{ forloop.counter }}">
+					<h3>{{p.name}}</h3>
+					<p>{{p.detail}}</p>
+					<a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
+				    </td>
+				</tr>
+			    {% else %}
+			    {% if p.app = 'Improvement suggesstions' %}
+				<tr>
+				    <td id="row-green" class="{{ forloop.counter }}">
+					<h3>{{p.name}}</h3>
+					<p>{{p.detail}}</p>
+					<a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
+				    </td>
+				</tr>
+				{% else %}
+				    <tr>
+					<td id="row-orange" class="{{ forloop.counter }}">
+					    <h3>{{p.name}}</h3>
+					    <p>{{p.detail}}</p>
+					    <a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
+					</td>
+				    </tr>
+				{% endif %}
+			    {% endif %}
+			{% endfor %}
+		    </table>
+{% endblock %}
+
+{% block main_side %}
+		    
+		    <div id="map">
+			
+		    </div>
+{% endblock %}	
+	   
+{% block javascript %}
+		    <script type="text/javascript" src="{{STATIC_URL}}json/pointer_geoJSON.js"></script>
+		    <script src="https://softgis.org.aalto.fi/OpenLayers/OpenLayers.js"></script>
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		    <script type="text/javascript" src="{% url dashboard_js %}"></script>
+		    <script type="text/javascript">
+			//window.onload = function()
+			//{
+			//    init();
+			//};
+			
+			$(window).load(function() {
+			    init();
+			});
+
+		    </script>
+{% endblock javascript %}
+
