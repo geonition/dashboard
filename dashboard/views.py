@@ -12,6 +12,8 @@ from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from objects import *
+from models import Feedback
+from forms import FeedbackForm
 
 def home(request):
     """
@@ -89,3 +91,43 @@ def set_language(request):
                                 "ContinousPlanningLang"),
                         language)
     return response
+
+
+
+def feedback_form(request):
+    
+    """
+    This function handles the feedback form
+    """
+    if (request.method == 'GET'):
+        form = FeedbackForm();
+            
+        return render_to_response('feedback.html', {
+            'form': form,
+        },
+        context_instance=RequestContext(request)
+        )
+            
+    elif (request.method == 'POST'):
+        form = FeedbackForm(request.POST)
+        
+        if form.is_valid():
+            
+            cleaned_data = form.cleaned_data
+            cleaned_data['content'] = "%s %s" % (cleaned_data['content'], request.META.get('HTTP_USER_AGENT', 'unknown'))
+            if request.user.is_authenticated():
+                cleaned_data['content'] = "%s %s" % (cleaned_data['content'], request.user.email)
+            
+            feedback = Feedback(content = cleaned_data['content'])
+            feedback.save()
+            
+            return HttpResponseRedirect(reverse('dashboard'))
+        
+
+            
+            
+            #username = form.cleaned_data['username']
+            #password = form.cleaned_data['password1']
+            #
+            #user = authenticate(username=username, password=password)
+

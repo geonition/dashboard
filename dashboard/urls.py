@@ -14,4 +14,8 @@ urlpatterns = patterns('dashboard.views',
     url(r'^dashboard.js$',
         'dashboard_js',
         name="dashboard_js"),
+
+    url(r'^feedback/$',
+        'feedback_form',
+        name="feedback_form"),
     )
