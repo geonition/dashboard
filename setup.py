@@ -9,10 +9,13 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data = {
-        "auth": [
+        "dashboard": [
             "templates/*",
-            "static/*",
-	    "locale/*"
+            "static/styles/*",
+            "static/images/*",
+            "static/json/*",
+	    "locale/fi/LC_MESSAGES/*",
+	    "locale/sv/LS_MESSAGES/*"
         ],
     },
     zip_safe=False,

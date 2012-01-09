@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.template import loader
 from django.shortcuts import render_to_response, redirect
 from django.conf import settings
-from django.utils import translation
+from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from objects import *
 
@@ -18,9 +18,9 @@ def home(request):
     """
     projects = []
     #projects.append(Project(u"Palosaaren elinympäristö", u"Questionnaires", u"Palosaaren suunnittelua varten kerätään asukkailta tietoa omasta elinympäristöstä", "https://pehmo.tkk.fi/soft/main"))
-    projects.append(Project(u"Vaasan keskustastrategia",
+    projects.append(Project(_(u"Vaasan keskustastrategia"),
                             u"Questionnaires",
-                            u"Kerro meille, millainen on Vaasan keskusta ja "
+                            _(u"Kerro meille, millainen on Vaasan keskusta ja "
                             u"vaikuta elinympäristöösi! Näillä sivuilla pääset "
                             u"kertomaan, millainen paikka Vaasan keskusta on "
                             u"asua ja elää. Kysely on osa Vaasan kaupungin "
@@ -29,16 +29,16 @@ def home(request):
                             u"Strategiatyön tavoitteena on turvata keskustan "
                             u"viihtyisyys myös tulevaisuudessa sekä kehittää "
                             u"keskustasta entistä vetovoimaisempi ja elävämpi "
-                            u"alue.",
+                            u"alue."),
                             "http://www.pehmogis.fi/vaasa_keskusta"))
     #projects.append(Project(u"Vaasan keskustan kehittämis ideoita: projekti 1", u"Planning feedback", u"Anna omia ehdotuksia kuinka Vaasan keskustaa tulisi kehittää", "../planning-project/project-1"))
     #projects.append(Project(u"Vaasan keskustan kehittämis ideoita: projecti 2", u"Planning feedback", u"Anna omia ehdotuksia kuinka Vaasan keskustaa tulisi kehittää", "../planning-project/project-2"))
-    projects.append(Project(u"Palosaaren ideakilpailu",
+    projects.append(Project(_(u"Palosaaren ideakilpailu"),
                             u"Planning feedback",
-                            u"Tällä sivulla sinun on mahdollista tutustua "
+                            _(u"Tällä sivulla sinun on mahdollista tutustua "
                             u"kilpailutöihin sekä palkintolautakunnan "
                             u"yleisarvioon kilpailusta ja yksittäisistä töistä. "
-                            u"Asukkaiden arvostelut ovat nyt myös nähtävillä.",
+                            u"Asukkaiden arvostelut ovat nyt myös nähtävillä."),
                             "https://pehmo.tkk.fi/soft/idea_competition/evaluation/"))
     
     return render_to_response('home.html',
