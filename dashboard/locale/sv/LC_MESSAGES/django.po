@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-09 07:14-0600\n"
+"PO-Revision-Date: 2012-01-09 15:21+0200\n"
+"Last-Translator: Kristoffer Snabb <kristoffer.snabb@geonition.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: views.py:21
+msgid "Vaasan keskustastrategia"
+msgstr "Vasas central strategi"
+
+#: views.py:23
+msgid "Kerro meille, millainen on Vaasan keskusta ja vaikuta elinympäristöösi! Näillä sivuilla pääset kertomaan, millainen paikka Vaasan keskusta on asua ja elää. Kysely on osa Vaasan kaupungin keskustastrategiatyötä, jota tehdään yhdessä kaupunkilaisten ja eri toimijoiden kanssa. Strategiatyön tavoitteena on turvata keskustan viihtyisyys myös tulevaisuudessa sekä kehittää keskustasta entistä vetovoimaisempi ja elävämpi alue."
+msgstr "Berätta vad Du tycker om Vasa centrum och inverka på Din livsmiljö! På dessa sidor kan Du berätta hur det är att leva och bo i Vasa centrum. Enkäten är ett led i Vasa centrumstrategi, som formuleras i samarbete med vasaborna och andra intressenter. Syftet med centrumstrategin är att trygga trivseln i Vasa centrum även framöver och att göra centrumområdet attraktivare och mer levande. Klicka på länken nedtill till vänster på denna sida och läs mer om Vasa centrumstrategi! "
+
+#: views.py:36
+msgid "Palosaaren ideakilpailu"
+msgstr "Idé tävling för Smulterö och Brändö"
+
+#: views.py:38
+msgid "Tällä sivulla sinun on mahdollista tutustua kilpailutöihin sekä palkintolautakunnan yleisarvioon kilpailusta ja yksittäisistä töistä. Asukkaiden arvostelut ovat nyt myös nähtävillä."
+msgstr "På den här sidan kan du bekanta dig med tävlingsbidragen samt prisjuryns allmänna bedömning av tävlingen och de enskilda tävlingsbidragen. Nu kan du också se stadsbornas bedömning av bidragen ."
+
+#: templates/base.html:31
+msgid "Vaasa"
+msgstr "Vasa"
+
+#: templates/base.html:34
+msgid "Vaikuta kaupunkisi kehitykseen"
+msgstr "Inverka på din stads utveckling"
+
+#: templates/base.html:56
+msgid "Anna palautetta sivustosta"
+msgstr "Ge respons"
+
+#: templates/base.html:57
+msgid "Vaasan kaupunki"
+msgstr "Vasa stad"
+
+#: templates/home.html:20
+#: templates/home.html.py:29
+#: templates/home.html:37
+msgid "Siirry sovellukseen.."
+msgstr "Länk till applikationen"
+
