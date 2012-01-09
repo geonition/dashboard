@@ -15,7 +15,7 @@ setup(
             "static/images/*",
             "static/json/*",
 	    "locale/fi/LC_MESSAGES/*",
-	    "locale/sv/LS_MESSAGES/*"
+	    "locale/sv/LC_MESSAGES/*"
         ],
     },
     zip_safe=False,
