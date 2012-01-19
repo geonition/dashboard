@@ -2,9 +2,25 @@
 
 {% load i18n %}
 
+{% block title %}
+Järvenpää - pehmoGIS
+{% endblock %}
+
+{% block bgcolor %}
+#0051BA
+{% endblock %}
+
+{% block textcolor %}
+#0051BA
+{% endblock %}
+
 {% block stylesheet %}
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/home_theme.css" />
 {% endblock stylesheet %}
+
+{% block city_name %}
+Järvenpää
+{% endblock %}
 
 {% block content %}
 <table class="list-view">
@@ -40,12 +56,14 @@
 </table>
 {% endblock content %}
 
-{% block main_side %}
+{% block provider_url %}
+http://www.jarvenpaa.fi/
+{% endblock %}
 
-<div id="map">
+{% block provider_name %}
+Järvenpään kaupunki
+{% endblock %}
 
-</div>
-{% endblock %}	
 
 {% block javascript %}
 <script type="text/javascript" src="{{STATIC_URL}}json/pointer_geoJSON.js"></script>
