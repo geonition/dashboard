@@ -16,7 +16,7 @@ from objects import *
 from models import Feedback
 from forms import FeedbackForm
 
-def home(request):
+def dashboard(request):
     """
     The main dashboard page
     """
@@ -45,14 +45,8 @@ def home(request):
                             u"Asukkaiden arvostelut ovat nyt myös nähtävillä."),
                             "https://pehmo.tkk.fi/soft/idea_competition/evaluation/"))
     
-    return render_to_response('home.html',
+    return render_to_response('dashboard.html',
                               {'projects': projects},
-                              context_instance = RequestContext(request))
-    
-def test(request):
-    
-    return render_to_response('test.html',
-                              {},
                               context_instance = RequestContext(request))
     
 def dashboard_js(request):
@@ -61,74 +55,4 @@ def dashboard_js(request):
                                   context_instance = RequestContext(request))
     response['Content-type'] = 'application/javascript'
     return response
-
-def set_language(request):
-
-    language = 'fi'
-    if request.method == 'GET' and 'lang' in request.GET:
-        language = request.GET['lang']
-        request.session['language'] = language
-        
-    elif 'language' in request.session:
-        language = request.session['language']
-    
-    else:
-        language = translation.get_language_from_request(request)
-    
-    
-    for lang in settings.LANGUAGES:
-        if lang[0] == language:
-            translation.activate(language)
-                
-    request.LANGUAGE_CODE = translation.get_language()
-
-    #get current page   
-    referer = request.META.get('HTTP_REFERER', '/')
-    
-    response = HttpResponseRedirect(referer)
-    
-    response.set_cookie(getattr(settings,
-                                "LANGUAGE_COOKIE_NAME",
-                                "ContinousPlanningLang"),
-                        language)
-    return response
-
-
-
-def feedback_form(request):
-    
-    """
-    This function handles the feedback form
-    """
-    if (request.method == 'GET'):
-        form = FeedbackForm();
-            
-        return render_to_response('feedback.html', {
-            'form': form,
-        },
-        context_instance=RequestContext(request)
-        )
-            
-    elif (request.method == 'POST'):
-        form = FeedbackForm(request.POST)
-        
-        if form.is_valid():
-            
-            cleaned_data = form.cleaned_data
-            cleaned_data['content'] = "%s %s" % (cleaned_data['content'], request.META.get('HTTP_USER_AGENT', 'unknown'))
-            if request.user.is_authenticated():
-                cleaned_data['content'] = "%s %s" % (cleaned_data['content'], request.user.email)
-            
-            feedback = Feedback(content = cleaned_data['content'])
-            feedback.save()
-            
-            return HttpResponseRedirect(reverse('dashboard'))
-        
-
-            
-            
-            #username = form.cleaned_data['username']
-            #password = form.cleaned_data['password1']
-            #
-            #user = authenticate(username=username, password=password)
 
