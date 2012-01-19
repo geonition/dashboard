@@ -6,7 +6,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.template import loader
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response
+from django.shortcuts import redirect
 from django.conf import settings
 from django.utils import translation
 from django.utils.translation import ugettext as _
