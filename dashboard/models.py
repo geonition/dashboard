@@ -1,43 +1,33 @@
 from django.db import models
+from django.contrib.gis.db import models as geomodels 
 from django.utils import translation
 from django.contrib.auth.models import User
 from django.db.models import Avg, Count
 from django.core.mail import send_mail
 from django.conf import settings
-
-
+from django.contrib.sites.managers import CurrentSiteManager
+from django.contrib.sites.models import Site
 # set the ugettext _ shortcut
 _ = translation.ugettext
+ 
+class ProjectSetting(models.Model):
 
-LIMIT_FOR_RANDOM_COMMENTS = 3
-
-class Feedback(models.Model):
-    """
-    This model includes all the feedback
-    given for the softGIS django application.
+    PROJECT_TYPES = (
+        ('QU','Questionnaires'),
+        ('PP','Plan Proposals'),
+        ('IC','Idea Competition'),  
+    )
     
-    When a feedback is saved it sends an email
-    to the administrators as set in settings.py.
+    site = models.ForeignKey(Site)
+    project_type = models.CharField(max_length = 2, choices=PROJECT_TYPES) 
+    title = models.CharField(max_length = 40)
+    description = models.TextField()
+    project_url = models.URLField(max_length = 35)
+    location = geomodels.PointField()   
+    tooltip = models.CharField(max_length = 200)
+    on_site = CurrentSiteManager()    
     
-    >>> import settings
-    >>> from softgis.models import Feedback
-    >>> from django.core import mail
-    >>> fb = Feedback(content='some feedback')
-    >>> fb.save()
-    >>> mail.outbox[0].body
-    'some feedback'
-    """
-    content = models.TextField()
-    create_time = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        send_mail('Feedback for the softGIS application',
-                self.content,
-                'do-not-reply@pehmogis.fi',
-                [admin[1] for admin in settings.ADMINS],
-                fail_silently=True)
-            
-        super(Feedback, self).save(*args, **kwargs)
-
     def __unicode__(self):
-        return "feedback " + str(self.create_time)
+		return self.title 
+         
+
