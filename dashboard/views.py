@@ -15,15 +15,19 @@ def dashboard(request):
     """
     The main dashboard page
     """
-   
-    project_setting = ProjectSetting.on_site.all()
-    city_setting = CitySetting.on_site.all()
+
+    project_setting = ProjectSetting.on_site.all().order_by('project_type')
+    try:
+        city_settings = CitySetting.on_site.all()[0]
+    except IndexError:
+        city_settings = {}
+
     return render_to_response('dashboard.html',
-                              {'project_setting': project_setting, 
-                              'city_setting': city_setting},
+                              {'project_setting': project_setting,
+                              'city_settings': city_settings},
                               context_instance = RequestContext(request))
-    
-    
+
+
 def dashboard_js(request):
     response = render_to_response('dashboard.js',
                                   {},
