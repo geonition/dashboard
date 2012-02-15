@@ -24,30 +24,30 @@ Järvenpää
 
 {% block content %}
 <table class="list-view">
-{% for p in projects %}
-{% if p.app = 'Questionnaires' %}
+{% for p in project_setting %}
+{% if p.project_type = 'QU' %}
 <tr>
-    <td id="row-blue" class="{{ forloop.counter }}">
-		<h3>{{p.name}}</h3>
-		<p>{{p.detail}}</p>
-		<a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
+    <td id="row-blue" class="{{ forloop.counter }}">    
+		<h3>{{p.title}}</h3>
+		<p>{{p.description}}</p>
+		<a class="{{ forloop.counter }}" href="{{p.project_url}}">{% trans "Siirry sovellukseen.." %}</a>
 	</td>
 </tr>
 {% else %}
-{% if p.app = 'Improvement suggesstions' %}
-<tr>
-    <td id="row-green" class="{{ forloop.counter }}">
-	    <h3>{{p.name}}</h3>
-	    <p>{{p.detail}}</p>
-	    <a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
-	</td>
-</tr>
-{% else %}
+{% if p.project_type = 'IC' %}
 <tr>
     <td id="row-orange" class="{{ forloop.counter }}">
-        <h3>{{p.name}}</h3>
-        <p>{{p.detail}}</p>
-        <a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
+	    <h3>{{p.title}}</h3>
+	    <p>{{p.description}}</p>
+	    <a class="{{ forloop.counter }}" href="{{p.project_url}}">{% trans "Siirry sovellukseen.." %}</a>
+	</td>
+</tr>
+{% else %}
+<tr>
+    <td id="row-green" class="{{ forloop.counter }}">
+        <h3>{{p.title}}</h3>
+        <p>{{p.description}}</p>
+        <a class="{{ forloop.counter }}" href="{{p.project_url}}">{% trans "Siirry sovellukseen.." %}</a>
     </td>
 </tr>
 {% endif %}
