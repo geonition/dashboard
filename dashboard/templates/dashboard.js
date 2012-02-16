@@ -69,9 +69,9 @@ function init(){
     });
 
     // Create vector layer, style it, and populate it with GeoJSON features
-    vectorLayerBlue.addFeatures(geojsonFormat.read(pointersBlue));
+    vectorLayerBlue.addFeatures(geojsonFormat.read(projects_QU));
     map.addLayer(vectorLayerBlue);
-    vectorLayerOrange1.addFeatures(geojsonFormat.read(pointersOrange));
+    vectorLayerOrange1.addFeatures(geojsonFormat.read(projects_IC));
     map.addLayer(vectorLayerOrange1);
 
 
@@ -180,8 +180,8 @@ function onFeatureUnSelect(feature){
                 onFeatureUnSelect(featureBlue);
                 vectorLayerOrange1.destroy();
                 vectorLayerBlue.destroy();
-                vectorLayerOrange1 = getVectorLayer(vectorStyleMapOrange, pointersOrange);
-                vectorLayerBlue = getVectorLayer(vectorStyleMapBlue, pointersBlue);
+                vectorLayerOrange1 = getVectorLayer(vectorStyleMapOrange, projects_IC);
+                vectorLayerBlue = getVectorLayer(vectorStyleMapBlue, projects_QU);
 
                 map.addLayer(vectorLayerOrange1);
                 map.addLayer(vectorLayerBlue);

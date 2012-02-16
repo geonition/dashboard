@@ -47,10 +47,60 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% url dashboard_js %}"></script>
 <script type="text/javascript">
+var projects_QU = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
 
-    $(window).load(function() {
-        init();
-    });
+var projects_IC = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
+
+var projects_PP = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
+
+{% for p in project_setting %}
+    {% if p.project_type = 'QU' %}
+        projects_QU.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% else %}
+    {% if p.project_type = 'IC' %}
+        projects_IC.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% else %}
+        projects_PP.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% endif %}
+{% endif %}
+{% endfor %}
+
+$(window).load(function() {
+    init();
+});
 </script>
 {% endblock javascript %}
 

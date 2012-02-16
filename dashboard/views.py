@@ -22,6 +22,7 @@ def dashboard(request):
     except IndexError:
         city_settings = {}
 
+    print type(project_setting[0].location.json)
     return render_to_response('dashboard.html',
                               {'project_setting': project_setting,
                               'city_settings': city_settings},
