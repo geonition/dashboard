@@ -4,8 +4,6 @@ var layer;
 // Create a select feature control and add it to the map.
 var select;
 
-var vectorLayerOrange1;
-var vectorLayerBlue;
 var mapScale;
 var defaultMapScale = 3937278600;
 var popupDistanceRatio;
@@ -14,139 +12,121 @@ var geojsonFormat = new OpenLayers.Format.GeoJSON();
 
 function init(){
 
-
-    var mapOptions = {
-        //Vaasa
-        maxExtent: new OpenLayers.Bounds(199949.504,6977073.508,259925.896,7037049.802),
-        //Jarvenpaa
-        //maxExtent: new OpenLayers.Bounds(363251.26491573383,6696188.33735,416499.0660842652,6718179.50765),
-        maxResolution: 50,
-        projection: "EPSG:3067"
+    var mapOptions = {      
+        maxResolution: 50
     };
-
-        map = new OpenLayers.Map('map', mapOptions);
-        layer = new OpenLayers.Layer.ArcGIS93Rest(
-        "ArcGIS Server Layer",
-                "https://pehmogis.tkk.fi/ArcGIS/rest/services/suomi_grey/MapServer/export",
-        {layers: "show:0,12,50", TRANSPARENT: true},
-                {isBaseLayer: true}
-    );
-
-    layer.setLayerFilter(50, "Kunta_ni1 = 'Vaasa'");
-        map.addLayer(layer);
-
-    var vectorStyleMapOrange = new OpenLayers.StyleMap({
+    map = new OpenLayers.Map('map', mapOptions);
+    osm_layer = new OpenLayers.Layer.OSM("OSM",
+                                     "http://tile.openstreetmap.org/${z}/${x}/${y}.png",
+                                     {isBaseLayer : true
+                                     });
+                        
+    var layer_style_IC = new OpenLayers.StyleMap({
                             "default": new OpenLayers.Style({
-                                externalGraphic: "{{STATIC_URL}}images/evaluation_pointer.png",
-                pointRadius: 50
+                                externalGraphic: "../images/evaluation_pointer.png",
+                                pointRadius: 50
                             }),
                             "select": new OpenLayers.Style({
-                                externalGraphic: "{{STATIC_URL}}images/evaluation_pointer_hover.png",
-                pointRadius: 50
-
+                                externalGraphic: "../images/evaluation_pointer_hover.png",
+                                pointRadius: 50
                             })
                        });
-    vectorLayerOrange1 = new OpenLayers.Layer.Vector("Orange Features Layer", {
-            styleMap: vectorStyleMapOrange,
+    var layer_IC = new OpenLayers.Layer.Vector("Idea competitions", {
+            styleMap: layer_style_IC,
             displayInLayerSwitcher: true,
             visibility: true
     });
-    var vectorStyleMapBlue = new OpenLayers.StyleMap({
+    var layer_style_QU = new OpenLayers.StyleMap({
                             "default": new OpenLayers.Style({
-                                externalGraphic: "{{STATIC_URL}}images/questionair_pointer.png",
-                pointRadius: 50
+                                externalGraphic: "../images/questionair_pointer.png",
+                                pointRadius: 50
                             }),
                             "select": new OpenLayers.Style({
-                                externalGraphic: "{{STATIC_URL}}images/questionair_pointer_hover.png",
-                pointRadius: 50
+                                externalGraphic: "../images/questionair_pointer_hover.png",
+                                pointRadius: 50
                             })
     });
 
-    vectorLayerBlue = new OpenLayers.Layer.Vector("Blue Features Layer", {
-            styleMap: vectorStyleMapOrange,
+    var layer_QU = new OpenLayers.Layer.Vector("Questionnaires", {
+            styleMap: layer_style_QU,
             displayInLayerSwitcher: true,
             visibility: true
     });
 
     // Create vector layer, style it, and populate it with GeoJSON features
-    vectorLayerBlue.addFeatures(geojsonFormat.read(projects_QU));
-    map.addLayer(vectorLayerBlue);
-    vectorLayerOrange1.addFeatures(geojsonFormat.read(projects_IC));
-    map.addLayer(vectorLayerOrange1);
+    layer_QU.addFeatures(geojsonFormat.read(projects_QU));
+    layer_IC.addFeatures(geojsonFormat.read(projects_IC));
+    
+    map.addLayers([osm_layer, layer_QU, layer_IC]);
 
+    //map.addControl( new OpenLayers.Control.MousePosition() );
 
-
-        map.addControl( new OpenLayers.Control.MousePosition() );
-    //Vaasa
-    map.setCenter(new OpenLayers.LonLat(228121,7007438), 0);
-        //map.setCenter(new OpenLayers.LonLat(389875.16549999954, 6707183.922499999), 0); jarvenpaa
-
-    layer.events.register( "moveend", layer, zoomEvent);
-    map.zoomToScale(defaultMapScale);
+    //osm_layer.events.register( "moveend", osm_layer, zoomEvent);
+    map.setCenter(new OpenLayers.LonLat(2390950.5915014,
+                                        9127498.3290794), 12);
     }
 
 
+/*
 function onFeatureSelect(feature){
     $("svg g g image").click(function() {window.location.assign(feature.attributes.url)});
     popupLon = feature.geometry.getBounds().getCenterLonLat().lon - 2000*(popupDistanceRatio);
     popupLat = feature.geometry.getBounds().getCenterLonLat().lat + 1500*(popupDistanceRatio);
 
-        popup = new OpenLayers.Popup ("popup",
-                                      new OpenLayers.LonLat(popupLon, popupLat),
-                                      new OpenLayers.Size(300,50), null, null, false, null);
+    popup = new OpenLayers.Popup ("popup",
+                                  new OpenLayers.LonLat(popupLon, popupLat),
+                                  new OpenLayers.Size(300,50), null, null, false, null);
 
     var content = "<div style=color:white;>"+ feature.attributes.title + "</div>";
     popup.setContentHTML(content);
-        popup.setOpacity(0.8);
+    popup.setOpacity(0.8);
     popup.setBackgroundColor("black");
     popup.panMapIfOutOfView = true;
     feature.popup = popup;
     map.addPopup(popup);
-
 }
 
 function onFeatureUnSelect(feature){
     $("svg g g image").off("click");
     if (feature.popup != null) {
-    map.removePopup(feature.popup);
-    feature.popup.destroy();
-    feature.popup = null;
+        map.removePopup(feature.popup);
+        feature.popup.destroy();
+        feature.popup = null;
     }
 
 }
 
-            $(function() {
-                var layer_style = {}
-            $(".1")
-                .mouseover(function() {
+$(function() {
+    var layer_style = {}
+    $(".1").mouseover(function() {
                         var fid = $(this).attr("class");
-                    var feature = vectorLayerBlue.getFeatureByFid(fid);
-                    layer_style.externalGraphic = "{{STATIC_URL}}images/questionair_pointer_hover.png";
-                    layer_style.pointRadius = 55*(externalGraphicRatio);
-                    feature.style = layer_style;
-                    vectorLayerBlue.redraw();
+                        var feature = layer_QU.getFeatureByFid(fid);
+                        layer_style.externalGraphic = "../images/questionair_pointer_hover.png";
+                        layer_style.pointRadius = 55*(externalGraphicRatio);
+                        feature.style = layer_style;
+                        layer_QU.redraw();
 
                 })
                 .mouseout(function() {
-                        var fid = $(this).attr("class");
-                    var feature = vectorLayerBlue.getFeatureByFid(fid);
+                    var fid = $(this).attr("class");
+                    var feature = layer_QU.getFeatureByFid(fid);
                     feature.style = null;
-                    vectorLayerBlue.redraw();
+                    layer_QU.redraw();
                 });
             $(".2")
                 .mouseover(function() {
-                        var fid = $(this).attr("class");
-                    var feature = vectorLayerOrange1.getFeatureByFid(fid);
-                    layer_style.externalGraphic = "{{STATIC_URL}}images/evaluation_pointer_hover.png";
+                    var fid = $(this).attr("class");
+                    var feature = layer_IC.getFeatureByFid(fid);
+                    layer_style.externalGraphic = "../images/evaluation_pointer_hover.png";
                     layer_style.pointRadius = 55*(externalGraphicRatio);
                     feature.style = layer_style;
-                    vectorLayerOrange1.redraw();;
+                    layer_IC.redraw();;
                 })
                 .mouseout(function() {
-                        var fid = $(this).attr("class");
-                    var feature = vectorLayerOrange1.getFeatureByFid(fid);
+                    var fid = $(this).attr("class");
+                    var feature = layer_IC.getFeatureByFid(fid);
                     feature.style = null;
-                    vectorLayerOrange1.redraw();
+                    layer_IC.redraw();
                 });
         });
 
@@ -174,20 +154,19 @@ function onFeatureUnSelect(feature){
                 }
                 var vectorStyleMapOrange = getVectorStyleMap("{{STATIC_URL}}images/evaluation_pointer.png", "{{STATIC_URL}}images/evaluation_pointer_hover.png");
                 var vectorStyleMapBlue = getVectorStyleMap("{{STATIC_URL}}images/questionair_pointer.png", "{{STATIC_URL}}images/questionair_pointer_hover.png");
-                var featureOrange = vectorLayerOrange1.getFeatureByFid(2);
-                var featureBlue = vectorLayerBlue.getFeatureByFid(1);
+                var featureOrange = layer_IC.getFeatureByFid(2);
+                var featureBlue = layer_IC.getFeatureByFid(1);
                 onFeatureUnSelect(featureOrange);
                 onFeatureUnSelect(featureBlue);
-                vectorLayerOrange1.destroy();
-                vectorLayerBlue.destroy();
-                vectorLayerOrange1 = getVectorLayer(vectorStyleMapOrange, projects_IC);
-                vectorLayerBlue = getVectorLayer(vectorStyleMapBlue, projects_QU);
+                layer_IC.destroy();
+                layer_QU.destroy();
+                layer_IC = getVectorLayer(vectorStyleMapOrange, projects_IC);
+                layer_QU = getVectorLayer(vectorStyleMapBlue, projects_QU);
 
-                map.addLayer(vectorLayerOrange1);
-                map.addLayer(vectorLayerBlue);
-
+                map.addLayers([layer_IC, layer_QU]);
+                
                 // Create a select feature control and add it to the map.
-                select = new OpenLayers.Control.SelectFeature([vectorLayerBlue,vectorLayerOrange1], {hover: true, onSelect: onFeatureSelect, onUnselect: onFeatureUnSelect});
+                select = new OpenLayers.Control.SelectFeature([layer_QU,layer_IC], {hover: true, onSelect: onFeatureSelect, onUnselect: onFeatureUnSelect});
                 map.addControl(select);
                 select.activate();
     }
@@ -216,3 +195,5 @@ function onFeatureUnSelect(feature){
     vectorLayer.addFeatures(geojsonFormat.read(layerCode));
     return vectorLayer;
  }
+ 
+ */
