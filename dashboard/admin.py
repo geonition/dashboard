@@ -1,4 +1,10 @@
 from django.contrib.gis import admin
 from models import ProjectSetting
 
-admin.site.register(ProjectSetting, admin.GeoModelAdmin)
+class Location(admin.OSMGeoAdmin):
+    default_lon = 2407221.77716 
+    default_lat = 9123608.26437
+    default_zoom = 12
+    
+
+admin.site.register(ProjectSetting, Location)
