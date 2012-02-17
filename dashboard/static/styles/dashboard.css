@@ -1,0 +1,119 @@
+.list-view{
+    float: left;
+    display: block;
+    overflow: hidden;
+    width: 330px;
+    margin-left: 10px;
+    margin-top:30px;
+    font-family: Arial;
+}
+
+.list-view td
+{
+    width: 300px;
+    height: auto;
+    float: left;
+    border: 1px solid #fde;
+    display: inline;
+    padding: 10px;
+    text-align: left;
+}
+
+.row-blue
+{
+    background: #4cbbe6;
+    border: 2px solid #CCCCCC;
+}
+
+.row-blue:hover
+{
+    background: #d1d1d1;
+    border-color: #8cd6f2;
+}
+
+.row-green
+{
+    background: #dbea85;
+    border: 2px solid #CCCCCC;
+}
+
+.row-green:hover
+{
+    background: #d1d1d1;
+    border-color: #dbea85;
+}
+
+.row-orange
+{
+    background: #f2bf55;
+    border: 2px solid #CCCCCC;
+}
+
+.row-orange:hover
+{
+    background: #d1d1d1;
+    border-color: #f4d28d;
+}
+
+#map-image{
+    background-image: url("../images/jarvenpaa.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 675px;
+    width: 850px;
+}
+
+#pointer1{
+    display: inline;
+    left: 190px;
+    position: absolute;
+    top: 20px;
+}
+
+#pointer2{
+    display: inline;
+    left: 670px;
+    position: absolute;
+    top: 20px;
+}
+
+#pointer3{
+    display: inline;
+    left: 50px;
+    position: absolute;
+    top: 302px;
+}
+
+#pointer4{
+    display: inline;
+    left: 400px;
+    position: absolute;
+    top: 270px;
+}
+
+.pointer {
+    border:hidden;
+}
+
+.tooltip {
+    background-color:#000;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:300px;
+    display:none;
+    color:#fff;
+    text-align: center;
+    font-size:11px;
+    font-weight: bold;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.smallmap {
+    border: 1px solid #CCCCCC;
+    height: 700px;
+    width: 1500px;
+}
+
+.blue1 {
+    border: 1px;
+}

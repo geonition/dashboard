@@ -1,43 +1,33 @@
 from django.db import models
+from django.contrib.gis.db import models as geomodels
 from django.utils import translation
 from django.contrib.auth.models import User
 from django.db.models import Avg, Count
 from django.core.mail import send_mail
 from django.conf import settings
-
-
+from django.contrib.sites.managers import CurrentSiteManager
+from django.contrib.sites.models import Site
 # set the ugettext _ shortcut
 _ = translation.ugettext
 
-LIMIT_FOR_RANDOM_COMMENTS = 3
+class ProjectSetting(models.Model):
 
-class Feedback(models.Model):
-    """
-    This model includes all the feedback
-    given for the softGIS django application.
-    
-    When a feedback is saved it sends an email
-    to the administrators as set in settings.py.
-    
-    >>> import settings
-    >>> from softgis.models import Feedback
-    >>> from django.core import mail
-    >>> fb = Feedback(content='some feedback')
-    >>> fb.save()
-    >>> mail.outbox[0].body
-    'some feedback'
-    """
-    content = models.TextField()
-    create_time = models.DateTimeField(auto_now_add=True)
+    PROJECT_TYPES = (
+        ('QU','Questionnaires'),
+        ('PP','Plan Proposals'),
+        ('IC','Idea Competition'),
+    )
 
-    def save(self, *args, **kwargs):
-        send_mail('Feedback for the softGIS application',
-                self.content,
-                'do-not-reply@pehmogis.fi',
-                [admin[1] for admin in settings.ADMINS],
-                fail_silently=True)
-            
-        super(Feedback, self).save(*args, **kwargs)
+    site = models.ForeignKey(Site)
+    project_type = models.CharField(max_length = 2, choices=PROJECT_TYPES)
+    title = models.CharField(max_length = 40)
+    description = models.TextField()
+    project_url = models.URLField()
+    location = geomodels.PointField()
+    tooltip = models.CharField(max_length = 200)
+    on_site = CurrentSiteManager()
 
     def __unicode__(self):
-        return "feedback " + str(self.create_time)
+        return self.title
+
+

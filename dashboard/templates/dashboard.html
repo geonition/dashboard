@@ -2,67 +2,43 @@
 
 {% load i18n %}
 
-{% block title %}
-Järvenpää - pehmoGIS
-{% endblock %}
-
-{% block bgcolor %}
-#0051BA
-{% endblock %}
-
-{% block textcolor %}
-#0051BA
-{% endblock %}
-
 {% block stylesheet %}
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/home_theme.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/dashboard.css" />
 {% endblock stylesheet %}
-
-{% block city_name %}
-Järvenpää
-{% endblock %}
 
 {% block content %}
 <table class="list-view">
-{% for p in projects %}
-{% if p.app = 'Questionnaires' %}
-<tr>
-    <td id="row-blue" class="{{ forloop.counter }}">
-		<h3>{{p.name}}</h3>
-		<p>{{p.detail}}</p>
-		<a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
-	</td>
-</tr>
-{% else %}
-{% if p.app = 'Improvement suggesstions' %}
-<tr>
-    <td id="row-green" class="{{ forloop.counter }}">
-	    <h3>{{p.name}}</h3>
-	    <p>{{p.detail}}</p>
-	    <a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
-	</td>
-</tr>
-{% else %}
-<tr>
-    <td id="row-orange" class="{{ forloop.counter }}">
-        <h3>{{p.name}}</h3>
-        <p>{{p.detail}}</p>
-        <a class="{{ forloop.counter }}" href="{{p.link}}">{% trans "Siirry sovellukseen.." %}</a>
-    </td>
-</tr>
-{% endif %}
+{% for p in project_setting %}
+    {% if p.project_type = 'QU' %}
+    <tr>
+        <td id="project_{{ p.id }}" class="row-blue">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
+    {% else %}
+    {% if p.project_type = 'IC' %}
+    <tr>
+        <td id="project_{{ p.id }}" class="row-orange">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td id="project_{{ p.id }}" class="row-green">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
+    {% endif %}
 {% endif %}
 {% endfor %}
 </table>
 {% endblock content %}
-
-{% block provider_url %}
-http://www.jarvenpaa.fi/
-{% endblock %}
-
-{% block provider_name %}
-Järvenpään kaupunki
-{% endblock %}
 
 
 {% block javascript %}
@@ -71,9 +47,60 @@ Järvenpään kaupunki
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% url dashboard_js %}"></script>
 <script type="text/javascript">
-    $(window).load(function() {
-        init();
-    });
+var projects_QU = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
+
+var projects_IC = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
+
+var projects_PP = {
+    'type': 'FeatureCollection',
+    'features': []
+    };
+
+{% for p in project_setting %}
+    {% if p.project_type = 'QU' %}
+        projects_QU.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% else %}
+    {% if p.project_type = 'IC' %}
+        projects_IC.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% else %}
+        projects_PP.features.push(
+            {
+                "type": "Feature",
+                "id":"1",
+                "properties": {
+                    "url": "{{ p.project_url }}",
+                    "title": "{{ p.tooltip }}" },
+                "geometry": {{ p.location.json|safe }}
+            });
+    {% endif %}
+{% endif %}
+{% endfor %}
+
+$(window).load(function() {
+    init();
+});
 </script>
 {% endblock javascript %}
 
