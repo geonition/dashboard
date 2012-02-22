@@ -23,7 +23,7 @@ class ProjectSetting(models.Model):
     title = models.CharField(max_length = 40)
     description = models.TextField()
     project_url = models.URLField()
-    location = geomodels.GeometryField()
+    location = geomodels.PolygonField()
     tooltip = models.CharField(max_length = 200)
     on_site = CurrentSiteManager()
 
