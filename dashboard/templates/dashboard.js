@@ -92,6 +92,10 @@ function init(){
         }
     }
     console.log(bounds);
+    console.log(city_polygon);
+    var city_ol_feature = geojsonFormat.read(city_polygon);
+    console.log(city_ol_feature[0]);
+    bounds.extend(city_ol_feature[0].geometry.getBounds());
 
     var mapOptions = {
         //maxExtent: new OpenLayers.Bounds(199949.504,6977073.508,259925.896,7037049.802), //bounds
@@ -372,6 +376,3 @@ $(function() {
  }
 
  */
-=======
-
->>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4

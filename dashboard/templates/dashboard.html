@@ -47,6 +47,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% url dashboard_js %}"></script>
 <script type="text/javascript">
+var city_polygon = {
+    'type': 'Feature',
+    'properties': {},
+    'geometry': {{ city_settings.city_area.json|safe }}
+    };
+
 var projects_QU = {
     'type': 'FeatureCollection',
     'features': []
