@@ -74,6 +74,7 @@ function init(){
             bounds.extend(idea_competitions[i].geometry.getBounds());
         }
     }
+
     console.log(questionnaires);
     for(var j = 0; j < questionnaires.length; j++) {
         if(bounds === undefined) {
@@ -113,34 +114,42 @@ function init(){
 }
 
 
+/*
 function onFeatureSelect(feature){
     $("svg g g image").click(function() {window.location.assign(feature.attributes.url)});
     popupLon = feature.geometry.getBounds().getCenterLonLat().lon - 2000*(popupDistanceRatio);
     popupLat = feature.geometry.getBounds().getCenterLonLat().lat + 1500*(popupDistanceRatio);
+<<<<<<< HEAD
+
+    popup = new OpenLayers.Popup ("popup",
+                                  new OpenLayers.LonLat(popupLon, popupLat),
+                                  new OpenLayers.Size(300,50), null, null, false, null);
+=======
         popup = new OpenLayers.Popup ("popup",
                                       new OpenLayers.LonLat(popupLon, popupLat),
                                       new OpenLayers.Size(300,50), null, null, false, null);
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
 
     var content = "<div style=color:white;>"+ feature.attributes.title + "</div>";
     popup.setContentHTML(content);
-        popup.setOpacity(0.8);
+    popup.setOpacity(0.8);
     popup.setBackgroundColor("black");
     popup.panMapIfOutOfView = true;
     feature.popup = popup;
     map.addPopup(popup);
-
 }
 
 function onFeatureUnSelect(feature){
     $("svg g g image").off("click");
     if (feature.popup != null) {
-    map.removePopup(feature.popup);
-    feature.popup.destroy();
-    feature.popup = null;
+        map.removePopup(feature.popup);
+        feature.popup.destroy();
+        feature.popup = null;
     }
 
 }
 
+<<<<<<< HEAD
             $(function() {
                 var layer_style = {}
             $(".1")
@@ -176,11 +185,17 @@ function onFeatureUnSelect(feature){
                 });
         });
 
+=======
+<<<<<<< HEAD
+$(function() {
+    var layer_style = {}
+    $(".1").mouseover(function() {
+=======
             $(function() {
                 var layer_style = {}
             $(".1")
                 .mouseover(function() {
-                        var fid = $(this).attr("class");
+                    var fid = $(this).attr("class");
                     var feature = vectorLayerBlue.getFeatureByFid(fid);
                     layer_style.externalGraphic = "{{STATIC_URL}}images/questionair_pointer_hover.png";
                     layer_style.pointRadius = 55*(externalGraphicRatio);
@@ -189,14 +204,14 @@ function onFeatureUnSelect(feature){
 
                 })
                 .mouseout(function() {
-                        var fid = $(this).attr("class");
+                    var fid = $(this).attr("class");
                     var feature = vectorLayerBlue.getFeatureByFid(fid);
                     feature.style = null;
                     vectorLayerBlue.redraw();
                 });
             $(".2")
                 .mouseover(function() {
-                        var fid = $(this).attr("class");
+                    var fid = $(this).attr("class");
                     var feature = vectorLayerOrange1.getFeatureByFid(fid);
                     layer_style.externalGraphic = "{{STATIC_URL}}images/evaluation_pointer_hover.png";
                     layer_style.pointRadius = 55*(externalGraphicRatio);
@@ -204,10 +219,47 @@ function onFeatureUnSelect(feature){
                     vectorLayerOrange1.redraw();;
                 })
                 .mouseout(function() {
-                        var fid = $(this).attr("class");
+                    var fid = $(this).attr("class");
                     var feature = vectorLayerOrange1.getFeatureByFid(fid);
                     feature.style = null;
                     vectorLayerOrange1.redraw();
+                });
+        });
+
+>>>>>>> fafd0e0c67117ed57d4a19ea892e6f7579cc5830
+            $(function() {
+                var layer_style = {}
+            $(".1")
+                .mouseover(function() {
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
+                        var fid = $(this).attr("class");
+                        var feature = layer_QU.getFeatureByFid(fid);
+                        layer_style.externalGraphic = "../images/questionair_pointer_hover.png";
+                        layer_style.pointRadius = 55*(externalGraphicRatio);
+                        feature.style = layer_style;
+                        layer_QU.redraw();
+
+                })
+                .mouseout(function() {
+                    var fid = $(this).attr("class");
+                    var feature = layer_QU.getFeatureByFid(fid);
+                    feature.style = null;
+                    layer_QU.redraw();
+                });
+            $(".2")
+                .mouseover(function() {
+                    var fid = $(this).attr("class");
+                    var feature = layer_IC.getFeatureByFid(fid);
+                    layer_style.externalGraphic = "../images/evaluation_pointer_hover.png";
+                    layer_style.pointRadius = 55*(externalGraphicRatio);
+                    feature.style = layer_style;
+                    layer_IC.redraw();;
+                })
+                .mouseout(function() {
+                    var fid = $(this).attr("class");
+                    var feature = layer_IC.getFeatureByFid(fid);
+                    feature.style = null;
+                    layer_IC.redraw();
                 });
         });
 
@@ -290,23 +342,36 @@ function onFeatureUnSelect(feature){
                 }
                 var vectorStyleMapOrange = getVectorStyleMap("{{STATIC_URL}}images/evaluation_pointer.png", "{{STATIC_URL}}images/evaluation_pointer_hover.png");
                 var vectorStyleMapBlue = getVectorStyleMap("{{STATIC_URL}}images/questionair_pointer.png", "{{STATIC_URL}}images/questionair_pointer_hover.png");
-                var featureOrange = vectorLayerOrange1.getFeatureByFid(2);
-                var featureBlue = vectorLayerBlue.getFeatureByFid(1);
+                var featureOrange = layer_IC.getFeatureByFid(2);
+                var featureBlue = layer_IC.getFeatureByFid(1);
                 onFeatureUnSelect(featureOrange);
                 onFeatureUnSelect(featureBlue);
-                vectorLayerOrange1.destroy();
-                vectorLayerBlue.destroy();
-                vectorLayerOrange1 = getVectorLayer(vectorStyleMapOrange, projects_IC);
-                vectorLayerBlue = getVectorLayer(vectorStyleMapBlue, projects_QU);
+                layer_IC.destroy();
+                layer_QU.destroy();
+                layer_IC = getVectorLayer(vectorStyleMapOrange, projects_IC);
+                layer_QU = getVectorLayer(vectorStyleMapBlue, projects_QU);
 
-                map.addLayer(vectorLayerOrange1);
-                map.addLayer(vectorLayerBlue);
+                map.addLayers([layer_IC, layer_QU]);
 
                 // Create a select feature control and add it to the map.
-                select = new OpenLayers.Control.SelectFeature([vectorLayerBlue,vectorLayerOrange1], {hover: true, onSelect: onFeatureSelect, onUnselect: onFeatureUnSelect});
+                select = new OpenLayers.Control.SelectFeature([layer_QU,layer_IC], {hover: true, onSelect: onFeatureSelect, onUnselect: onFeatureUnSelect});
                 map.addControl(select);
                 select.activate();
     }
 
 
+<<<<<<< HEAD
+ function getVectorLayer(vectorStyleMap, layerCode) {
+    var vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", {
+            styleMap: vectorStyleMap,
+            displayInLayerSwitcher: true,
+            visibility: true
+    });
+    vectorLayer.addFeatures(geojsonFormat.read(layerCode));
+    return vectorLayer;
+ }
 
+ */
+=======
+
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
