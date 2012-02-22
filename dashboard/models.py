@@ -17,13 +17,13 @@ class ProjectSetting(models.Model):
         ('PP','Plan Proposals'),
         ('IC','Idea Competition'),
     )
-
+    
     site = models.ForeignKey(Site)
-    project_type = models.CharField(max_length = 2, choices=PROJECT_TYPES)
+    project_type = models.CharField(max_length = 2, choices = PROJECT_TYPES)
     title = models.CharField(max_length = 40)
     description = models.TextField()
     project_url = models.URLField()
-    location = geomodels.PointField()
+    location = geomodels.GeometryField()
     tooltip = models.CharField(max_length = 200)
     on_site = CurrentSiteManager()
 
