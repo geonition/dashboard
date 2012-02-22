@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
+
 # set the ugettext _ shortcut
 _ = translation.ugettext
 
@@ -23,7 +24,7 @@ class ProjectSetting(models.Model):
     title = models.CharField(max_length = 40)
     description = models.TextField()
     project_url = models.URLField()
-    location = geomodels.PolygonField()
+    location = geomodels.PolygonField(srid = getattr(settings, 'SPATIAL_REFERENCE_SYSTEM_ID', 4326))
     tooltip = models.CharField(max_length = 200)
     on_site = CurrentSiteManager()
 

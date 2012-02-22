@@ -1,6 +1,5 @@
 var map;
 var layer;
-
 // Create a select feature control and add it to the map.
 var select;
 
@@ -72,10 +71,16 @@ function onFeatureSelect(feature){
     $("svg g g image").click(function() {window.location.assign(feature.attributes.url)});
     popupLon = feature.geometry.getBounds().getCenterLonLat().lon - 2000*(popupDistanceRatio);
     popupLat = feature.geometry.getBounds().getCenterLonLat().lat + 1500*(popupDistanceRatio);
+<<<<<<< HEAD
 
     popup = new OpenLayers.Popup ("popup",
                                   new OpenLayers.LonLat(popupLon, popupLat),
                                   new OpenLayers.Size(300,50), null, null, false, null);
+=======
+        popup = new OpenLayers.Popup ("popup",
+                                      new OpenLayers.LonLat(popupLon, popupLat),
+                                      new OpenLayers.Size(300,50), null, null, false, null);
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
 
     var content = "<div style=color:white;>"+ feature.attributes.title + "</div>";
     popup.setContentHTML(content);
@@ -96,9 +101,51 @@ function onFeatureUnSelect(feature){
 
 }
 
+<<<<<<< HEAD
 $(function() {
     var layer_style = {}
     $(".1").mouseover(function() {
+=======
+			$(function() {
+			    var layer_style = {}
+			$(".1")
+				.mouseover(function() {
+					var fid = $(this).attr("class");
+					var feature = vectorLayerBlue.getFeatureByFid(fid);
+					layer_style.externalGraphic = "{{STATIC_URL}}images/questionair_pointer_hover.png";
+					layer_style.pointRadius = 55*(externalGraphicRatio);
+					feature.style = layer_style;
+					vectorLayerBlue.redraw();
+					
+				})
+				.mouseout(function() {
+					var fid = $(this).attr("class");
+					var feature = vectorLayerBlue.getFeatureByFid(fid);
+					feature.style = null;
+					vectorLayerBlue.redraw();
+				});
+			$(".2")
+				.mouseover(function() { 
+					var fid = $(this).attr("class");
+					var feature = vectorLayerOrange1.getFeatureByFid(fid);
+					layer_style.externalGraphic = "{{STATIC_URL}}images/evaluation_pointer_hover.png";
+					layer_style.pointRadius = 55*(externalGraphicRatio);
+					feature.style = layer_style;
+					vectorLayerOrange1.redraw();;
+				})
+				.mouseout(function() {
+					var fid = $(this).attr("class");
+					var feature = vectorLayerOrange1.getFeatureByFid(fid);
+					feature.style = null;
+					vectorLayerOrange1.redraw();
+				});	
+		});
+			
+            $(function() {
+                var layer_style = {}
+            $(".1")
+                .mouseover(function() {
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
                         var fid = $(this).attr("class");
                         var feature = layer_QU.getFeatureByFid(fid);
                         layer_style.externalGraphic = "../images/questionair_pointer_hover.png";
@@ -134,7 +181,62 @@ $(function() {
  {
    if(evt.zoomChanged)
     {
-                mapScale = map.getScale()
+	    mapScale = map.getScale()
+	    
+	    if(mapScale < 7874557200) {
+		popupDistanceRatio = mapScale/defaultMapScale
+	    }
+	    else {
+		popupDistanceRatio = 0.8*mapScale/defaultMapScale
+	    }
+	    
+	    if (mapScale > 7874557200) {
+		externalGraphicRatio = 0.4;
+	    }
+	    else if (mapScale > 1968639300 && mapScale <= 7874557200) {
+		externalGraphicRatio = defaultMapScale/mapScale;
+	    }
+	    else {
+		externalGraphicRatio = 1;
+	    }
+	    var vectorStyleMapOrange = getVectorStyleMap("{{STATIC_URL}}images/evaluation_pointer.png", "{{STATIC_URL}}images/evaluation_pointer_hover.png");
+	    var vectorStyleMapBlue = getVectorStyleMap("{{STATIC_URL}}images/questionair_pointer.png", "{{STATIC_URL}}images/questionair_pointer_hover.png");
+	    var featureOrange = vectorLayerOrange1.getFeatureByFid(2);
+	    var featureBlue = vectorLayerBlue.getFeatureByFid(1);
+	    onFeatureUnSelect(featureOrange);
+	    onFeatureUnSelect(featureBlue);
+	    vectorLayerOrange1.destroy();
+	    vectorLayerBlue.destroy();
+	    vectorLayerOrange1 = getVectorLayer(vectorStyleMapOrange, pointersOrange);
+	    vectorLayerBlue = getVectorLayer(vectorStyleMapBlue, pointersBlue);
+	    
+	    map.addLayer(vectorLayerOrange1);
+	    map.addLayer(vectorLayerBlue);
+	    
+	    // Create a select feature control and add it to the map.
+	    select = new OpenLayers.Control.SelectFeature([vectorLayerBlue,vectorLayerOrange1], {hover: true, onSelect: onFeatureSelect, onUnselect: onFeatureUnSelect});
+	    map.addControl(select);
+	    select.activate();
+    }
+ }
+ 
+ function getVectorStyleMap(defauldGraphURL, selectGraphURL) {
+	    var vectorStyleMap = new OpenLayers.StyleMap({
+			    "default": new OpenLayers.Style({
+				externalGraphic: defauldGraphURL,
+				pointRadius: 55*(externalGraphicRatio)
+			    }),
+			    "select": new OpenLayers.Style({
+				externalGraphic: selectGraphURL,
+				pointRadius: 55*(externalGraphicRatio)
+			    })
+		       });
+	    return vectorStyleMap;
+ }
+ 
+ function getVectorLayer(vectorStyleMap, layerCode) {
+	
+	mapScale = map.getScale()
 
                 if(mapScale < 7874557200) {
                     popupDistanceRatio = mapScale/defaultMapScale
@@ -170,22 +272,9 @@ $(function() {
                 map.addControl(select);
                 select.activate();
     }
- }
 
- function getVectorStyleMap(defauldGraphURL, selectGraphURL) {
-            var vectorStyleMap = new OpenLayers.StyleMap({
-                            "default": new OpenLayers.Style({
-                                externalGraphic: defauldGraphURL,
-                pointRadius: 55*(externalGraphicRatio)
-                            }),
-                            "select": new OpenLayers.Style({
-                                externalGraphic: selectGraphURL,
-                pointRadius: 55*(externalGraphicRatio)
-                            })
-                       });
-        return vectorStyleMap;
- }
 
+<<<<<<< HEAD
  function getVectorLayer(vectorStyleMap, layerCode) {
     var vectorLayer = new OpenLayers.Layer.Vector("Vector Layer", {
             styleMap: vectorStyleMap,
@@ -197,3 +286,6 @@ $(function() {
  }
  
  */
+=======
+
+>>>>>>> 6056b94520fc2b5bc5cbf2ed4f42c07ea8da99f4
