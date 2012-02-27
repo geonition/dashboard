@@ -7,7 +7,7 @@ var geojsonFormat = new OpenLayers.Format.GeoJSON();
 
 function init(){
 
-    var style_map = new OpenLayers.StyleMap({
+    var style_map_PP = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
             strokeColor: '#DBEA85',
@@ -16,8 +16,8 @@ function init(){
             fillOpacity: 0.5
             },
         "select": {
-            strokeWidth: 2,
-            strokeColor: '#fde',
+            strokeWidth: 1,
+            strokeColor: '#DBEA85',
             cursor: 'pointer',
             fillColor: '#d1d1d1',
             fillOpacity: 0.6
@@ -25,19 +25,52 @@ function init(){
     });
 
     var PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
-        styleMap: style_map,
+        styleMap: style_map_PP,
         visibility: true
     });
 
+    var style_map_IC = new OpenLayers.StyleMap({
+        "default": {
+            strokeWidth: 1,
+            strokeColor: '#f2bf55',
+            cursor: 'pointer',
+            fillColor: '#f2bf55',
+            fillOpacity: 0.5
+            },
+        "select": {
+            strokeWidth: 1,
+            strokeColor: '#f2bf55',
+            cursor: 'pointer',
+            fillColor: '#d1d1d1',
+            fillOpacity: 0.6
+        }
+    });
 
     var IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
-        styleMap: style_map,
+        styleMap: style_map_IC,
         visibility: true
+    });
+
+    var style_map_QU = new OpenLayers.StyleMap({
+        "default": {
+            strokeWidth: 1,
+            strokeColor: '#4cbbe6',
+            cursor: 'pointer',
+            fillColor: '#4cbbe6',
+            fillOpacity: 0.5
+            },
+        "select": {
+            strokeWidth: 1,
+            strokeColor: '#4cbbe6',
+            cursor: 'pointer',
+            fillColor: '#d1d1d1',
+            fillOpacity: 0.6
+        }
     });
 
     var QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
-            styleMap: style_map,
-            visibility: true
+        styleMap: style_map_QU,
+        visibility: true
     });
 
     var questionnaires = geojsonFormat.read(projects_QU);
@@ -126,7 +159,7 @@ function init(){
     select.activate();
 
     //connect the list hover with the feature
-    $('.row-green').hover(function(event) {
+    $('.row-green, .row-blue, row-orange').hover(function(event) {
         for(layer in map.layers) {
             if(map.layers[layer].getFeatureByFid) {
                 var feature = map.layers[layer].getFeatureByFid(this.id);

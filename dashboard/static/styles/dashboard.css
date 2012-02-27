@@ -48,10 +48,9 @@
     border: 2px solid #CCCCCC;
 }
 
-.row-orange:hover
+.row-orange:hover, .row-orange.hover
 {
     background: #d1d1d1;
-    border-color: #f4d28d;
 }
 
 #map-image{
