@@ -11,7 +11,7 @@
 {% for p in project_setting %}
     {% if p.project_type = 'QU' %}
     <tr>
-        <td id="project_{{ p.id }}" class="row-blue">
+        <td id="QU_{{ p.id }}" class="row-blue">
             <h3>{{ p.title }}</h3>
             <p>{{ p.description }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
@@ -20,7 +20,7 @@
     {% else %}
     {% if p.project_type = 'IC' %}
     <tr>
-        <td id="project_{{ p.id }}" class="row-orange">
+        <td id="IC_{{ p.id }}" class="row-orange">
             <h3>{{ p.title }}</h3>
             <p>{{ p.description }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
@@ -28,7 +28,7 @@
     </tr>
     {% else %}
     <tr>
-        <td id="project_{{ p.id }}" class="row-green">
+        <td id="PP_{{ p.id }}" class="row-green">
             <h3>{{ p.title }}</h3>
             <p>{{ p.description }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
@@ -73,7 +73,7 @@ var projects_PP = {
         projects_QU.features.push(
             {
                 "type": "Feature",
-                "id":"1",
+                "id":"QU_{{ p.id }}",
                 "properties": {
                     "url": "{{ p.project_url }}",
                     "title": "{{ p.tooltip }}" },
@@ -84,7 +84,7 @@ var projects_PP = {
         projects_IC.features.push(
             {
                 "type": "Feature",
-                "id":"1",
+                "id":"IC_{{ p.id }}",
                 "properties": {
                     "url": "{{ p.project_url }}",
                     "title": "{{ p.tooltip }}" },
@@ -94,7 +94,7 @@ var projects_PP = {
         projects_PP.features.push(
             {
                 "type": "Feature",
-                "id":"1",
+                "id":"PP_{{ p.id }}",
                 "properties": {
                     "url": "{{ p.project_url }}",
                     "title": "{{ p.tooltip }}" },

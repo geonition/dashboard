@@ -25,11 +25,11 @@
     border: 2px solid #CCCCCC;
 }
 
-.row-blue:hover
+.row-blue:hover, .row-blue.hover
 {
     background: #d1d1d1;
-    border-color: #8cd6f2;
 }
+
 
 .row-green
 {
@@ -37,10 +37,9 @@
     border: 2px solid #CCCCCC;
 }
 
-.row-green:hover
+.row-green:hover, .row-green.hover
 {
     background: #d1d1d1;
-    border-color: #dbea85;
 }
 
 .row-orange
