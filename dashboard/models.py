@@ -11,7 +11,7 @@ from django.contrib.sites.models import Site
 # set the ugettext _ shortcut
 _ = translation.ugettext
 
-class ProjectSetting(models.Model):
+class Project(models.Model):
 
     PROJECT_TYPES = (
         ('QU','Questionnaires'),
@@ -30,5 +30,5 @@ class ProjectSetting(models.Model):
 
     def __unicode__(self):
         return self.title
-
+#(
 

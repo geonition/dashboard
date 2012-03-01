@@ -6,14 +6,14 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from base_page.models import CitySetting
 from objects import *
-from models import ProjectSetting
+from models import Project
 
 def dashboard(request):
     """
     The main dashboard page
     """
 
-    project_setting = ProjectSetting.on_site.all().order_by('project_type')
+    project_setting = Project.on_site.all().order_by('project_type')
     try:
         city_settings = CitySetting.on_site.all()[0]
     except IndexError:
