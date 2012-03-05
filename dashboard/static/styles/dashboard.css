@@ -1,21 +1,17 @@
-.list-view{
-    float: left;
+.list-view {
     display: block;
     overflow: hidden;
-    width: 90%;
-    margin-left: 10px;
-    margin-top: 30px;
+    width: 95%;
+    margin: 0 auto;
 }
 
-.list-view td
+.list-view tr
 {
-    width: 300px;
-    height: auto;
-    float: left;
-    border: 1px solid #fde;
-    display: inline;
-    padding: 10px;
+    border: 2px solid #fde;
     text-align: left;
+}
+.list-view td {
+    padding: 0.5em;
 }
 
 .row-blue
@@ -52,46 +48,6 @@
     background: #d1d1d1;
 }
 
-#map-image{
-    background-image: url("../images/jarvenpaa.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 675px;
-    width: 850px;
-}
-
-#pointer1{
-    display: inline;
-    left: 190px;
-    position: absolute;
-    top: 20px;
-}
-
-#pointer2{
-    display: inline;
-    left: 670px;
-    position: absolute;
-    top: 20px;
-}
-
-#pointer3{
-    display: inline;
-    left: 50px;
-    position: absolute;
-    top: 302px;
-}
-
-#pointer4{
-    display: inline;
-    left: 400px;
-    position: absolute;
-    top: 270px;
-}
-
-.pointer {
-    border:hidden;
-}
-
 .tooltip {
     background-color:#000;
     border:1px solid #fff;
@@ -102,14 +58,4 @@
     text-align: center;
     font-size:11px;
     font-weight: bold;
-}
-
-.smallmap {
-    border: 1px solid #CCCCCC;
-    height: 700px;
-    width: 1500px;
-}
-
-.blue1 {
-    border: 1px;
 }

@@ -13,7 +13,7 @@
     <tr>
         <td id="QU_{{ p.id }}" class="row-blue">
             <h3>{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
+            <p>{{ p.description|truncatewords_html:10 }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
         </td>
     </tr>
@@ -22,7 +22,7 @@
     <tr>
         <td id="IC_{{ p.id }}" class="row-orange">
             <h3>{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
+            <p>{{ p.description|truncatewords_html:10 }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
         </td>
     </tr>
@@ -30,7 +30,7 @@
     <tr>
         <td id="PP_{{ p.id }}" class="row-green">
             <h3>{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
+            <p>{{ p.description|truncatewords_html:10 }}</p>
             <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
         </td>
     </tr>
