@@ -159,7 +159,7 @@ function init(){
     select.activate();
 
     //connect the list hover with the feature
-    $('.row-green, .row-blue, row-orange').hover(function(event) {
+    $('.row-green, .row-blue, .row-orange').hover(function(event) {
         for(layer in map.layers) {
             if(map.layers[layer].getFeatureByFid) {
                 var feature = map.layers[layer].getFeatureByFid(this.id);
