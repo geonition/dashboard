@@ -14,7 +14,7 @@
     },
     {
         "pk": 2,
-        "model": "dashboard.projectsetting",
+        "model": "dashboard.project",
         "fields": {
             "description": "Anna palautteesi Perhel\u00e4n korttelin suunnittelusta.\r\n\r\nKaavamuutoksen p\u00e4\u00e4tavoitteena on tutkia mahdollisuuksia Perhel\u00e4n korttelin uudistamiseen liike-, toimisto- ja asuinrakentamisella. Suunnittelussa tutkitaan my\u00f6s mahdollisuuksia vanhan Perhel\u00e4n liikerakennuksen osittaiseen s\u00e4ilytt\u00e4miseen. Rakennushanke edellytt\u00e4\u00e4 mittavia muutoksia my\u00f6s Helsingintien katualueella.",
             "title": "Perhel\u00e4n kortteli",
