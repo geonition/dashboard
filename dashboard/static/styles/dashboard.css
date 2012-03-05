@@ -2,10 +2,9 @@
     float: left;
     display: block;
     overflow: hidden;
-    width: 330px;
+    width: 90%;
     margin-left: 10px;
-    margin-top:30px;
-    font-family: Arial;
+    margin-top: 30px;
 }
 
 .list-view td
@@ -103,7 +102,6 @@
     text-align: center;
     font-size:11px;
     font-weight: bold;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
 .smallmap {
