@@ -32,17 +32,17 @@ function init(){
     var style_map_IC = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
-            strokeColor: '#f2bf55',
+            strokeColor: '#DBEA85',
             cursor: 'pointer',
-            fillColor: '#f2bf55',
-            fillOpacity: 0.5
+            fillColor: '#DBEA85',
+            fillOpacity: 0.8
             },
         "select": {
             strokeWidth: 1,
-            strokeColor: '#f2bf55',
+            strokeColor: '#DBEA85',
             cursor: 'pointer',
             fillColor: '#d1d1d1',
-            fillOpacity: 0.6
+            fillOpacity: 0.8
         }
     });
 

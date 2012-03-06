@@ -4,9 +4,18 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/dashboard.css" />
-{% endblock stylesheet %}
+{% endblock %}
 
 {% block content %}
+
+<ul class="breadcrumb">
+    <li class="active">
+	{% trans "Dashboard" %}
+	<span class="divider">&gt;&gt;</span>
+    </li>
+</ul>
+    
+    
 <table class="list-view">
 {% for p in project_setting %}
     {% if p.project_type = 'QU' %}
