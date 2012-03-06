@@ -48,21 +48,6 @@
     background: #d1d1d1;
 }
 
-ul.breadcrumb {
-    list-style: none;
-    padding: 1em;
-    margin: 0em;
-}
-.breadcrumb li {
-    display: inline-block;
-    text-shadow: 0 0.0625em 0 white;
-    font-size: 0.9em;
-}
-.breadcrumb .divider {
-    font-size: 0.8em;
-    letter-spacing: -0.2em;
-}
-
 .tooltip {
     background-color:#000;
     border:1px solid #fff;
