@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-09 07:14-0600\n"
+"POT-Creation-Date: 2012-03-07 12:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: views.py:21
-msgid "Vaasan keskustastrategia"
-msgstr ""
+#: templates/dashboard.html:13
+msgid "Dashboard"
+msgstr "Hankesivusto"
 
-#: views.py:23
-msgid ""
-"Kerro meille, millainen on Vaasan keskusta ja vaikuta elinympäristöösi! "
-"Näillä sivuilla pääset kertomaan, millainen paikka Vaasan keskusta on asua "
-"ja elää. Kysely on osa Vaasan kaupungin keskustastrategiatyötä, jota tehdään "
-"yhdessä kaupunkilaisten ja eri toimijoiden kanssa. Strategiatyön tavoitteena "
-"on turvata keskustan viihtyisyys myös tulevaisuudessa sekä kehittää "
-"keskustasta entistä vetovoimaisempi ja elävämpi alue."
-msgstr ""
-
-#: views.py:36
-msgid "Palosaaren ideakilpailu"
-msgstr ""
-
-#: views.py:38
-msgid ""
-"Tällä sivulla sinun on mahdollista tutustua kilpailutöihin sekä "
-"palkintolautakunnan yleisarvioon kilpailusta ja yksittäisistä töistä. "
-"Asukkaiden arvostelut ovat nyt myös nähtävillä."
-msgstr ""
-
-#: templates/base.html:31
-msgid "Vaasa"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Vaikuta kaupunkisi kehitykseen"
-msgstr ""
-
-#: templates/base.html:56
-msgid "Anna palautetta sivustosta"
-msgstr ""
-
-#: templates/base.html:57
-msgid "Vaasan kaupunki"
-msgstr ""
-
-#: templates/home.html:20 templates/home.html.py:29 templates/home.html:37
-msgid "Siirry sovellukseen.."
-msgstr ""
+#: templates/dashboard.html:25 templates/dashboard.html.py:34
+#: templates/dashboard.html:42
+msgid "Go to the application.."
+msgstr "Siirry sovellukseen"
