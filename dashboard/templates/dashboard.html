@@ -3,54 +3,60 @@
 {% load i18n %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL }}styles/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/dashboard.css" />
 {% endblock %}
 
 {% block content %}
-
-<ul class="breadcrumb">
-    <li class="active">
-	{% trans "Dashboard" %}
-    </li>
-</ul>
-    
     
 <table class="list-view">
-{% for p in project_setting %}
-    {% if p.project_type = 'QU' %}
+{% for p in QU_projects %}
+    {% if forloop.first %}
     <tr>
-        <td id="QU_{{ p.id }}" class="row-blue">
-            <h3>{{ p.title }}</h3>
-            <p>{{ p.description|truncatewords_html:10 }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
-    </tr>
-    {% else %}
-    {% if p.project_type = 'IC' %}
-    <tr>
-        <td id="IC_{{ p.id }}" class="row-orange">
-            <h3>{{ p.title }}</h3>
-            <p>{{ p.description|truncatewords_html:10 }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
-    </tr>
-    {% else %}
-    <tr>
-        <td id="PP_{{ p.id }}" class="row-green">
-            <h3>{{ p.title }}</h3>
-            <p>{{ p.description|truncatewords_html:10 }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
+        <th class="base_bgcolor">{% trans "Questionnaires" %}</th>
     </tr>
     {% endif %}
-{% endif %}
+    <tr>
+        <td id="QU_{{ p.id }}" class="project-row">
+            <h3 class="base_textcolor">{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
+{% endfor %}
+{% for p in IC_projects %}
+    {% if forloop.first %}
+    <tr>
+        <th class="base_bgcolor">{% trans "Idea competitions" %}</th>
+    </tr>
+    {% endif %}
+    <tr>
+        <td id="IC_{{ p.id }}" class="project-row">
+            <h3 class="base_textcolor">{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
+{% endfor %}
+{% for p in PP_projects %}
+    {% if forloop.first %}
+    <tr>
+	<th class="base_bgcolor">{% trans "Planning projects" %}</th>
+    </tr>
+    {% endif %}
+    <tr>
+        <td id="PP_{{ p.id }}" class="project-row">
+            <h3 class="base_textcolor">{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+        </td>
+    </tr>
 {% endfor %}
 </table>
 {% endblock content %}
 
 
 {% block javascript %}
-<script type="text/javascript" src="{{STATIC_URL}}json/pointer_geoJSON.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}json/pointer_geoJSON.js"></script>
 <script src="https://softgis.org.aalto.fi/OpenLayers/OpenLayers.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% url dashboard_js %}"></script>
@@ -76,40 +82,40 @@ var projects_PP = {
     'features': []
     };
 
-{% for p in project_setting %}
-    {% if p.project_type = 'QU' %}
-        projects_QU.features.push(
-            {
-                "type": "Feature",
-                "id":"QU_{{ p.id }}",
-                "properties": {
-                    "url": "{{ p.project_url }}",
-                    "title": "{{ p.tooltip }}" },
-                "geometry": {{ p.location.json|safe }}
-            });
-    {% else %}
-    {% if p.project_type = 'IC' %}
-        projects_IC.features.push(
-            {
-                "type": "Feature",
-                "id":"IC_{{ p.id }}",
-                "properties": {
-                    "url": "{{ p.project_url }}",
-                    "title": "{{ p.tooltip }}" },
-                "geometry": {{ p.location.json|safe }}
-            });
-    {% else %}
-        projects_PP.features.push(
-            {
-                "type": "Feature",
-                "id":"PP_{{ p.id }}",
-                "properties": {
-                    "url": "{{ p.project_url }}",
-                    "title": "{{ p.tooltip }}" },
-                "geometry": {{ p.location.json|safe }}
-            });
-    {% endif %}
-{% endif %}
+{% for p in QU_projects %}
+projects_QU.features.push(
+    {
+	"type": "Feature",
+	"id":"QU_{{ p.id }}",
+	"properties": {
+	    "url": "{{ p.project_url }}",
+	    "title": "{{ p.tooltip }}" },
+	"geometry": {{ p.location.json|safe }}
+    });
+{% endfor %}
+
+{% for p in IC_projects %}
+projects_IC.features.push(
+    {
+	"type": "Feature",
+	"id":"IC_{{ p.id }}",
+	"properties": {
+	    "url": "{{ p.project_url }}",
+	    "title": "{{ p.tooltip }}" },
+	"geometry": {{ p.location.json|safe }}
+    });
+{% endfor %}
+
+{% for p in PP_projects %}
+projects_PP.features.push(
+    {
+	"type": "Feature",
+	"id":"PP_{{ p.id }}",
+	"properties": {
+	    "url": "{{ p.project_url }}",
+	    "title": "{{ p.tooltip }}" },
+	"geometry": {{ p.location.json|safe }}
+    });
 {% endfor %}
 
 $(window).load(function() {

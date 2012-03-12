@@ -12,16 +12,20 @@ def dashboard(request):
     """
     The main dashboard page
     """
-
-    project_setting = Project.on_site.all().order_by('project_type')
     try:
         city_settings = CitySetting.on_site.all()[0]
     except IndexError:
         city_settings = {}
 
+    PP_projects = Project.on_site.filter(project_type = 'PP')
+    IC_projects = Project.on_site.filter(project_type = 'IC')
+    QU_projects = Project.on_site.filter(project_type = 'QU')
+    
     return render_to_response('dashboard.html',
-                              {'project_setting': project_setting,
-                              'city_settings': city_settings},
+                              {'PP_projects': PP_projects,
+                               'IC_projects': IC_projects,
+                               'QU_projects': QU_projects,
+                               'city_settings': city_settings},
                               context_instance = RequestContext(request))
 
 

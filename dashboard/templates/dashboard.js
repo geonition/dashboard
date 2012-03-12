@@ -7,69 +7,35 @@ var geojsonFormat = new OpenLayers.Format.GeoJSON();
 
 function init(){
 
-    var style_map_PP = new OpenLayers.StyleMap({
+    var style_map = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
-            strokeColor: '#DBEA85',
+            strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
-            fillColor: '#DBEA85',
+            fillColor: $('body').css('background-color'),
             fillOpacity: 0.5
             },
         "select": {
             strokeWidth: 1,
-            strokeColor: '#DBEA85',
+            strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
-            fillColor: '#d1d1d1',
+            fillColor: $('body').css('background-color'),
             fillOpacity: 0.6
         }
     });
 
     var PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
-        styleMap: style_map_PP,
+        styleMap: style_map,
         visibility: true
-    });
-
-    var style_map_IC = new OpenLayers.StyleMap({
-        "default": {
-            strokeWidth: 1,
-            strokeColor: '#DBEA85',
-            cursor: 'pointer',
-            fillColor: '#DBEA85',
-            fillOpacity: 0.8
-            },
-        "select": {
-            strokeWidth: 1,
-            strokeColor: '#DBEA85',
-            cursor: 'pointer',
-            fillColor: '#d1d1d1',
-            fillOpacity: 0.8
-        }
     });
 
     var IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
-        styleMap: style_map_IC,
+        styleMap: style_map,
         visibility: true
     });
-
-    var style_map_QU = new OpenLayers.StyleMap({
-        "default": {
-            strokeWidth: 1,
-            strokeColor: '#4cbbe6',
-            cursor: 'pointer',
-            fillColor: '#4cbbe6',
-            fillOpacity: 0.5
-            },
-        "select": {
-            strokeWidth: 1,
-            strokeColor: '#4cbbe6',
-            cursor: 'pointer',
-            fillColor: '#d1d1d1',
-            fillOpacity: 0.6
-        }
-    });
-
+    
     var QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
-        styleMap: style_map_QU,
+        styleMap: style_map,
         visibility: true
     });
 
@@ -134,6 +100,7 @@ function init(){
         {isBaseLayer: true}
     );
 
+    //TODO: should be site specific
     base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");
 
     map.addLayers([base_layer, IC_layer, QU_layer, PP_layer]);
@@ -159,7 +126,7 @@ function init(){
     select.activate();
 
     //connect the list hover with the feature
-    $('.row-green, .row-blue, .row-orange').hover(function(event) {
+    $('.project-row').hover(function(event) {
         for(layer in map.layers) {
             if(map.layers[layer].getFeatureByFid) {
                 var feature = map.layers[layer].getFeatureByFid(this.id);

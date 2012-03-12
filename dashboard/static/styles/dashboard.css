@@ -3,49 +3,22 @@
     overflow: hidden;
     width: 95%;
     margin: 0 auto;
+    position: relative;
+    top: 1.5em;
 }
-
 .list-view tr
 {
-    border: 2px solid #fde;
     text-align: left;
 }
+
+.list-view th {
+    font-weight: normal;
+    padding-left: 1em;
+}
+
 .list-view td {
     padding: 0.5em;
-}
-
-.row-blue
-{
-    background: #4cbbe6;
-    border: 2px solid #CCCCCC;
-}
-
-.row-blue:hover, .row-blue.hover
-{
-    background: #d1d1d1;
-}
-
-
-.row-green
-{
-    background: #dbea85;
-    border: 2px solid #CCCCCC;
-}
-
-.row-green:hover, .row-green.hover
-{
-    background: #d1d1d1;
-}
-
-.row-orange
-{
-    background: #f2bf55;
-    border: 2px solid #CCCCCC;
-}
-
-.row-orange:hover, .row-orange.hover
-{
-    background: #d1d1d1;
+    color: black;
 }
 
 .tooltip {
