@@ -7,51 +7,64 @@
 {% endblock %}
 
 {% block content %}
-    
-<table class="list-view">
+
+<ul class="list-view">
 {% for p in QU_projects %}
     {% if forloop.first %}
-    <tr>
-        <th class="base_bgcolor">{% trans "Questionnaires" %}</th>
-    </tr>
+    <li>
+        <h3 class="base_bgcolor">{% trans "Questionnaires" %}</h3>
+
+        <ul>
     {% endif %}
-    <tr>
-        <td id="QU_{{ p.id }}" class="project-row">
-            <h3 class="base_textcolor">{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
-    </tr>
+            <li id="QU_{{ p.id }}" class="project">
+                <h3 class="base_textcolor">{{ p.title }}</h3>
+                <p>{{ p.description }}</p>
+                <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+            </li>
+
+    {% if forloop.last %}
+        </ul>
+    </li>
+    {% endif %}
 {% endfor %}
 {% for p in IC_projects %}
     {% if forloop.first %}
-    <tr>
-        <th class="base_bgcolor">{% trans "Idea competitions" %}</th>
-    </tr>
+    <li>
+        <h3 class="base_bgcolor">{% trans "Idea competitions" %}</h3>
+
+        <ul>
     {% endif %}
-    <tr>
-        <td id="IC_{{ p.id }}" class="project-row">
-            <h3 class="base_textcolor">{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
-    </tr>
+            <li id="IC_{{ p.id }}" class="project">
+                <h3 class="base_textcolor">{{ p.title }}</h3>
+                <p>{{ p.description }}</p>
+                <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+            </li>
+
+    {% if forloop.last %}
+        </ul>
+    </li>
+    {% endif %}
 {% endfor %}
 {% for p in PP_projects %}
     {% if forloop.first %}
-    <tr>
-	<th class="base_bgcolor">{% trans "Planning projects" %}</th>
-    </tr>
+    <li>
+        <h3 class="base_bgcolor">{% trans "Planning projects" %}</h3>
+
+        <ul>
     {% endif %}
-    <tr>
-        <td id="PP_{{ p.id }}" class="project-row">
-            <h3 class="base_textcolor">{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
-            <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-        </td>
-    </tr>
+            <li id="PP_{{ p.id }}" class="project">
+                <h3 class="base_textcolor">{{ p.title }}</h3>
+                <p>{{ p.description }}</p>
+                <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+            </li>
+
+    {% if forloop.last %}
+        </ul>
+    </li>
+    {% endif %}
 {% endfor %}
-</table>
+</ul>
+
 {% endblock content %}
 
 
@@ -85,36 +98,36 @@ var projects_PP = {
 {% for p in QU_projects %}
 projects_QU.features.push(
     {
-	"type": "Feature",
-	"id":"QU_{{ p.id }}",
-	"properties": {
-	    "url": "{{ p.project_url }}",
-	    "title": "{{ p.tooltip }}" },
-	"geometry": {{ p.location.json|safe }}
+    "type": "Feature",
+    "id":"QU_{{ p.id }}",
+    "properties": {
+        "url": "{{ p.project_url }}",
+        "title": "{{ p.tooltip }}" },
+    "geometry": {{ p.location.json|safe }}
     });
 {% endfor %}
 
 {% for p in IC_projects %}
 projects_IC.features.push(
     {
-	"type": "Feature",
-	"id":"IC_{{ p.id }}",
-	"properties": {
-	    "url": "{{ p.project_url }}",
-	    "title": "{{ p.tooltip }}" },
-	"geometry": {{ p.location.json|safe }}
+    "type": "Feature",
+    "id":"IC_{{ p.id }}",
+    "properties": {
+        "url": "{{ p.project_url }}",
+        "title": "{{ p.tooltip }}" },
+    "geometry": {{ p.location.json|safe }}
     });
 {% endfor %}
 
 {% for p in PP_projects %}
 projects_PP.features.push(
     {
-	"type": "Feature",
-	"id":"PP_{{ p.id }}",
-	"properties": {
-	    "url": "{{ p.project_url }}",
-	    "title": "{{ p.tooltip }}" },
-	"geometry": {{ p.location.json|safe }}
+    "type": "Feature",
+    "id":"PP_{{ p.id }}",
+    "properties": {
+        "url": "{{ p.project_url }}",
+        "title": "{{ p.tooltip }}" },
+    "geometry": {{ p.location.json|safe }}
     });
 {% endfor %}
 

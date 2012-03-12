@@ -127,7 +127,7 @@ function init(){
     select.activate();
 
     //connect the list hover with the feature
-    $('.project-row').hover(function(event) {
+    $('.project').hover(function(event) {
         for(layer in map.layers) {
             if(map.layers[layer].getFeatureByFid) {
                 var feature = map.layers[layer].getFeatureByFid(this.id);

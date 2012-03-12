@@ -1,38 +1,22 @@
 .list-view {
-    display: block;
-    overflow: hidden;
-    width: 95%;
-    margin: 0 auto;
-    position: relative;
-    top: 1.5em;
+    padding: 0px;
 }
-.list-view tr
-{
-    text-align: left;
+.list-view ul {
+    margin: 0px;
+    padding: 0px;
 }
-
-.list-view th {
+.list-view li {
+    list-style: none;
+    background-color: white;
+}
+.list-view li.project {
+    padding: 10px;
+}
+.list-view h3.base_bgcolor {
+    color: white;
     font-weight: normal;
-    padding-left: 1em;
+    padding-left: 10px;
 }
-
-.list-view td {
-    padding: 0.5em;
-    color: black;
-}
-
-.list-view td:hover, .list-view td.hover {
+.list-view li.project:hover, .list-view li.hover {
     background-color: #DDDDDD;
-}
-
-.tooltip {
-    background-color:#000;
-    border:1px solid #fff;
-    padding:10px 15px;
-    width:300px;
-    display:none;
-    color:#fff;
-    text-align: center;
-    font-size:11px;
-    font-weight: bold;
 }
