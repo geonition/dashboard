@@ -21,6 +21,10 @@
     color: black;
 }
 
+.list-view td:hover, .list-view td.hover {
+    background-color: #DDDDDD;
+}
+
 .tooltip {
     background-color:#000;
     border:1px solid #fff;

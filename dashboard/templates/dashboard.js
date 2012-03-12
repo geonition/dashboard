@@ -13,14 +13,14 @@ function init(){
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
-            fillOpacity: 0.5
+            fillOpacity: 0.4
             },
         "select": {
             strokeWidth: 1,
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
-            fillOpacity: 0.6
+            fillOpacity: 0.7
         }
     });
 
@@ -33,7 +33,7 @@ function init(){
         styleMap: style_map,
         visibility: true
     });
-    
+
     var QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
         styleMap: style_map,
         visibility: true

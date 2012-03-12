@@ -18,7 +18,7 @@ class Project(models.Model):
         ('PP','Plan Proposals'),
         ('IC','Idea Competition'),
     )
-    
+
     site = models.ForeignKey(Site)
     project_type = models.CharField(max_length = 2, choices = PROJECT_TYPES)
     title = models.CharField(max_length = 40)
