@@ -1,5 +1,6 @@
 .list-view {
     padding: 0px;
+    margin: 0px;
 }
 .list-view ul {
     margin: 0px;
@@ -17,6 +18,7 @@
     color: white;
     font-weight: normal;
     padding-left: 10px;
+    margin-top: 0.5em;
 }
 .list-view li.project:hover, .list-view li.hover {
     background-color: #DDDDDD;
