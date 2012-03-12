@@ -122,6 +122,7 @@ function init(){
                 $('#' + id).removeClass('hover');
                 }
         });
+
     map.addControl(select);
     select.activate();
 
@@ -146,4 +147,11 @@ function init(){
                 }
             }
         });
+
+    //this is for setting links on features
+    $('#map').click(function(event) {
+        if($('td.hover a').length > 0) {
+            window.location = $('td.hover a')[0].href;
+        }
+    });
 }
