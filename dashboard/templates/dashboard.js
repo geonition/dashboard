@@ -150,8 +150,8 @@ function init(){
 
     //this is for setting links on features
     $('#map').click(function(event) {
-        if($('td.hover a').length > 0) {
-            window.location = $('td.hover a')[0].href;
+        if($('.project.hover a').length > 0) {
+            window.location = $('.project.hover a')[0].href;
         }
     });
 }
