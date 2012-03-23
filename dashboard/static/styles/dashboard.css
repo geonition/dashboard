@@ -6,20 +6,21 @@
     margin: 0px;
     padding: 0px;
 }
-.list-view li {
+.list-view li.project {
     list-style: none;
     background-color: white;
 }
-.list-view li.project {
+.list-view li.project p {
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 42px;
 }
-.list-view h3.base_bgcolor {
+.list-view h3 {
     color: white;
-    font-weight: normal;
-    padding-left: 10px;
+    padding: 4px;
+    padding-left: 42px !important;
     margin-top: 0.5em;
 }
-.list-view li.project:hover, .list-view li.hover {
+
+.list-view li.project:hover {
     background-color: #DDDDDD;
 }

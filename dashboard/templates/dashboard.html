@@ -3,25 +3,28 @@
 {% load i18n %}
 
 {% block stylesheet %}
+    <link href='http://fonts.googleapis.com/css?family=Glegoo|Signika+Negative:300,400|Bitter|Radley|Enriqueta|Ruda' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/dashboard.css" />
 {% endblock %}
 
 {% block content %}
-<ul class="breadcrumb">
-    <li class="disk hover base_bgcolor">
-    </li>
-</ul>
 
 <ul class="list-view">
 {% for p in QU_projects %}
     {% if forloop.first %}
     <li>
-        <h3 class="base_bgcolor">{% trans "Questionnaires" %}</h3>
+	<ul class="breadcrumb">
+	    <li class="disk hover base_bgcolor">
+	    </li>
+	    <li>
+	        <h3>{% trans "Questionnaires" %}</h3>
+	    </li>
+	</ul>
 
         <ul>
     {% endif %}
             <li id="QU_{{ p.id }}" class="project">
-                <h3 class="base_textcolor">{{ p.title }}</h3>
+                <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}</p>
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
             </li>
@@ -34,7 +37,7 @@
 {% for p in IC_projects %}
     {% if forloop.first %}
     <li>
-        <h3 class="base_bgcolor">{% trans "Idea competitions" %}</h3>
+        <h3>{% trans "Idea competitions" %}</h3>
 
         <ul>
     {% endif %}
@@ -52,14 +55,21 @@
 {% for p in PP_projects %}
     {% if forloop.first %}
     <li>
-        <h3 class="base_bgcolor">{% trans "Planning projects" %}</h3>
+	<ul class="breadcrumb">
+	    <li class="disk base_bgcolor">
+	    </li>
+	    <li class="base_textcolor">
+		<h2>{% trans "Planning projects" %}</h2>
+	    </li>
+	</ul>
 
         <ul>
     {% endif %}
             <li id="PP_{{ p.id }}" class="project">
-                <h3 class="base_textcolor">{{ p.title }}</h3>
-                <p>{{ p.description }}</p>
-                <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
+                <h3 class="base_bgcolor">{{ p.title }}</h3>
+                <p>{{ p.description }}
+		    <a href="{{ p.project_url }}">{% trans "Go to the application..." %}</a>
+		</p>
             </li>
 
     {% if forloop.last %}
