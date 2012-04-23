@@ -15,6 +15,8 @@
 	<ul class="breadcrumb">
 	    <li class="disk hover base_bgcolor">
 	    </li>
+	    <li class="separator">
+	    </li>
 	    <li>
 	        <h3>{% trans "Questionnaires" %}</h3>
 	    </li>
@@ -36,7 +38,15 @@
 {% for p in IC_projects %}
     {% if forloop.first %}
     <li>
-        <h3>{% trans "Idea competitions" %}</h3>
+	<ul class="breadcrumb">
+	    <li class="disk hover base_bgcolor">
+	    </li>
+	    <li class="separator">
+	    </li>
+	    <li>
+		<h3>{% trans "Idea competitions" %}</h3>
+	    </li>
+	</ul>
 
         <ul>
     {% endif %}
@@ -56,6 +66,8 @@
     <li>
 	<ul class="breadcrumb">
 	    <li class="disk base_bgcolor">
+	    </li>
+	    <li class="separator">
 	    </li>
 	    <li class="base_textcolor">
 		<h2>{% trans "Planning projects" %}</h2>
