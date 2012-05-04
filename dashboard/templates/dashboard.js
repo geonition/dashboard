@@ -95,8 +95,9 @@ function init() {
 		
         //TODO: should be site specific
         //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");
-
+        
         map.addLayers([IC_layer, QU_layer, PP_layer]);
+        
         map.zoomToExtent( bounds );
 
         var select = new OpenLayers.Control.SelectFeature(
