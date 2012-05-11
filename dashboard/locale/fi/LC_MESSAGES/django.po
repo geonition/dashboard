@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 10:02+0300\n"
+"POT-Creation-Date: 2012-05-02 14:09+0300\n"
 "PO-Revision-Date: 2012-03-27 10:02+0200\n"
 "Last-Translator: Kristoffer Snabb <kristoffer.snabb@geonition.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: templates/dashboard.html:19
+#: templates/dashboard.html:21
 msgid "Questionnaires"
 msgstr "Kyselyt"
 
-#: templates/dashboard.html:28
-#: templates/dashboard.html.py:46
+#: templates/dashboard.html:30 templates/dashboard.html.py:57
 msgid "Go to the application.."
 msgstr "Siirry sovellukseen.."
 
-#: templates/dashboard.html:39
+#: templates/dashboard.html:48
 msgid "Idea competitions"
 msgstr "Idea kilpailut"
 
-#: templates/dashboard.html:61
+#: templates/dashboard.html:75
 msgid "Planning projects"
 msgstr "Suunnitteluprojektit"
 
-#: templates/dashboard.html:70
+#: templates/dashboard.html:84
 msgid "Go to the application..."
 msgstr "Siirry sovellukseen..."
 

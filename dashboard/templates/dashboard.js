@@ -1,5 +1,5 @@
 /*global $, OpenLayers */
-	
+    
 // Create a select feature control and add it to the map.
 var select;
 var popupDistanceRatio;
@@ -7,7 +7,6 @@ var externalGraphicRatio;
 var geojsonFormat = new OpenLayers.Format.GeoJSON();
 
 function init() {
-	console.log("init");
     var style_map = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
@@ -25,8 +24,8 @@ function init() {
         }
     });
     var PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
-		styleMap: style_map,
-		visibility: true
+        styleMap: style_map,
+        visibility: true
      });
     var IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
         styleMap: style_map,
@@ -35,7 +34,7 @@ function init() {
     var QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
         styleMap: style_map,
         visibility: true
-	});
+    });
     var questionnaires = geojsonFormat.read(projects_QU);
     QU_layer.addFeatures(questionnaires);
     var idea_competitions = geojsonFormat.read(projects_IC);
@@ -67,11 +66,10 @@ function init() {
         }
     }
     if (bounds === undefined) {
-		var city_ol_feature = geojsonFormat.read(city_polygon);
-		bounds = city_ol_feature[0].geometry.getBounds();
+        var city_ol_feature = geojsonFormat.read(city_polygon);
+        bounds = city_ol_feature[0].geometry.getBounds();
     }
-    console.log("create_map");
-	create_map('map',function(map){
+    create_map('map',function(map){
         /*var mapOptions = {
             maxResolution: 50,
             projection: "EPSG:3067",
@@ -92,11 +90,12 @@ function init() {
             TRANSPARENT: true},
             {isBaseLayer: true}
         );*/
-		
+        
         //TODO: should be site specific
         //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");
-
+        
         map.addLayers([IC_layer, QU_layer, PP_layer]);
+        
         map.zoomToExtent( bounds );
 
         var select = new OpenLayers.Control.SelectFeature(
