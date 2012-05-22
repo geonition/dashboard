@@ -14,12 +14,14 @@ _ = translation.ugettext
 class Project(models.Model):
 
     PROJECT_TYPES = (
-        ('QU','Questionnaires'),
-        ('PP','Plan Proposals'),
-        ('IC','Idea Competition'),
+        ('QU', _('Questionnaires')),
+        ('PP', _('Plan Proposals')),
+        ('IC', _('Idea Competition')),
     )
 
-    site = models.ForeignKey(Site)
+    site = models.ForeignKey(Site,
+                             default = getattr(settings, 'SITE_ID', 1),
+                             editable = False)
     project_type = models.CharField(max_length = 2, choices = PROJECT_TYPES)
     title = models.CharField(max_length = 40)
     description = models.TextField()

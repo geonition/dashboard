@@ -1,8 +1,14 @@
 from django.contrib.gis import admin
 from models import Project
 from django.conf import settings
+from modeltranslation.admin import TranslationAdmin
 
-class Location(admin.OSMGeoAdmin):    
+
+class Location(admin.OSMGeoAdmin, TranslationAdmin):
+    list_display = ('title',
+                    'tooltip',
+                    'description',)
+
     default_lon = getattr(settings,
                           'ORGANIZATION_ADMIN_DEFAULT_MAP_SETTINGS',
                           {'default_lon': 0})['default_lon']
