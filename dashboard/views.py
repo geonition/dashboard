@@ -17,9 +17,9 @@ def dashboard(request):
     except IndexError:
         city_settings = {}
 
-    PP_projects = Project.on_site.filter(project_type = 'PP')
-    IC_projects = Project.on_site.filter(project_type = 'IC')
-    QU_projects = Project.on_site.filter(project_type = 'QU')
+    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
+    IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
+    QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
     
     return render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,

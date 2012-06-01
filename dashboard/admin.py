@@ -6,7 +6,6 @@ from modeltranslation.admin import TranslationAdmin
 
 class Location(admin.OSMGeoAdmin, TranslationAdmin):
     list_display = ('title',
-                    'tooltip',
                     'description',)
 
     default_lon = getattr(settings,
