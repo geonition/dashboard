@@ -27,7 +27,7 @@ class Project(models.Model):
     description = models.TextField()
     project_url = models.URLField()
     location = geomodels.PolygonField(srid = getattr(settings, 'SPATIAL_REFERENCE_SYSTEM_ID', 4326))
-    tooltip = models.CharField(max_length = 200)
+    modify_date = models.DateField(auto_now_add = True)
     on_site = CurrentSiteManager()
 
     def __unicode__(self):
