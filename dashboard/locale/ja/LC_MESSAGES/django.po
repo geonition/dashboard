@@ -2,47 +2,46 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-31 07:56-0500\n"
-"PO-Revision-Date: 2012-06-01 14:30\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2012-06-05 02:36-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Translated-Using: django-rosetta 0.6.6\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: models.py:17 templates/dashboard.html:21
 msgid "Questionnaires"
-msgstr "Questionários"
+msgstr ""
 
 #: models.py:18
 msgid "Plan Proposals"
-msgstr "Propostas de Planos"
+msgstr ""
 
 #: models.py:19
 msgid "Idea Competition"
-msgstr "Concurso de Ideia"
+msgstr ""
 
 #: templates/dashboard.html:30 templates/dashboard.html.py:57
 msgid "Go to the application.."
-msgstr "Vai para a aplicação.."
+msgstr ""
 
 #: templates/dashboard.html:48
 msgid "Idea competitions"
-msgstr "Concursos de Ideia"
+msgstr ""
 
 #: templates/dashboard.html:75
 msgid "Planning projects"
-msgstr "Projetos de Planeamento"
+msgstr ""
 
 #: templates/dashboard.html:84
 msgid "Go to the application..."
-msgstr "Vai para a aplicação..."
+msgstr ""
