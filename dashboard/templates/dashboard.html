@@ -97,10 +97,8 @@
 
 {% block javascript %}
 <script type="text/javascript" src="{{ STATIC_URL }}json/pointer_geoJSON.js"></script>
-<script src="https://softgis.org.aalto.fi/OpenLayers212/OpenLayers.js"></script>
+<script src="{{ STATIC_URL }}js/libs/OpenLayers-gnt.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% url map_js map_slug_name='dashboard' %}"></script>
-<script type="text/javascript" src="{% url dashboard_js %}"></script>
 <script type="text/javascript">
 var city_polygon = {
     'type': 'Feature',
@@ -162,6 +160,10 @@ projects_PP.features.push(
 $(window).load(function() {
     init();
 });
+
+var gnt = {};
 </script>
+<script type="text/javascript" src="{% url map_js map_slug_name='dashboard' %}"></script>
+<script type="text/javascript" src="{% url dashboard_js %}"></script>
 {% endblock javascript %}
 

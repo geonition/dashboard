@@ -69,7 +69,7 @@ function init() {
         var city_ol_feature = geojsonFormat.read(city_polygon);
         bounds = city_ol_feature[0].geometry.getBounds();
     }
-    create_map('map',function(map){
+    gnt.maps.create_map('map',function(map){
         /*var mapOptions = {
             maxResolution: 50,
             projection: "EPSG:3067",
