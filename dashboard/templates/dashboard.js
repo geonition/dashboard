@@ -14,7 +14,7 @@ function init() {
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
             fillOpacity: 0.4
-            },
+        },
         "select": {
             strokeWidth: 1,
             strokeColor: $('body').css('background-color'),
@@ -22,44 +22,46 @@ function init() {
             fillColor: $('body').css('background-color'),
             fillOpacity: 0.7
         }
-    });
-    var PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
-        styleMap: style_map,
-        visibility: true
-     });
-    var IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
-        styleMap: style_map,
-        visibility: true
-    });
-    var QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
-        styleMap: style_map,
-        visibility: true
-    });
-    var questionnaires = geojsonFormat.read(projects_QU);
+    }),
+        PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
+            styleMap: style_map,
+            visibility: true
+        }),
+        IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
+            styleMap: style_map,
+            visibility: true
+        }),
+        QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
+            styleMap: style_map,
+            visibility: true
+        }),
+        questionnaires = geojsonFormat.read(projects_QU),
+        idea_competitions = geojsonFormat.read(projects_IC),
+        plan_projects = geojsonFormat.read(projects_PP),
+        bounds,
+        i,
+        j,
+        k;
     QU_layer.addFeatures(questionnaires);
-    var idea_competitions = geojsonFormat.read(projects_IC);
     IC_layer.addFeatures(idea_competitions);
-
-    var plan_projects = geojsonFormat.read(projects_PP);
     IC_layer.addFeatures(plan_projects);
-        //count the bounds for the map
-    var bounds;
-    for (var i = 0; i < idea_competitions.length; i++) {
-        if(bounds === undefined) {
+    //count the bounds for the map
+    for (i = 0; i < idea_competitions.length; i++) {
+        if (bounds === undefined) {
             bounds = idea_competitions[i].geometry.getBounds();
         } else {
             bounds.extend(idea_competitions[i].geometry.getBounds());
         }
     }
-    for (var j = 0; j < questionnaires.length; j++) {
-       if(bounds === undefined) {
+    for (j = 0; j < questionnaires.length; j++) {
+        if (bounds === undefined) {
             bounds = questionnaires[j].geometry.getBounds();
         } else {
             bounds.extend(questionnaires[j].geometry.getBounds());
         }
     }
-    for (var k = 0; k < plan_projects.length; k++) {
-        if(bounds === undefined) {
+    for (k = 0; k < plan_projects.length; k++) {
+        if (bounds === undefined) {
             bounds = plan_projects[k].geometry.getBounds();
         } else {
             bounds.extend(plan_projects[k].geometry.getBounds());
@@ -69,7 +71,7 @@ function init() {
         var city_ol_feature = geojsonFormat.read(city_polygon);
         bounds = city_ol_feature[0].geometry.getBounds();
     }
-    gnt.maps.create_map('map',function(map){
+    gnt.maps.create_map('map', function (map) {
         /*var mapOptions = {
             maxResolution: 50,
             projection: "EPSG:3067",
@@ -89,60 +91,56 @@ function init() {
             {layers:        "show:0,10,12,50", //"show:0,7,43,79,115,150,151,187,222,258,294,330", //show:0,10,12,48,50",
             TRANSPARENT: true},
             {isBaseLayer: true}
-        );*/
+        );
         
         //TODO: should be site specific
-        //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");
-        
+        //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");*/
         map.addLayers([IC_layer, QU_layer, PP_layer]);
-        
-        map.zoomToExtent( bounds );
-
+        map.zoomToExtent(bounds);
         var select = new OpenLayers.Control.SelectFeature(
             [QU_layer, IC_layer, PP_layer],
             {
                 id: 'selectcontrol',
                 hover: true,
-                onSelect: function(event) {
+                onSelect: function (event) {
                     //connect the select feature with the list
                     var id = event.fid;
                     $('#' + id).addClass('hover');
-                    },
-                onUnselect: function(event) {
+                },
+                onUnselect: function (event) {
                     //connect the select feature with the list
                     var id = event.fid;
                     $('#' + id).removeClass('hover');
-                    }
-            });
-
-        map.addControl(select);
-        select.activate();
-        });
-    //connect the list hover with the feature
-    $('.project').hover(function(event) {
-        for(layer in map.layers) {
-            if(map.layers[layer].getFeatureByFid) {
-                var feature = map.layers[layer].getFeatureByFid(this.id);
-                if(feature) {
-                    map.getControl('selectcontrol').select(feature);
-                    }
                 }
             }
-        },
-        function(event) {
-            for(layer in map.layers) {
-                if(map.layers[layer].getFeatureByFid) {
+        );
+        map.addControl(select);
+        select.activate();
+    });
+    //connect the list hover with the feature
+    $('.project').hover(function (event) {
+        for (layer in map.layers) {
+            if (map.layers[layer].getFeatureByFid) {
+                var feature = map.layers[layer].getFeatureByFid(this.id);
+                if (feature) {
+                    map.getControl('selectcontrol').select(feature);
+                }
+            }
+        }
+    },
+        function (event) {
+            for (layer in map.layers) {
+                if (map.layers[layer].getFeatureByFid) {
                     var feature = map.layers[layer].getFeatureByFid(this.id);
-                    if(feature) {
+                    if (feature) {
                         map.getControl('selectcontrol').unselect(feature);
                     }
                 }
             }
         });
-
     //this is for setting links on features
-    $('#map').click(function(event) {
-        if($('.project.hover a').length > 0) {
+    $('#map').click(function (event) {
+        if ($('.project.hover a').length > 0) {
             window.location = $('.project.hover a')[0].href;
         }
     });
