@@ -12,17 +12,17 @@
 {% for p in QU_projects %}
     {% if forloop.first %}
     <li>
-	<ul class="breadcrumb">
-	    <li class="disk hover base_bgcolor">
-	    </li>
-	    <li class="separator">
-	    </li>
-	    <li class="base_textcolor">
-	        <h2>{% trans "Questionnaires" %}</h2>
-	    </li>
-	</ul>
+        
+        <ul class="breadcrumb">
+            <li class="disk base_bgcolor">
+                <h3>
+                    {% trans "Questionnaires" %}
+                </h3>
+            </li>
+            <li class="separator base_bgcolor"></li>
+        </ul>
 
-        <ul>
+        <ul class="project">
     {% endif %}
             <li id="QU_{{ p.id }}" class="project">
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
@@ -39,24 +39,24 @@
 {% for p in IC_projects %}
     {% if forloop.first %}
     <li>
-	<ul class="breadcrumb">
-	    <li class="disk hover base_bgcolor">
-	    </li>
-	    <li class="separator">
-	    </li>
-	    <li class="base_textcolor">
-		<h2>{% trans "Idea competitions" %}</h2>
-	    </li>
-	</ul>
+        
+        <ul class="breadcrumb">
+            <li class="disk base_bgcolor">
+                <h3>
+                    {% trans "Idea competitions" %}
+                </h3>
+            </li>
+            <li class="separator base_bgcolor"></li>
+        </ul>
 
-        <ul>
+        <ul class="project">
     {% endif %}
             <li id="IC_{{ p.id }}" class="project">
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
 		</p>
-            </li>
+	    </li>
 
     {% if forloop.last %}
         </ul>
@@ -66,24 +66,24 @@
 {% for p in PP_projects %}
     {% if forloop.first %}
     <li>
-	<ul class="breadcrumb">
-	    <li class="disk base_bgcolor">
-	    </li>
-	    <li class="separator">
-	    </li>
-	    <li class="base_textcolor">
-		<h2>{% trans "Planning projects" %}</h2>
-	    </li>
-	</ul>
+        
+        <ul class="breadcrumb">
+            <li class="disk base_bgcolor">
+                <h3>
+                    {% trans "Planning projects" %}
+                </h3>
+            </li>
+            <li class="separator base_bgcolor"></li>
+        </ul>
 
-        <ul>
+        <ul class="project">
     {% endif %}
             <li id="PP_{{ p.id }}" class="project">
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}
-		    <a href="{{ p.project_url }}">{% trans "Go to the application..." %}</a>
+                <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
 		</p>
-            </li>
+	    </li>
 
     {% if forloop.last %}
         </ul>

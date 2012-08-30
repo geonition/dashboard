@@ -1,8 +1,11 @@
+ul.breadcrumb {
+    margin-bottom: 10px;
+}
 .list-view {
     padding: 0px;
     margin: 0px;
 }
-.list-view ul {
+.list-view ul.project {
     margin: 0px;
     padding: 0px;
 }
@@ -14,10 +17,10 @@
     padding-right: 10px;
     padding-left: 42px;
 }
-.list-view h3 {
+.list-view .project h3 {
     color: white;
     padding: 4px;
-    padding-left: 42px !important;
+    padding-left: 37px !important;
     margin-top: 0.5em;
 }
 
