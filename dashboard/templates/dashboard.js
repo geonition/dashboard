@@ -1,4 +1,4 @@
-/*global $, OpenLayers */
+/* global $, OpenLayers */
     
 // Create a select feature control and add it to the map.
 var select;
@@ -14,23 +14,23 @@ function init() {
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
             fillOpacity: 0.4
-        },
+	    },
         "select": {
             strokeWidth: 1,
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
             fillOpacity: 0.7
-        }
-    }),
+	    }
+	}),
         PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
             styleMap: style_map,
             visibility: true
-        }),
+            }),
         IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
             styleMap: style_map,
             visibility: true
-        }),
+            }),
         QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
             styleMap: style_map,
             visibility: true

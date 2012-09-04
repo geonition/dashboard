@@ -24,6 +24,6 @@ ul.breadcrumb {
     margin-top: 0.5em;
 }
 
-.list-view li.project:hover {
+.list-view li.project:hover, .list-view li.project.hover {
     background-color: #DDDDDD;
 }
