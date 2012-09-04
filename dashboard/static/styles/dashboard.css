@@ -27,3 +27,12 @@ ul.breadcrumb {
 .list-view li.project:hover, .list-view li.project.hover {
     background-color: #DDDDDD;
 }
+
+/*
+mobiles and below
+*/
+@media (max-width:480px) {
+    .list-view .project h3 {
+        padding-left: 10px !important;
+    }
+}
