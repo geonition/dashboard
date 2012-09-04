@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='dashboard',
-    version='5.0.3',
+    version='5.0.4',
     author='Kristoffer Snabb',
     url='https://github.com/geonition/dashboard',
     packages=find_packages(),
