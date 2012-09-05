@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-05 06:34-0500\n"
-"PO-Revision-Date: 2012-05-02 14:15+0200\n"
+"PO-Revision-Date: 2012-09-05 14:38+0200\n"
 "Last-Translator: Kristoffer Snabb <kristoffer.snabb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,20 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:17 templates/dashboard.html:19
+#: models.py:17
+#: templates/dashboard.html:19
 msgid "Questionnaires"
 msgstr "Enkät"
 
 #: models.py:18
 msgid "Plan Proposals"
-msgstr ""
+msgstr "Planerings projekt"
 
 #: models.py:19
-#, fuzzy
 msgid "Idea Competition"
 msgstr "Idé tävlingar"
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
+#: templates/dashboard.html:30
+#: templates/dashboard.html.py:57
 #: templates/dashboard.html:84
 msgid "Go to the application.."
 msgstr "Gå till servicen.."

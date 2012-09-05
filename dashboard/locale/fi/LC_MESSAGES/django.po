@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-05 06:34-0500\n"
-"PO-Revision-Date: 2012-03-27 10:02+0200\n"
-"Last-Translator: Kristoffer Snabb <kristoffer.snabb@geonition.org>\n"
+"PO-Revision-Date: 2012-09-05 14:37+0200\n"
+"Last-Translator: Kristoffer Snabb <kristoffer.snabb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:17 templates/dashboard.html:19
+#: models.py:17
+#: templates/dashboard.html:19
 msgid "Questionnaires"
 msgstr "Kyselyt"
 
 #: models.py:18
 msgid "Plan Proposals"
-msgstr ""
+msgstr "Suunnitteluprojektit"
 
 #: models.py:19
-#, fuzzy
 msgid "Idea Competition"
-msgstr "Idea kilpailut"
+msgstr "Ideakilpailut"
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
+#: templates/dashboard.html:30
+#: templates/dashboard.html.py:57
 #: templates/dashboard.html:84
 msgid "Go to the application.."
 msgstr "Siirry sovellukseen.."
