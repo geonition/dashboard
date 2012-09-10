@@ -25,8 +25,10 @@ class Project(models.Model):
     project_type = models.CharField(max_length = 2, choices = PROJECT_TYPES)
     title = models.CharField(max_length = 40)
     description = models.TextField()
-    project_url = models.URLField()
-    location = geomodels.PolygonField(srid = getattr(settings, 'SPATIAL_REFERENCE_SYSTEM_ID', 4326))
+    project_url = models.URLField(help_text = _('This is the link to the project page. The link has to be a full link starting with http:// or https://'),
+                                  verbose_name = _('Link to project'))
+    location = geomodels.PolygonField(srid = getattr(settings, 'SPATIAL_REFERENCE_SYSTEM_ID', 4326),
+                                      help_text = _('This is the location of the project that is shown on the dashboard. The area will be clickable and work as a link that takes the user to the project.'))
     modify_date = models.DateField(auto_now = True)
     on_site = CurrentSiteManager()
 
