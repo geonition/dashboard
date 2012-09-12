@@ -1,34 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-12 04:42-0500\n"
-"PO-Revision-Date: 2012-09-11 18:27+0000\n"
+"POT-Creation-Date: 2012-09-11 07:46-0500\n"
+"PO-Revision-Date: 2012-09-11 18:26+0000\n"
 "Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/geonition/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Swedish (Finland) (http://www.transifex.com/projects/p/geonition/language/sv_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: models.py:17 templates/dashboard.html:19
 msgid "Questionnaires"
-msgstr "Questionários"
+msgstr ""
 
 #: models.py:18
 msgid "Plan Proposals"
-msgstr "Propostas de Planos"
+msgstr ""
 
 #: models.py:19
 msgid "Idea Competition"
-msgstr "Concurso de Ideia"
+msgstr ""
 
 #: models.py:28
 msgid ""
@@ -42,19 +41,19 @@ msgstr ""
 
 #: models.py:31
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area "
-"will be clickable and work as a link that takes the user to the project."
+"This is the location of the project that is shown on the dashboard. The area"
+" will be clickable and work as a link that takes the user to the project."
 msgstr ""
 
 #: templates/dashboard.html:30 templates/dashboard.html.py:57
 #: templates/dashboard.html:84
 msgid "Go to the application.."
-msgstr "Vai para a aplicação.."
+msgstr ""
 
 #: templates/dashboard.html:46
 msgid "Idea competitions"
-msgstr "Concursos de Ideia"
+msgstr ""
 
 #: templates/dashboard.html:73
 msgid "Planning projects"
-msgstr "Projetos de Planeamento"
+msgstr ""

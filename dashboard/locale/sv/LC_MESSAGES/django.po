@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+#   <kristoffer.snabb@geonition.org>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-05 06:34-0500\n"
-"PO-Revision-Date: 2012-09-06 10:50+0200\n"
-"Last-Translator: Kristoffer Snabb <kristoffer.snabb@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2012-09-12 04:42-0500\n"
+"PO-Revision-Date: 2012-09-12 09:31+0000\n"
+"Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/geonition/"
+"language/sv/)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:17
-#: templates/dashboard.html:19
+#: models.py:17 templates/dashboard.html:19
 msgid "Questionnaires"
 msgstr "Enkät"
 
@@ -30,8 +31,25 @@ msgstr "Planerings projekt"
 msgid "Idea Competition"
 msgstr "Idé tävlingar"
 
-#: templates/dashboard.html:30
-#: templates/dashboard.html.py:57
+#: models.py:28
+msgid ""
+"This is the link to the project page. The link has to be a full link "
+"starting with http:// or https://"
+msgstr ""
+
+#: models.py:29
+msgid "Link to project"
+msgstr "Länk till projektet"
+
+#: models.py:31
+msgid ""
+"This is the location of the project that is shown on the dashboard. The area "
+"will be clickable and work as a link that takes the user to the project."
+msgstr ""
+"Det här är stället som kommer att synas på första sidan. Området kommer att "
+"vara interaktivt och fungera som en länk till projektet."
+
+#: templates/dashboard.html:30 templates/dashboard.html.py:57
 #: templates/dashboard.html:84
 msgid "Go to the application.."
 msgstr "Öppna servicen.."
@@ -43,52 +61,3 @@ msgstr "Idé tävlingar"
 #: templates/dashboard.html:73
 msgid "Planning projects"
 msgstr "Palnerings project"
-
-#~ msgid "Go to the application..."
-#~ msgstr "Gå till servicen..."
-
-#~ msgid "Vaasan keskustastrategia"
-#~ msgstr "Vasas central strategi"
-
-#~ msgid ""
-#~ "Kerro meille, millainen on Vaasan keskusta ja vaikuta elinympäristöösi! "
-#~ "Näillä sivuilla pääset kertomaan, millainen paikka Vaasan keskusta on "
-#~ "asua ja elää. Kysely on osa Vaasan kaupungin keskustastrategiatyötä, jota "
-#~ "tehdään yhdessä kaupunkilaisten ja eri toimijoiden kanssa. Strategiatyön "
-#~ "tavoitteena on turvata keskustan viihtyisyys myös tulevaisuudessa sekä "
-#~ "kehittää keskustasta entistä vetovoimaisempi ja elävämpi alue."
-#~ msgstr ""
-#~ "Berätta vad Du tycker om Vasa centrum och inverka på Din livsmiljö! På "
-#~ "dessa sidor kan Du berätta hur det är att leva och bo i Vasa centrum. "
-#~ "Enkäten är ett led i Vasa centrumstrategi, som formuleras i samarbete med "
-#~ "vasaborna och andra intressenter. Syftet med centrumstrategin är att "
-#~ "trygga trivseln i Vasa centrum även framöver och att göra centrumområdet "
-#~ "attraktivare och mer levande. Klicka på länken nedtill till vänster på "
-#~ "denna sida och läs mer om Vasa centrumstrategi! "
-
-#~ msgid "Palosaaren ideakilpailu"
-#~ msgstr "Idé tävling för Smulterö och Brändö"
-
-#~ msgid ""
-#~ "Tällä sivulla sinun on mahdollista tutustua kilpailutöihin sekä "
-#~ "palkintolautakunnan yleisarvioon kilpailusta ja yksittäisistä töistä. "
-#~ "Asukkaiden arvostelut ovat nyt myös nähtävillä."
-#~ msgstr ""
-#~ "På den här sidan kan du bekanta dig med tävlingsbidragen samt prisjuryns "
-#~ "allmänna bedömning av tävlingen och de enskilda tävlingsbidragen. Nu kan "
-#~ "du också se stadsbornas bedömning av bidragen ."
-
-#~ msgid "Vaasa"
-#~ msgstr "Vasa"
-
-#~ msgid "Vaikuta kaupunkisi kehitykseen"
-#~ msgstr "Inverka på din stads utveckling"
-
-#~ msgid "Anna palautetta sivustosta"
-#~ msgstr "Ge respons"
-
-#~ msgid "Vaasan kaupunki"
-#~ msgstr "Vasa stad"
-
-#~ msgid "Siirry sovellukseen.."
-#~ msgstr "Länk till applikationen"
