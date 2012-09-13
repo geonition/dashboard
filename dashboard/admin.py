@@ -1,10 +1,13 @@
 from django.contrib.gis import admin
-from models import Project
+from dashboard.models import Project
 from django.conf import settings
 from modeltranslation.admin import TranslationAdmin
 
 
-class Location(admin.OSMGeoAdmin, TranslationAdmin):
+class DashboardProjectAdmin(admin.OSMGeoAdmin, TranslationAdmin):
+    """
+    This admin handles the dashboard projects
+    """
     list_display = ('title',
                     'description',)
 
@@ -18,5 +21,5 @@ class Location(admin.OSMGeoAdmin, TranslationAdmin):
                           'ORGANIZATION_ADMIN_DEFAULT_MAP_SETTINGS',
                           {'default_zoom': 4})['default_zoom']
 
-admin.site.register(Project, Location)
+admin.site.register(Project, DashboardProjectAdmin)
 
