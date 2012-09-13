@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.gis.db import models as geomodels
+from django.core.urlresolvers import reverse
 from django.utils import translation
 from django.contrib.auth.models import User
 from django.db.models import Avg, Count
@@ -7,6 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
+from django.template.defaultfilters import slugify
 
 # set the ugettext _ shortcut
 _ = translation.ugettext
@@ -34,5 +36,13 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        """
+        Returns the absolute url for this
+        project on the dashboard.
+        """
+        return '%s#%s' % (reverse('dashboard'),
+                          self.id)
 
 
