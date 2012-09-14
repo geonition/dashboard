@@ -2,10 +2,7 @@
 host = https://www.transifex.net
 
 [geonition.dashboard]
+file_filter = dashboard/locale/<lang>/LC_MESSAGES/django.po
 source_file = dashboard/locale/en/LC_MESSAGES/django.po
 source_lang = en
-trans.fi = dashboard/locale/fi/LC_MESSAGES/django.po
-trans.ja = dashboard/locale/ja/LC_MESSAGES/django.po
-trans.pt = dashboard/locale/pt/LC_MESSAGES/django.po
-trans.sv = dashboard/locale/sv/LC_MESSAGES/django.po
 
