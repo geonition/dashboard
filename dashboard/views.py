@@ -2,20 +2,17 @@
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
-from base_page.models import CitySetting
-from objects import *
-from models import Project
+from base_page.models import OrganizationSetting
+from dashboard.models import Project
 
 def dashboard(request):
     """
     The main dashboard page
     """
     try:
-        city_settings = CitySetting.on_site.all()[0]
+        org_settings = OrganizationSetting.on_site.all()[0]
     except IndexError:
-        city_settings = {}
+        org_settings = {}
 
     PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
     IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
@@ -25,7 +22,7 @@ def dashboard(request):
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
                                'QU_projects': QU_projects,
-                               'city_settings': city_settings},
+                               'org_settings': org_settings},
                               context_instance = RequestContext(request))
 
 
