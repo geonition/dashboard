@@ -8,6 +8,8 @@ from django.conf import settings
 
 # we need srid of dashboard map
 from maps.models import Map
+from datetime import datetime
+from kateva.models import KatevaQ
 
 def dashboard(request):
     """
@@ -22,19 +24,11 @@ def dashboard(request):
     except IndexError:
         org_settings = {}
 
-#     PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
-#     IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
-#     QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
-    PP_projects = Project.objects.filter(
-                        site=settings.SITE_ID).filter(
-                        project_type = 'PP').transform(map_srid).order_by('-pk')
-    IC_projects = Project.objects.filter(
-                        site=settings.SITE_ID).filter(
-                        project_type = 'IC').transform(map_srid).order_by('-pk')
-    QU_projects = Project.objects.filter(
-                        site=settings.SITE_ID).filter(
-                        project_type = 'QU').transform(map_srid).order_by('-pk')
-                            
+    #QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
+    QU_projects = KatevaQ.objects.filter(
+            launchDate__lte=datetime.now(),
+            endDate__gte=datetime.now()).order_by('-pk')
+    
     return render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
