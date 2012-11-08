@@ -97,6 +97,8 @@ function init() {
         //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");*/
         map.addLayers([IC_layer, QU_layer, PP_layer]);
         map.zoomToExtent(bounds);
+        map.zoomTo(8); // without zooming out first the map does not work on smaller screens
+        map.zoomTo(9);
         var select = new OpenLayers.Control.SelectFeature(
             [QU_layer, IC_layer, PP_layer],
             {
@@ -116,6 +118,10 @@ function init() {
         );
         map.addControl(select);
         select.activate();
+        
+             
+        //map.setCenter(new OpenLayers.LonLat(8440741.8693896,2775620.4832299),14)
+        /*map.setCenter(new OpenLayers.LonLat(2784862.9580079,2787406.6455079,13))*/
     });
     //connect the list hover with the feature
     $('.project').hover(function (event) {
