@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <fred.lopes3@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-05 11:00-0600\n"
+"POT-Creation-Date: 2013-01-05 17:00-0600\n"
 "PO-Revision-Date: 2012-09-14 10:26+0000\n"
 "Last-Translator: FredGIS <fred.lopes3@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/geonition/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/geonition/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: models.py:19 templates/dashboard.html:19
@@ -35,9 +34,7 @@ msgstr "Concurso de Ideia"
 msgid ""
 "This is the link to the project page. The link has to be a full link "
 "starting with http:// or https://"
-msgstr ""
-"Este é o link para a página do projeto. Este link tem de ser um link "
-"completo a iniciar com http:// ou https://"
+msgstr "Este é o link para a página do projeto. Este link tem de ser um link completo a iniciar com http:// ou https://"
 
 #: models.py:31
 msgid "Link to project"
@@ -45,11 +42,9 @@ msgstr "Link para o projeto"
 
 #: models.py:33
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area "
-"will be clickable and work as a link that takes the user to the project."
-msgstr ""
-"Esta é a localização do projeto que aparece no painel de instrumentos. A "
-"área será clicável e funciona como um link que leva o utilizador ao projeto."
+"This is the location of the project that is shown on the dashboard. The area"
+" will be clickable and work as a link that takes the user to the project."
+msgstr "Esta é a localização do projeto que aparece no painel de instrumentos. A área será clicável e funciona como um link que leva o utilizador ao projeto."
 
 #: templates/dashboard.html:30 templates/dashboard.html.py:57
 #: templates/dashboard.html:84
