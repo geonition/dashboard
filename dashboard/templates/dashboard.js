@@ -116,10 +116,6 @@ function init() {
         );
         map.addControl(select);
         select.activate();
-        
-             
-        //map.setCenter(new OpenLayers.LonLat(8440741.8693896,2775620.4832299),14)
-        /*map.setCenter(new OpenLayers.LonLat(2784862.9580079,2787406.6455079,13))*/
     });
     //connect the list hover with the feature
     $('.project').hover(function (event) {
