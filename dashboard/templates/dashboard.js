@@ -97,8 +97,6 @@ function init() {
         //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");*/
         map.addLayers([IC_layer, QU_layer, PP_layer]);
         map.zoomToExtent(bounds);
-        map.zoomTo(8); // without zooming out first the map does not work on smaller screens
-        map.zoomTo(9);
         var select = new OpenLayers.Control.SelectFeature(
             [QU_layer, IC_layer, PP_layer],
             {
