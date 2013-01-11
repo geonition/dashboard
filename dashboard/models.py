@@ -33,6 +33,7 @@ class Project(models.Model):
                                       help_text = _('This is the location of the project that is shown on the dashboard. The area will be clickable and work as a link that takes the user to the project.'))
     modify_date = models.DateField(auto_now = True)
     on_site = CurrentSiteManager()
+    objects = geomodels.GeoManager()
 
     def __unicode__(self):
         return self.title
