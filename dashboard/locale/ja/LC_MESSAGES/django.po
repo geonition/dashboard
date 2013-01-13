@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <ehsan_ahmadi@yahoo.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-12 17:00-0600\n"
+"POT-Creation-Date: 2013-01-13 10:00-0600\n"
 "PO-Revision-Date: 2012-09-14 11:13+0000\n"
 "Last-Translator: ehsansan <ehsan_ahmadi@yahoo.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/geonition/language/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/geonition/"
+"language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: models.py:19 templates/dashboard.html:19
@@ -42,8 +43,8 @@ msgstr "プロジェクトへ"
 
 #: models.py:33
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area"
-" will be clickable and work as a link that takes the user to the project."
+"This is the location of the project that is shown on the dashboard. The area "
+"will be clickable and work as a link that takes the user to the project."
 msgstr ""
 
 #: templates/dashboard.html:30 templates/dashboard.html.py:57
