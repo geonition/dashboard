@@ -24,7 +24,12 @@ def dashboard(request):
     except IndexError:
         org_settings = {}
 
-    #QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
+    PP_projects = Project.objects.filter(
+                        site=settings.SITE_ID).filter(
+                        project_type = 'PP').transform(map_srid).order_by('-pk')
+    IC_projects = Project.objects.filter(
+                        site=settings.SITE_ID).filter(
+                        project_type = 'IC').transform(map_srid).order_by('-pk')
     QU_projects = KatevaQ.objects.filter(
             launchDate__lte=datetime.now(),
             endDate__gte=datetime.now()).order_by('-pk')
