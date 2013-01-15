@@ -148,11 +148,11 @@ function init() {
             window.location = $('.project.hover a')[0].href;
         }
     });
-    $('ul.nav li a').click(
+    /*$('ul.nav li a').click(
         function(e) {
             e.preventDefault();
             e.stopPropagation();
             $('body').removeClass('main map settings');
             $('body').addClass(this.parentNode.classList[0]);
-    });
+    });*/
 }
