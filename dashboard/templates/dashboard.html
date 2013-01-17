@@ -28,8 +28,8 @@
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-		</p>
-	    </li>
+                </p>
+            </li>
 
     {% if forloop.last %}
         </ul>
@@ -55,8 +55,8 @@
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-		</p>
-	    </li>
+                </p>
+            </li>
 
     {% if forloop.last %}
         </ul>
@@ -82,8 +82,8 @@
                 <h3 class="base_bgcolor">{{ p.title }}</h3>
                 <p>{{ p.description }}
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
-		</p>
-	    </li>
+                </p>
+            </li>
 
     {% if forloop.last %}
         </ul>
@@ -97,13 +97,20 @@
 
 {% block javascript %}
 <script type="text/javascript" src="{{ STATIC_URL }}json/pointer_geoJSON.js"></script>
+<script src="{{ STATIC_URL }}js/libs/proj4js-gnt.js"></script>
 <script src="{{ STATIC_URL }}js/libs/OpenLayers-gnt.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 var city_polygon = {
     'type': 'Feature',
     'properties': {},
-    'geometry': {{ org_settings.service_area.json|safe }}
+    'geometry': {{ org_settings.service_area.json|safe }},
+    'crs': {
+        'type': 'name', 
+        'properties': {
+            'code': 'EPSG:{{ org_settings.service_area.srid|safe }}'
+        }
+    }
     };
 
 var projects_QU = {
@@ -131,6 +138,14 @@ projects_QU.features.push(
         "title": "{{ p.tooltip }}" },
     "geometry": {{ p.location.json|safe }}
     });
+{% if forloop.first %}
+projects_QU['crs'] = {
+    "type": "name", 
+    "properties": {
+        "code": "EPSG:{{ p.location.srid|safe }}"
+    }
+};
+{% endif %}
 {% endfor %}
 
 {% for p in IC_projects %}
@@ -143,6 +158,14 @@ projects_IC.features.push(
         "title": "{{ p.tooltip }}" },
     "geometry": {{ p.location.json|safe }}
     });
+{% if forloop.first %}
+projects_IC['crs'] = {
+    "type": "name", 
+    "properties": {
+        "code": "EPSG:{{ p.location.srid|safe }}"
+    }
+};
+{% endif %}
 {% endfor %}
 
 {% for p in PP_projects %}
@@ -155,6 +178,14 @@ projects_PP.features.push(
         "title": "{{ p.tooltip }}" },
     "geometry": {{ p.location.json|safe }}
     });
+{% if forloop.first %}
+projects_PP['crs'] = {
+    "type": "name", 
+    "properties": {
+        "code": "EPSG:{{ p.location.srid|safe }}"
+    }
+};
+{% endif %}
 {% endfor %}
 
 $(window).load(function() {
