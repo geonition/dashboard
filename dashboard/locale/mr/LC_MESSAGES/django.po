@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pratikhublikar@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-02 17:00-0600\n"
+"POT-Creation-Date: 2013-02-03 06:00-0600\n"
 "PO-Revision-Date: 2012-12-14 13:43+0000\n"
 "Last-Translator: pratikhublikar <pratikhublikar@gmail.com>\n"
-"Language-Team: Marathi (http://www.transifex.com/projects/p/geonition/language/mr/)\n"
+"Language-Team: Marathi (http://www.transifex.com/projects/p/geonition/"
+"language/mr/)\n"
+"Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: mr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: models.py:19 templates/dashboard.html:19
@@ -34,7 +35,9 @@ msgstr "कल्पना स्पर्धा "
 msgid ""
 "This is the link to the project page. The link has to be a full link "
 "starting with http:// or https://"
-msgstr "ही प्रोजेक्ट पेजची लिंक आहे.ही लिंक संपूर्ण असावी च त्याची सुरवात http:// अथवा https:// अशी व्हावी"
+msgstr ""
+"ही प्रोजेक्ट पेजची लिंक आहे.ही लिंक संपूर्ण असावी च त्याची सुरवात http:// अथवा https:// "
+"अशी व्हावी"
 
 #: models.py:31
 msgid "Link to project"
@@ -42,9 +45,11 @@ msgstr "प्रोजेक्टची लिंक"
 
 #: models.py:33
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area"
-" will be clickable and work as a link that takes the user to the project."
-msgstr "प्रोजेक्ट बोर्डावर दिसत असलेल्या प्रोजेक्टचे हे स्थळ आहे.ह्या क्षेत्रामध्ये आपण क्लिक करू शकाल जेणे करून तुम्ही त्या प्रोजेक्ट पेज वर जाऊ शकाल."
+"This is the location of the project that is shown on the dashboard. The area "
+"will be clickable and work as a link that takes the user to the project."
+msgstr ""
+"प्रोजेक्ट बोर्डावर दिसत असलेल्या प्रोजेक्टचे हे स्थळ आहे.ह्या क्षेत्रामध्ये आपण क्लिक करू शकाल जेणे "
+"करून तुम्ही त्या प्रोजेक्ट पेज वर जाऊ शकाल."
 
 #: templates/dashboard.html:30 templates/dashboard.html.py:57
 #: templates/dashboard.html:84
