@@ -1,12 +1,16 @@
 /* global $, OpenLayers */
 
-// Create a select feature control and add it to the map.
-var select;
-var popupDistanceRatio;
-var externalGraphicRatio;
-var geojsonFormat = new OpenLayers.Format.GeoJSON();
+/*
+ Dashboard UI namespace
 
-get_active = function(ajax_params) {
+ gnt.dashboard
+*/
+gnt.dashboard = {};
+// Create a select feature control and add it to the map.
+//gnt.dashboard.select;
+gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
+
+gnt.dashboard.get_active = function(ajax_params) {
 
     if(ajax_params === undefined) {
         ajax_param = {};
@@ -28,7 +32,7 @@ get_active = function(ajax_params) {
 
 }
 
-function init() {
+gnt.dashboard.init = function () {
     var style_map = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
@@ -62,9 +66,9 @@ function init() {
             'type': 'FeatureCollection',
             'features': []
         },
-        //questionnaires = geojsonFormat.read(projects_QU),
-        idea_competitions = geojsonFormat.read(projects_IC),
-        plan_projects = geojsonFormat.read(projects_PP),
+        //questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU),
+        idea_competitions = gnt.dashboard.geojsonFormat.read(projects_IC),
+        plan_projects = gnt.dashboard.geojsonFormat.read(projects_PP),
         bounds,
         i,
         j,
@@ -120,7 +124,7 @@ function init() {
         select.activate();
     });
 
-    get_active(
+    gnt.dashboard.get_active(
         {'success': function(data, textStatus, jqXHR) {
         //Check if any active questionnaires
         var i,
@@ -159,7 +163,7 @@ function init() {
 
     },
         "complete": function(data, textStatus, jqXHR) {
-        questionnaires = geojsonFormat.read(projects_QU)
+        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU)
 
         //Project geometries to map projection
         // We assume that all projects are in the same coordinate system
@@ -215,7 +219,7 @@ function init() {
             }
         }
         if (bounds === undefined) {
-            var city_ol_feature = geojsonFormat.read(city_polygon);
+            var city_ol_feature = gnt.dashboard.geojsonFormat.read(city_polygon);
             city_ol_feature[0].geometry.transform(source_proj, target_proj);
             bounds = city_ol_feature[0].geometry.getBounds();
         }
