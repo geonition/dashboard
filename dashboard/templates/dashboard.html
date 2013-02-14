@@ -10,7 +10,7 @@
 
 <ul class="list-view">
     <li class="questionnaires hidden">
-        
+
         <ul class="breadcrumb">
             <li class="disk base_bgcolor">
                 <h3>
@@ -38,7 +38,7 @@
 {% for p in QU_projects %}
     {% if forloop.first %}
     <li>
-        
+
         <ul class="breadcrumb">
             <li class="disk base_bgcolor">
                 <h3>
@@ -66,7 +66,7 @@
 {% for p in IC_projects %}
     {% if forloop.first %}
     <li>
-        
+
         <ul class="breadcrumb">
             <li class="disk base_bgcolor">
                 <h3>
@@ -93,7 +93,7 @@
 {% for p in PP_projects %}
     {% if forloop.first %}
     <li>
-        
+
         <ul class="breadcrumb">
             <li class="disk base_bgcolor">
                 <h3>
@@ -133,7 +133,7 @@ var city_polygon = {
     'properties': {},
     'geometry': {{ org_settings.service_area.json|safe }},
     'crs': {
-        'type': 'name', 
+        'type': 'name',
         'properties': {
             'code': 'EPSG:{{ org_settings.service_area.srid|safe }}'
         }
@@ -168,7 +168,7 @@ projects_QU.features.push(
     });
 {% if forloop.first %}
 projects_QU['crs'] = {
-    "type": "name", 
+    "type": "name",
     "properties": {
         "code": "EPSG:{{ p.location.srid|safe }}"
     }
@@ -189,7 +189,7 @@ projects_IC.features.push(
     });
 {% if forloop.first %}
 projects_IC['crs'] = {
-    "type": "name", 
+    "type": "name",
     "properties": {
         "code": "EPSG:{{ p.location.srid|safe }}"
     }
@@ -209,7 +209,7 @@ projects_PP.features.push(
     });
 {% if forloop.first %}
 projects_PP['crs'] = {
-    "type": "name", 
+    "type": "name",
     "properties": {
         "code": "EPSG:{{ p.location.srid|safe }}"
     }
@@ -218,7 +218,7 @@ projects_PP['crs'] = {
 {% endfor %}
 
 $(window).load(function() {
-    init();
+    gnt.dashboard.init();
 });
 
 var gnt = {};
