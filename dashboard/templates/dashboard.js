@@ -1,4 +1,4 @@
-/* global $, OpenLayers */
+/*global $, OpenLayers, gnt, projects_IC, projects_QU, projects_PP, map, city_polygon */
 
 /*
  Dashboard UI namespace
@@ -13,7 +13,7 @@ gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
 gnt.dashboard.get_active = function(ajax_params) {
 
     if(ajax_params === undefined) {
-        ajax_param = {};
+         ajax_params = {};
     }
 
     var kwargs = $.extend(
@@ -30,7 +30,7 @@ gnt.dashboard.get_active = function(ajax_params) {
     );
     $.ajax(kwargs);
 
-}
+};
 
 gnt.dashboard.init = function () {
     var style_map = new OpenLayers.StyleMap({
@@ -73,9 +73,6 @@ gnt.dashboard.init = function () {
         i,
         j,
         k;
-    projects_areas = {//'questionnaires': questionnaires,
-                      'idea_competitions': idea_competitions,
-                      'plan_projects': plan_projects};
 
     gnt.maps.create_map('map', function (map) {
         /*var mapOptions = {
@@ -163,11 +160,14 @@ gnt.dashboard.init = function () {
 
     },
         "complete": function(data, textStatus, jqXHR) {
-        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU)
+        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU);
 
         //Project geometries to map projection
         // We assume that all projects are in the same coordinate system
-        var source_proj_code = 'EPSG:4326';
+        var source_proj_code = 'EPSG:4326',
+            source_proj,
+            target_proj,
+            city_ol_feature;
         if(projects_IC.crs !== undefined) {
             source_proj_code = projects_IC.crs.properties.code;
         }
@@ -180,8 +180,8 @@ gnt.dashboard.init = function () {
         else if (city_polygon.crs !== undefined){ // fallback to Organization area
             source_proj_code = city_polygon.crs.properties.code;
         }
-        var source_proj = new OpenLayers.Projection(source_proj_code);
-        var target_proj = new OpenLayers.Projection(map.getProjection());
+        source_proj = new OpenLayers.Projection(source_proj_code);
+        target_proj = new OpenLayers.Projection(map.getProjection());
 
         for (i = 0; i < idea_competitions.length; i++) {
             idea_competitions[i].geometry.transform(source_proj, target_proj);
@@ -219,7 +219,7 @@ gnt.dashboard.init = function () {
             }
         }
         if (bounds === undefined) {
-            var city_ol_feature = gnt.dashboard.geojsonFormat.read(city_polygon);
+            city_ol_feature = gnt.dashboard.geojsonFormat.read(city_polygon);
             city_ol_feature[0].geometry.transform(source_proj, target_proj);
             bounds = city_ol_feature[0].geometry.getBounds();
         }
@@ -231,9 +231,10 @@ gnt.dashboard.init = function () {
         map.zoomToExtent(bounds);
         //connect the list hover with the feature
         $('.project').hover(function (event) {
+            var layer,feature;
             for (layer in map.layers) {
                 if (map.layers[layer].getFeatureByFid) {
-                    var feature = map.layers[layer].getFeatureByFid(this.id);
+                    feature = map.layers[layer].getFeatureByFid(this.id);
                     if (feature) {
                         map.getControl('selectcontrol').select(feature);
                     }
@@ -241,9 +242,11 @@ gnt.dashboard.init = function () {
             }
         },
             function (event) {
+            var layer,
+                feature;
                 for (layer in map.layers) {
                     if (map.layers[layer].getFeatureByFid) {
-                        var feature = map.layers[layer].getFeatureByFid(this.id);
+                        feature = map.layers[layer].getFeatureByFid(this.id);
                         if (feature) {
                             map.getControl('selectcontrol').unselect(feature);
                         }
@@ -266,4 +269,4 @@ gnt.dashboard.init = function () {
 
         }
         });
-}
+};
