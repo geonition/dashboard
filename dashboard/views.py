@@ -17,7 +17,7 @@ def dashboard(request):
     PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
     IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
     QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
-    
+
     return render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
