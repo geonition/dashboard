@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 03:00-0600\n"
+"POT-Creation-Date: 2013-02-21 04:25-0600\n"
 "PO-Revision-Date: 2012-09-14 08:12+0000\n"
 "Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/geonition/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:19 templates/dashboard.html:19
+#: models.py:19 templates/dashboard.html:17
 msgid "Questionnaires"
 msgstr "Enkät"
 
@@ -49,15 +49,14 @@ msgstr ""
 "Det här är stället som kommer att synas på första sidan. Området kommer att "
 "vara interaktivt och fungera som en länk till projektet."
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
-#: templates/dashboard.html:84
-msgid "Go to the application.."
-msgstr "Öppna servicen.."
-
-#: templates/dashboard.html:46
+#: templates/dashboard.html:73
 msgid "Idea competitions"
 msgstr "Idé tävlingar"
 
-#: templates/dashboard.html:73
+#: templates/dashboard.html:84 templates/dashboard.html.py:111
+msgid "Go to the application.."
+msgstr "Öppna servicen.."
+
+#: templates/dashboard.html:100
 msgid "Planning projects"
 msgstr "Palnerings project"

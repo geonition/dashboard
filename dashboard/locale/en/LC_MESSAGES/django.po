@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 03:00-0600\n"
+"POT-Creation-Date: 2013-02-21 04:24-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:19 templates/dashboard.html:19
+#: models.py:19 templates/dashboard.html:17
 msgid "Questionnaires"
 msgstr ""
 
@@ -45,15 +45,14 @@ msgid ""
 "will be clickable and work as a link that takes the user to the project."
 msgstr ""
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
-#: templates/dashboard.html:84
-msgid "Go to the application.."
-msgstr ""
-
-#: templates/dashboard.html:46
+#: templates/dashboard.html:73
 msgid "Idea competitions"
 msgstr ""
 
-#: templates/dashboard.html:73
+#: templates/dashboard.html:84 templates/dashboard.html.py:111
+msgid "Go to the application.."
+msgstr ""
+
+#: templates/dashboard.html:100
 msgid "Planning projects"
 msgstr ""

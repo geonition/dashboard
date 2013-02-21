@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 03:00-0600\n"
+"POT-Creation-Date: 2013-02-21 04:25-0600\n"
 "PO-Revision-Date: 2012-09-14 10:26+0000\n"
 "Last-Translator: FredGIS <fred.lopes3@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/geonition/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:19 templates/dashboard.html:19
+#: models.py:19 templates/dashboard.html:17
 msgid "Questionnaires"
 msgstr "Questionários"
 
@@ -51,15 +51,14 @@ msgstr ""
 "Esta é a localização do projeto que aparece no painel de instrumentos. A "
 "área será clicável e funciona como um link que leva o utilizador ao projeto."
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
-#: templates/dashboard.html:84
-msgid "Go to the application.."
-msgstr "Vai para a aplicação.."
-
-#: templates/dashboard.html:46
+#: templates/dashboard.html:73
 msgid "Idea competitions"
 msgstr "Concursos de Ideia"
 
-#: templates/dashboard.html:73
+#: templates/dashboard.html:84 templates/dashboard.html.py:111
+msgid "Go to the application.."
+msgstr "Vai para a aplicação.."
+
+#: templates/dashboard.html:100
 msgid "Planning projects"
 msgstr "Projetos de Planeamento"

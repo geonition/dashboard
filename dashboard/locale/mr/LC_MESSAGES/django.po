@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 03:00-0600\n"
+"POT-Creation-Date: 2013-02-21 04:25-0600\n"
 "PO-Revision-Date: 2012-12-14 13:43+0000\n"
 "Last-Translator: pratikhublikar <pratikhublikar@gmail.com>\n"
 "Language-Team: Marathi (http://www.transifex.com/projects/p/geonition/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:19 templates/dashboard.html:19
+#: models.py:19 templates/dashboard.html:17
 msgid "Questionnaires"
 msgstr "प्रश्न"
 
@@ -51,15 +51,14 @@ msgstr ""
 "प्रोजेक्ट बोर्डावर दिसत असलेल्या प्रोजेक्टचे हे स्थळ आहे.ह्या क्षेत्रामध्ये आपण क्लिक करू शकाल जेणे "
 "करून तुम्ही त्या प्रोजेक्ट पेज वर जाऊ शकाल."
 
-#: templates/dashboard.html:30 templates/dashboard.html.py:57
-#: templates/dashboard.html:84
-msgid "Go to the application.."
-msgstr "उपयोजने कडे जा "
-
-#: templates/dashboard.html:46
+#: templates/dashboard.html:73
 msgid "Idea competitions"
 msgstr "कल्पना स्पर्धा "
 
-#: templates/dashboard.html:73
+#: templates/dashboard.html:84 templates/dashboard.html.py:111
+msgid "Go to the application.."
+msgstr "उपयोजने कडे जा "
+
+#: templates/dashboard.html:100
 msgid "Planning projects"
 msgstr "योजना प्रकल्प "
