@@ -61,12 +61,7 @@ gnt.dashboard.init = function () {
             styleMap: style_map,
             visibility: true
         }),
-        questionnaires,
-        projects_QU = {
-            'type': 'FeatureCollection',
-            'features': []
-        },
-        //questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU),
+        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU),
         idea_competitions = gnt.dashboard.geojsonFormat.read(projects_IC),
         plan_projects = gnt.dashboard.geojsonFormat.read(projects_PP),
         bounds,
@@ -119,48 +114,6 @@ gnt.dashboard.init = function () {
         );
         map.addControl(select);
         select.activate();
-    });
-
-    gnt.dashboard.get_active(
-        {'success': function(data, textStatus, jqXHR) {
-        //Check if any active questionnaires
-        var i,
-            quest_ul,
-            new_li,
-            new_h3,
-            new_p,
-            new_link,
-            feature,
-            crs;
-        if(data.length > 0) {
-            quest_ul = $(".questionnaire.project");
-            for(i = 0; i < data.length; i++) {
-                new_li = $("<li/>", {
-                           "id": data[i].area.id,
-                           "class": "project"
-                         });
-                new_h3 = $("<h3/>", {
-                           "class": "base_bgcolor"
-                         }).html(data[i].name);
-                new_p = $("<p/>").html(data[i].description);
-                new_link = $("<a/>", {
-                             "href": data[i].url
-                           }).html(data[i].link_text);
-                new_p.append(new_link);
-                new_li.append(new_h3, new_p);
-                quest_ul.append(new_li);
-                feature = data[i].area;
-                crs = data[i].area.crs;
-                delete data[i].area.crs;
-                projects_QU.features.push(feature);
-            }
-            projects_QU['crs'] = crs;
-            $("li.questionnaires").removeClass('hidden');
-        }
-
-    },
-        "complete": function(data, textStatus, jqXHR) {
-        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU);
 
         //Project geometries to map projection
         // We assume that all projects are in the same coordinate system
@@ -182,7 +135,7 @@ gnt.dashboard.init = function () {
         }
         source_proj = new OpenLayers.Projection(source_proj_code);
         target_proj = new OpenLayers.Projection(map.getProjection());
-
+    
         for (i = 0; i < idea_competitions.length; i++) {
             idea_competitions[i].geometry.transform(source_proj, target_proj);
         }
@@ -192,7 +145,7 @@ gnt.dashboard.init = function () {
         for (k = 0; k < plan_projects.length; k++) {
             plan_projects[k].geometry.transform(source_proj, target_proj);
         }
-
+    
         QU_layer.addFeatures(questionnaires);
         IC_layer.addFeatures(idea_competitions);
         IC_layer.addFeatures(plan_projects);
@@ -223,11 +176,11 @@ gnt.dashboard.init = function () {
             city_ol_feature[0].geometry.transform(source_proj, target_proj);
             bounds = city_ol_feature[0].geometry.getBounds();
         }
-
-
-
-
-
+    
+    
+    
+    
+    
         map.zoomToExtent(bounds);
         //connect the list hover with the feature
         $('.project').hover(function (event) {
@@ -266,7 +219,7 @@ gnt.dashboard.init = function () {
                 $('body').removeClass('main map settings');
                 $('body').addClass(this.parentNode.classList[0]);
         });
-
-        }
-        });
+    
+    });
 };
+
