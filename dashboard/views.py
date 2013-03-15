@@ -16,23 +16,43 @@ def dashboard(request):
         org_settings = OrganizationSetting.on_site.all()[0]
     except IndexError:
         org_settings = {}
+        
+    QU_projects = []
+    PP_projects = []
+    IC_projects = []
+    
+    # Default url construction
+    url_prefix = 'http://'
+    if request.is_secure():
+        url_prefix = 'https://'
+    host = request.get_host()
+    # this is needed if applications are not in the root of the server
+    path_prefix = request.path.split(request.path_info)[0]
+    default_urls = [url_prefix + host + path_prefix + '/geoforms/active/', 
+                    url_prefix + host + path_prefix + '/planning/active/',]
 
-    # TODO: These urls are for development. Will be added to model.
-    urls = ['http://localhost:8000/geoforms/active/', 'http://localhost:8000/planning/active/']
+    projects = Project.on_site.order_by('-pk')
+    urls = []
+    for project in projects:
+        urls.append(project.project_url)
+    urls.extend(default_urls)
+    #TODO remove possible duplicates
     for url in urls:
+        if not '/active/' in url[-8:]:
+            continue
+            
         resp = urllib2.urlopen(url)
         if resp.getcode() == 200:
             response_dict = json.load(resp)
         else:
-            pass
+            continue
         if response_dict['projectType'] == 'questionnaires':
-            QU_projects = response_dict['content']
+            QU_projects.extend(response_dict['content'])
         elif response_dict['projectType'] == 'planningProjects':
-            PP_projects = response_dict['content']
+            PP_projects.extend(response_dict['content'])
         elif response_dict['projectType'] == 'ideaCompetitions':
-            IC_projects = response_dict['content']
+            IC_projects.extend(response_dict['content'])
         
-    
 #    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
 #    IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
 #    QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
