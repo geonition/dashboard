@@ -10,28 +10,6 @@ gnt.dashboard = {};
 //gnt.dashboard.select;
 gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
 
-gnt.dashboard.get_active = function(ajax_params) {
-
-    if(ajax_params === undefined) {
-         ajax_params = {};
-    }
-
-    var kwargs = $.extend(
-        ajax_params,
-        {
-            url: "{% url active_questionnaires %}",
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            beforeSend: function(xhr) {
-                xhr.withCredentials = true;
-            }
-        }
-    );
-    $.ajax(kwargs);
-
-};
-
 gnt.dashboard.init = function () {
     var style_map = new OpenLayers.StyleMap({
         "default": {
