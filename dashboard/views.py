@@ -17,6 +17,7 @@ def dashboard(request):
     except IndexError:
         org_settings = {}
 
+    # TODO: These urls are for development. Will be added to model.
     urls = ['http://localhost:8000/geoforms/active/', 'http://localhost:8000/planning/active/']
     for url in urls:
         resp = urllib2.urlopen(url)
@@ -28,14 +29,14 @@ def dashboard(request):
             QU_projects = response_dict['content']
         elif response_dict['projectType'] == 'planningProjects':
             PP_projects = response_dict['content']
+        elif response_dict['projectType'] == 'ideaCompetitions':
+            IC_projects = response_dict['content']
         
     
 #    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
-    IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
+#    IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
 #    QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
-#    print ('===================================')
-#    print (QU_projects)
-    #import ipdb; ipdb.set_trace()
+
     return render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
