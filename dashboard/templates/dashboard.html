@@ -175,17 +175,20 @@ projects_QU['crs'] = {
 projects_IC.features.push(
     {
     "type": "Feature",
-    "id":"IC_{{ p.id }}",
+    "id":"IC_{{ p.area.id }}",
     "properties": {
         "url": "{{ p.project_url }}",
-        "title": "{{ p.tooltip }}" },
-    "geometry": {{ p.location.json|safe }}
+        "title": "{{ p.name }}" },
+    "geometry": {
+        "type": "{{ p.area.geometry.type }}",
+        "coordinates": {{ p.area.geometry.coordinates|safe }}
+    }
     });
 {% if forloop.first %}
 projects_IC['crs'] = {
     "type": "name",
     "properties": {
-        "code": "EPSG:{{ p.location.srid|safe }}"
+        "code": "{{ p.area.crs.properties.code|safe }}"
     }
 };
 {% endif %}
