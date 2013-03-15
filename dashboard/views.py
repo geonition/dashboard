@@ -17,15 +17,20 @@ def dashboard(request):
     except IndexError:
         org_settings = {}
 
-    url = 'http://localhost:8000/geoforms/active/'
-    resp = urllib2.urlopen(url)
-    if resp.getcode() == 200:
-        response_dict = json.load(resp)
-    if response_dict['projectType'] == 'questionnaires':
-        QU_projects = response_dict['content']
+    urls = ['http://localhost:8000/geoforms/active/', 'http://localhost:8000/planning/active/']
+    for url in urls:
+        resp = urllib2.urlopen(url)
+        if resp.getcode() == 200:
+            response_dict = json.load(resp)
+        else:
+            pass
+        if response_dict['projectType'] == 'questionnaires':
+            QU_projects = response_dict['content']
+        elif response_dict['projectType'] == 'planningProjects':
+            PP_projects = response_dict['content']
         
     
-    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
+#    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
     IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
 #    QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
 #    print ('===================================')
