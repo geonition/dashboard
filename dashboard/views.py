@@ -3,7 +3,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from base_page.models import OrganizationSetting
-from dashboard.models import Project
+from dashboard.models import ExtraProjectUrl
 
 import urllib2
 import json
@@ -31,13 +31,20 @@ def dashboard(request):
     default_urls = [url_prefix + host + path_prefix + '/geoforms/active/', 
                     url_prefix + host + path_prefix + '/planning/active/',]
 
-    projects = Project.on_site.order_by('-pk')
+    extra_urls = ExtraProjectUrl.on_site.order_by('-pk')
     urls = []
-    for project in projects:
-        urls.append(project.project_url)
+    for extra_url in extra_urls:
+        urls.append(extra_url.project_url)
     urls.extend(default_urls)
-    #TODO remove possible duplicates
-    for url in urls:
+
+    seen = {}
+    cleaned_urls = []
+    for item in urls:
+        if item in seen: continue
+        seen[item] = 1
+        cleaned_urls.append(item)
+
+    for url in cleaned_urls:
         if not '/active/' in url[-8:]:
             continue
             
