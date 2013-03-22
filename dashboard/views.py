@@ -8,6 +8,9 @@ from dashboard.models import ExtraProjectUrl
 import urllib2
 import json
 
+import urllib2
+import json
+
 def dashboard(request):
     """
     The main dashboard page
