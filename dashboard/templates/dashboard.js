@@ -249,7 +249,7 @@ function init() {
         //this is for setting links on features
         $('#map').click(function (event) {
             if ($('.project.hover a').length > 0) {
-                window.location = $('.project.hover a')[0].href;
+                window.location = $('.project.hover a').last()[0].href;
             }
         });
         $('ul.nav li a').click(
