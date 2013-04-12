@@ -46,7 +46,7 @@
     {% endif %}
             <li id="QU_{{ p.area.id }}" class="project">
                 <h3 class="base_bgcolor">{{ p.name }}</h3>
-                <p>{{ p.description }}
+                <p>{{ p.description|safe }}
                 <a href="{{ p.project_url }}">{% trans "Go to the application.." %}</a>
                 </p>
             </li>
