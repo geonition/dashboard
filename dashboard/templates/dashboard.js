@@ -1,34 +1,16 @@
-/* global $, OpenLayers */
+/*global $, OpenLayers, gnt, projects_IC, projects_QU, projects_PP, map, city_polygon */
 
+/*
+ Dashboard UI namespace
+
+ gnt.dashboard
+*/
+gnt.dashboard = {};
 // Create a select feature control and add it to the map.
-var select;
-var popupDistanceRatio;
-var externalGraphicRatio;
-var geojsonFormat = new OpenLayers.Format.GeoJSON();
+//gnt.dashboard.select;
+gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
 
-get_active = function(ajax_params) {
-
-    if(ajax_params === undefined) {
-        ajax_param = {};
-    }
-
-    var kwargs = $.extend(
-        ajax_params,
-        {
-            url: "{% url active_questionnaires %}",
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            beforeSend: function(xhr) {
-                xhr.withCredentials = true;
-            }
-        }
-    );
-    $.ajax(kwargs);
-
-}
-
-function init() {
+gnt.dashboard.init = function () {
     var style_map = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
@@ -57,21 +39,13 @@ function init() {
             styleMap: style_map,
             visibility: true
         }),
-        questionnaires,
-        projects_QU = {
-            'type': 'FeatureCollection',
-            'features': []
-        },
-        //questionnaires = geojsonFormat.read(projects_QU),
-        idea_competitions = geojsonFormat.read(projects_IC),
-        plan_projects = geojsonFormat.read(projects_PP),
+        questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU),
+        idea_competitions = gnt.dashboard.geojsonFormat.read(projects_IC),
+        plan_projects = gnt.dashboard.geojsonFormat.read(projects_PP),
         bounds,
         i,
         j,
         k;
-    projects_areas = {//'questionnaires': questionnaires,
-                      'idea_competitions': idea_competitions,
-                      'plan_projects': plan_projects};
 
     gnt.maps.create_map('map', function (map) {
         /*var mapOptions = {
@@ -118,52 +92,13 @@ function init() {
         );
         map.addControl(select);
         select.activate();
-    });
-
-    get_active(
-        {'success': function(data, textStatus, jqXHR) {
-        //Check if any active questionnaires
-        var i,
-            quest_ul,
-            new_li,
-            new_h3,
-            new_p,
-            new_link,
-            feature,
-            crs;
-        if(data.length > 0) {
-            quest_ul = $(".questionnaire.project");
-            for(i = 0; i < data.length; i++) {
-                new_li = $("<li/>", {
-                           "id": data[i].area.id,
-                           "class": "project"
-                         });
-                new_h3 = $("<h3/>", {
-                           "class": "base_bgcolor"
-                         }).html(data[i].name);
-                new_p = $("<p/>").html(data[i].description);
-                new_link = $("<a/>", {
-                             "href": data[i].url
-                           }).html(data[i].link_text);
-                new_p.append(new_link);
-                new_li.append(new_h3, new_p);
-                quest_ul.append(new_li);
-                feature = data[i].area;
-                crs = data[i].area.crs;
-                delete data[i].area.crs;
-                projects_QU.features.push(feature);
-            }
-            projects_QU['crs'] = crs;
-            $("li.questionnaires").removeClass('hidden');
-        }
-
-    },
-        "complete": function(data, textStatus, jqXHR) {
-        questionnaires = geojsonFormat.read(projects_QU)
 
         //Project geometries to map projection
         // We assume that all projects are in the same coordinate system
-        var source_proj_code = 'EPSG:4326';
+        var source_proj_code = 'EPSG:4326',
+            source_proj,
+            target_proj,
+            city_ol_feature;
         if(projects_IC.crs !== undefined) {
             source_proj_code = projects_IC.crs.properties.code;
         }
@@ -176,9 +111,9 @@ function init() {
         else if (city_polygon.crs !== undefined){ // fallback to Organization area
             source_proj_code = city_polygon.crs.properties.code;
         }
-        var source_proj = new OpenLayers.Projection(source_proj_code);
-        var target_proj = new OpenLayers.Projection(map.getProjection());
-
+        source_proj = new OpenLayers.Projection(source_proj_code);
+        target_proj = new OpenLayers.Projection(map.getProjection());
+    
         for (i = 0; i < idea_competitions.length; i++) {
             idea_competitions[i].geometry.transform(source_proj, target_proj);
         }
@@ -188,7 +123,7 @@ function init() {
         for (k = 0; k < plan_projects.length; k++) {
             plan_projects[k].geometry.transform(source_proj, target_proj);
         }
-
+    
         QU_layer.addFeatures(questionnaires);
         IC_layer.addFeatures(idea_competitions);
         IC_layer.addFeatures(plan_projects);
@@ -215,21 +150,22 @@ function init() {
             }
         }
         if (bounds === undefined) {
-            var city_ol_feature = geojsonFormat.read(city_polygon);
+            city_ol_feature = gnt.dashboard.geojsonFormat.read(city_polygon);
             city_ol_feature[0].geometry.transform(source_proj, target_proj);
             bounds = city_ol_feature[0].geometry.getBounds();
         }
-
-
-
-
-
+    
+    
+    
+    
+    
         map.zoomToExtent(bounds);
         //connect the list hover with the feature
         $('.project').hover(function (event) {
+            var layer,feature;
             for (layer in map.layers) {
                 if (map.layers[layer].getFeatureByFid) {
-                    var feature = map.layers[layer].getFeatureByFid(this.id);
+                    feature = map.layers[layer].getFeatureByFid(this.id);
                     if (feature) {
                         map.getControl('selectcontrol').select(feature);
                     }
@@ -237,9 +173,11 @@ function init() {
             }
         },
             function (event) {
+            var layer,
+                feature;
                 for (layer in map.layers) {
                     if (map.layers[layer].getFeatureByFid) {
-                        var feature = map.layers[layer].getFeatureByFid(this.id);
+                        feature = map.layers[layer].getFeatureByFid(this.id);
                         if (feature) {
                             map.getControl('selectcontrol').unselect(feature);
                         }
@@ -259,7 +197,7 @@ function init() {
                 $('body').removeClass('main map settings');
                 $('body').addClass(this.parentNode.classList[0]);
         });
+    
+    });
+};
 
-        }
-        });
-}

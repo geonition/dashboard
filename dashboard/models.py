@@ -14,13 +14,13 @@ from django.template.defaultfilters import slugify
 _ = translation.ugettext
 
 class Project(models.Model):
-
+ 
     PROJECT_TYPES = (
         ('QU', _('Questionnaires')),
         ('PP', _('Plan Proposals')),
         ('IC', _('Idea Competition')),
     )
-
+ 
     site = models.ForeignKey(Site,
                              default = getattr(settings, 'SITE_ID', 1),
                              editable = False)
@@ -34,10 +34,10 @@ class Project(models.Model):
     modify_date = models.DateField(auto_now = True)
     on_site = CurrentSiteManager()
     objects = geomodels.GeoManager()
-
+ 
     def __unicode__(self):
         return self.title
-    
+     
     def get_absolute_url(self):
         """
         Returns the absolute url for this
@@ -46,4 +46,20 @@ class Project(models.Model):
         return '%s#%s' % (reverse('dashboard'),
                           self.id)
 
+class ExtraProjectUrl(models.Model):
+    
+    site = models.ForeignKey(Site,
+                             default = getattr(settings, 'SITE_ID', 1),
+                             editable = False)
+    project_url = models.URLField(help_text = _('This is the link to the project rest endpoint. The link has\
+                                                 to be a full link starting with http:// or https:// and\
+                                                  ending with /active/,<br /> e.g. http://somehost/somepath/geoforms/active/'),
+                                  verbose_name = _('link to project'))
+    url_description = models.CharField(max_length = 80,
+                                   verbose_name = _('url description'))
+    
+    on_site = CurrentSiteManager()
 
+    
+#    class Meta:
+#        verbose_name = _('')
