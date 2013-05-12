@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-05 19:00-0500\n"
-"PO-Revision-Date: 2013-02-21 10:30+0000\n"
+"PO-Revision-Date: 2013-05-07 10:20+0000\n"
 "Last-Translator: geisab <geisabugs@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/geonition/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Concursos de idéias"
 
 #: templates/dashboard.html:84 templates/dashboard.html.py:111
 msgid "Go to the application.."
-msgstr "Vá para a aplicação.."
+msgstr "Responder..."
 
 #: templates/dashboard.html:100
 msgid "Planning projects"
