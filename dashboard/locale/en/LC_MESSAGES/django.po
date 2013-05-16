@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-05 19:00-0500\n"
+"POT-Creation-Date: 2013-05-12 19:00-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:19 templates/dashboard.html:17
+#: admin.py:41
+msgid "Advanced options"
+msgstr ""
+
+#: models.py:19 templates/dashboard.html:39
 msgid "Questionnaires"
 msgstr ""
 
@@ -45,14 +49,32 @@ msgid ""
 "will be clickable and work as a link that takes the user to the project."
 msgstr ""
 
-#: templates/dashboard.html:73
-msgid "Idea competitions"
+#: models.py:54
+msgid ""
+"This is the link to the project rest endpoint. The link "
+"has                                                 to be a full link "
+"starting with http:// or https:// "
+"and                                                  ending with /active/,"
+"<br /> e.g. http://somehost/somepath/geoforms/active/"
 msgstr ""
 
-#: templates/dashboard.html:84 templates/dashboard.html.py:111
+#: models.py:57
+msgid "link to project"
+msgstr ""
+
+#: models.py:59
+msgid "url description"
+msgstr ""
+
+#: templates/dashboard.html:50 templates/dashboard.html.py:77
+#: templates/dashboard.html:104
 msgid "Go to the application.."
 msgstr ""
 
-#: templates/dashboard.html:100
+#: templates/dashboard.html:66
+msgid "Idea competitions"
+msgstr ""
+
+#: templates/dashboard.html:93
 msgid "Planning projects"
 msgstr ""
