@@ -27,9 +27,12 @@ def dashboard(request):
         url_prefix = 'https://'
     host = request.get_host()
     # this is needed if applications are not in the root of the server
-    path_prefix = request.path.split(request.path_info)[0]
-    default_urls = [url_prefix + host + path_prefix + '/geoforms/active/', 
-                    url_prefix + host + path_prefix + '/planning/active/',]
+    if request.path_info == '/':
+        path_prefix = request.path
+    else:
+        path_prefix = request.path.split(request.path_info)[0]
+    default_urls = [url_prefix + host + path_prefix + 'geoforms/active/', 
+                    url_prefix + host + path_prefix + 'planning/active/',]
 
     extra_urls = ExtraProjectUrl.on_site.order_by('-pk')
     urls = []
