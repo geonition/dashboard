@@ -32,8 +32,9 @@ def dashboard(request):
         path_prefix = request.path
     else:
         path_prefix = request.path.split(request.path_info)[0]
-    default_urls = [url_prefix + host + path_prefix + 'geoforms/active/', 
-                    url_prefix + host + path_prefix + 'planning/active/',]
+    default_urls = [url_prefix + host + path_prefix + 'geoforms/active/']
+    if "plan_proposals" in settings.INSTALLED_APPS:
+        default_urls.append(url_prefix + host + path_prefix + 'planning/active/')
 
     extra_urls = ExtraProjectUrl.on_site.order_by('-pk')
     urls = []
