@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-16 04:31-0500\n"
+"POT-Creation-Date: 2013-05-24 08:20-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Advanced options"
 msgstr ""
 
-#: models.py:19 templates/dashboard.html:39
+#: models.py:19 templates/dashboard.html:40
 msgid "Questionnaires"
 msgstr ""
 
@@ -66,15 +66,15 @@ msgstr ""
 msgid "url description"
 msgstr ""
 
-#: templates/dashboard.html:50 templates/dashboard.html.py:77
-#: templates/dashboard.html:104
+#: templates/dashboard.html:51 templates/dashboard.html.py:78
+#: templates/dashboard.html:105
 msgid "Go to the application.."
 msgstr ""
 
-#: templates/dashboard.html:66
+#: templates/dashboard.html:67
 msgid "Idea competitions"
 msgstr ""
 
-#: templates/dashboard.html:93
+#: templates/dashboard.html:94
 msgid "Planning projects"
 msgstr ""
