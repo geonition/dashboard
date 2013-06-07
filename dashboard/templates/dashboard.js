@@ -185,7 +185,7 @@ gnt.dashboard.init = function () {
                 }
             });
         //this is for setting links on features
-        $('#map').click(function (event) {
+        $('.olMapViewport').click(function (event) {
             if ($('.project.hover a').length > 0) {
                 window.location = $('.project.hover a').last()[0].href;
             }
