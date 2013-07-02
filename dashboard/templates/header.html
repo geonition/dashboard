@@ -1,13 +1,14 @@
-			{% load i18n %}
+{% load url from future %}
+{% load i18n %}
 {% block header %}
                         
                         <div id="header">
 				<div id="languages" class="floatleft">
 				{% ifnotequal LANGUAGE_CODE 'sv' %}
-				    <a class="link floatleft" href="{% url set_language %}?lang=sv">På svenska</a>
+				    <a class="link floatleft" href="{% url 'set_language' %}?lang=sv">På svenska</a>
 				{% endifnotequal %}
 				{% ifnotequal LANGUAGE_CODE 'fi' %}
-				    <a class="link floatleft" href="{% url set_language %}?lang=fi">Suomeksi</a>
+				    <a class="link floatleft" href="{% url 'set_language' %}?lang=fi">Suomeksi</a>
 				{% endifnotequal %}
 				</div>
 				<div id="login" class="floatright">
@@ -16,12 +17,12 @@
 						<div id="auth_user_message">                    
 							<label class="link">{% trans "Hei" %} {{user.username}}!</label>
 							<br>
-							<a href="{% url logout %}?next=/home" class="link">{% trans "Kirjaudu ulos" %}</a>
+							<a href="{% url 'logout' %}?next=/home" class="link">{% trans "Kirjaudu ulos" %}</a>
 						</div>
 					{% else %}
-						<a href="{% url login  %}?next=/main" class="link">{% trans "Kirjautuminen" %}</a>
+						<a href="{% url 'login'  %}?next=/main" class="link">{% trans "Kirjautuminen" %}</a>
 						<div>
-							<a href="{% url register %}?next=/home" class="link">{% trans "Rekisteröidy käyttäjäksi" %}</a>
+							<a href="{% url 'register' %}?next=/home" class="link">{% trans "Rekisteröidy käyttäjäksi" %}</a>
 						</div>
 					
 					{% endif %}

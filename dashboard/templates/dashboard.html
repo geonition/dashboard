@@ -1,5 +1,6 @@
 {% extends "base_map.html" %}
 
+{% load url from future %}
 {% load i18n %}
 
 {% block stylesheet %}
@@ -224,7 +225,7 @@ $(window).load(function() {
 
 var gnt = {};
 </script>
-<script type="text/javascript" src="{% url map_js map_slug_name='dashboard' %}"></script>
-<script type="text/javascript" src="{% url dashboard_js %}"></script>
+<script type="text/javascript" src="{% url 'map_js' map_slug_name='dashboard' %}"></script>
+<script type="text/javascript" src="{% url 'dashboard_js' %}"></script>
 {% endblock javascript %}
 
