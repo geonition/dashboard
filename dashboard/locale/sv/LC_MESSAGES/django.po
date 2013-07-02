@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-24 08:20-0500\n"
-"PO-Revision-Date: 2013-05-13 00:20+0000\n"
+"POT-Creation-Date: 2013-06-25 04:14-0500\n"
+"PO-Revision-Date: 2013-06-25 09:14+0000\n"
 "Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/geonition/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -68,14 +68,17 @@ msgstr ""
 msgid "url description"
 msgstr ""
 
-#: templates/dashboard.html:51 templates/dashboard.html.py:78
-#: templates/dashboard.html:105
-msgid "Go to the application.."
-msgstr "Öppna servicen.."
+#: templates/dashboard.html:51
+msgid "Start"
+msgstr ""
 
 #: templates/dashboard.html:67
 msgid "Idea competitions"
 msgstr "Idé tävlingar"
+
+#: templates/dashboard.html:78 templates/dashboard.html.py:105
+msgid "Go to the application.."
+msgstr "Öppna servicen.."
 
 #: templates/dashboard.html:94
 msgid "Planning projects"
