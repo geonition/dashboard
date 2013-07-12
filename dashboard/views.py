@@ -5,6 +5,8 @@ from django.shortcuts import render_to_response
 from base_page.models import OrganizationSetting
 from dashboard.models import ExtraProjectUrl
 from django.conf import settings
+from datetime import date
+from django.core.urlresolvers import reverse
 
 import urllib2
 import json
@@ -22,54 +24,12 @@ def dashboard(request):
     PP_projects = []
     IC_projects = []
     
-    # Default url construction
-    url_prefix = 'http://'
-    if request.is_secure():
-        url_prefix = 'https://'
-    host = request.get_host()
-    # this is needed if applications are not in the root of the server
-    if request.path_info == '/':
-        path_prefix = request.path
-    else:
-        path_prefix = request.path.split(request.path_info)[0]
-    default_urls = [url_prefix + host + path_prefix + 'geoforms/active/']
     if "plan_proposals" in settings.INSTALLED_APPS:
-        default_urls.append(url_prefix + host + path_prefix + 'planning/active/')
+        PP_projects.extend(get_active_planning_projects()['content'])
+    if "geoforms" in settings.INSTALLED_APPS:
+        QU_projects.extend(get_active_questionnaires()['content'])
 
-    extra_urls = ExtraProjectUrl.on_site.order_by('-pk')
-    urls = []
-    for extra_url in extra_urls:
-        urls.append(extra_url.project_url)
-    urls.extend(default_urls)
-
-    seen = {}
-    cleaned_urls = []
-    for item in urls:
-        if item in seen: continue
-        seen[item] = 1
-        cleaned_urls.append(item)
-
-    for url in cleaned_urls:
-        if not '/active/' in url[-8:]:
-            continue
-            
-        resp = urllib2.urlopen(url)
-        if resp.getcode() == 200:
-            response_dict = json.load(resp)
-        else:
-            continue
-        if response_dict['projectType'] == 'questionnaires':
-            QU_projects.extend(response_dict['content'])
-        elif response_dict['projectType'] == 'planningProjects':
-            PP_projects.extend(response_dict['content'])
-        elif response_dict['projectType'] == 'ideaCompetitions':
-            IC_projects.extend(response_dict['content'])
-        
-#    PP_projects = Project.on_site.filter(project_type = 'PP').order_by('-pk')
-#    IC_projects = Project.on_site.filter(project_type = 'IC').order_by('-pk')
-#    QU_projects = Project.on_site.filter(project_type = 'QU').order_by('-pk')
-    
-
+    print 'pp', PP_projects
     return render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
@@ -85,4 +45,63 @@ def dashboard_js(request):
                                   context_instance = RequestContext(request))
     response['Content-type'] = 'application/javascript'
     return response
+
+def get_active_questionnaires():
+    from geoforms.models import Questionnaire
+    today = date.today()
+    active_quests = Questionnaire.on_site.filter(start_date__lte=today).filter(end_date__gte=today)
+    questionnaires = []
+    for quest in active_quests:
+        cur_quest = {}
+        cur_feature = {"type": "Feature",
+                       "id": quest.id,
+                       "geometry": json.loads(quest.area.json),
+                       "crs": {"type": "name",
+                              "properties": {
+                                  "code": "EPSG:" + str(quest.area.srid)
+                             }}  
+                       }   
+        cur_quest['name'] = quest.name
+        cur_quest['description'] = quest.description
+        cur_quest['area'] = cur_feature
+        cur_quest['project_url'] = reverse('questionnaire', kwargs={'questionnaire_slug': quest.slug})
+        questionnaires.append(cur_quest)
+
+    return {'projectType': 'questionnaires',
+            'content': questionnaires}
+
+def get_active_planning_projects():
+    from plan_proposals.models import PlanningProject
+    today = date.today()
+    active_projects = PlanningProject.on_site.filter(start_date__lte=today).filter(end_date__gte=today)
+    projects = []
+    for project in active_projects:
+        cur_project = {}
+        cur_feature = {"type": "Feature",
+                       "id": project.id,
+                       "geometry": json.loads(project.area.json),
+                       "crs": {"type": "name",
+                              "properties": {
+                                  "code": "EPSG:" + str(project.area.srid)
+                             }}  
+                       }   
+        cur_project['name'] = project.name
+        cur_project['description'] = project.description
+        cur_project['area'] = cur_feature
+        proposals = project.proposal_set.all()
+        if len(proposals) > 0:
+            proposal = proposals[0]
+            # NOTE: This is the url to the only proposal
+            cur_project['project_url'] = reverse('plan_proposal', 
+                                                 kwargs={'project_slug': project.slug,
+                                                         'proposal_slug': proposal.slug})
+        else:
+            cur_project['project_url'] = reverse('planning_project', 
+                                                 kwargs={'project_slug': project.slug})
+
+        projects.append(cur_project)
+
+    return {'projectType': 'planningProjects',
+            'content': projects}
+
 
