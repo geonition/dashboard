@@ -12,23 +12,6 @@
 
 {% block content %}
 
-{% if request.META.HTTP_HOST == "turunratikka.asiatkartalle.fi" %}
-<p>
-Raitiotien yleissuunnittelussa selvitetään ja suunnitellaan viittä pääsuuntaa:
-Runosmäkeen, Varissuolle, Hirvensaloon, Linnakaupungin kautta satamaan 
-sekä Skanssin suuntaan.
-</p>
-<p>
-    Kyselyn tarkoitus on 
-    antaa turkulaisille mahdollisuus ottaa kantaa jokaisen pääsuunnan 
-    linjausvaihtoehtoihin: mitä kautta esimerkiksi Runosmäkeen kulkeva 
-    raitiotielinjaus kulkisi.
-    Näkemyksenne eri linjauksista ovat tärkeää lähtötietoa teknisten, 
-    ympäristöllisten, kaupunkikuvallisten ja taloudellisten tarkastelujen ohella.
-    Raitiotien toteutuksen ensi vaiheeseen tulevat linjaukset päätetään 
-    myöhemmin.
-</p>
-{% endif %}
 
 <ul class="list-view">
 {% for p in QU_projects %}
@@ -121,7 +104,6 @@ sekä Skanssin suuntaan.
 <script type="text/javascript" src="{{ STATIC_URL }}json/pointer_geoJSON.js"></script>
 <script src="{{ STATIC_URL }}js/libs/proj4js-gnt.js"></script>
 <script src="{{ STATIC_URL }}js/libs/OpenLayers-gnt.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 var city_polygon = {
     'type': 'Feature',
