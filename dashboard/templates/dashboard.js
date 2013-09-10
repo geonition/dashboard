@@ -161,7 +161,11 @@ gnt.dashboard.init = function () {
     
     
     
+        {% if request.META.HTTP_HOST == "oregonstateparks.maptionnaire.com" %}
+        map.setCenter(new OpenLayers.LonLat(-13575293.937978, 5709272.0092249),10);
+        {% else %} 
         map.zoomToExtent(bounds);
+        {% endif %}
         //connect the list hover with the feature
         $('.project').hover(function (event) {
             var layer,feature;
