@@ -124,9 +124,11 @@ gnt.dashboard.init = function () {
             plan_projects[k].geometry.transform(source_proj, target_proj);
         }
     
+        {% if request.META.HTTP_HOST != "oregonstateparks.maptionnaire.com" %}
         QU_layer.addFeatures(questionnaires);
         IC_layer.addFeatures(idea_competitions);
         IC_layer.addFeatures(plan_projects);
+        {% endif %}
         //count the bounds for the map
         for (i = 0; i < idea_competitions.length; i++) {
             if (bounds === undefined) {
