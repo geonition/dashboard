@@ -162,6 +162,7 @@ gnt.dashboard.init = function () {
     
     
         {% if request.META.HTTP_HOST == "oregonstateparks.maptionnaire.com" %}
+        $('li.project').css('background','white');
         map.setCenter(new OpenLayers.LonLat(-13575293.937978, 5709272.0092249),10);
         {% else %} 
         map.zoomToExtent(bounds);
