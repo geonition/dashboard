@@ -6,11 +6,12 @@
  gnt.dashboard
 */
 gnt.dashboard = {};
+gnt.map_loaded = false;
 // Create a select feature control and add it to the map.
 //gnt.dashboard.select;
 gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
 
-gnt.dashboard.init = function () {
+gnt.after_map_loaded = function(){
     var style_map = new OpenLayers.StyleMap({
         "default": {
             strokeWidth: 1,
@@ -46,33 +47,7 @@ gnt.dashboard.init = function () {
         i,
         j,
         k;
-
-    gnt.maps.create_map('map', function (map) {
-        /*var mapOptions = {
-            maxResolution: 50,
-            projection: "EPSG:3067",
-            maxExtent: new OpenLayers.Bounds(89949.504,
-                                             6502687.508,
-                                             502203.000,
-                                             7137049.802),
-            maxResolution: 50,
-            numZoomLevels: 10,
-            tileSize: new OpenLayers.Size(512, 512)
-        };
-
-        map = new OpenLayers.Map('map', mapOptions);
-        var base_layer = new OpenLayers.Layer.ArcGIS93Rest(
-            "Map",
-            "https://pehmogis.tkk.fi/ArcGIS/rest/services/suomi_grey/MapServer/export",
-            {layers:        "show:0,10,12,50", //"show:0,7,43,79,115,150,151,187,222,258,294,330", //show:0,10,12,48,50",
-            TRANSPARENT: true},
-            {isBaseLayer: true}
-        );
-
-        //TODO: should be site specific
-        //base_layer.setLayerFilter(50, "Kunta_ni1 = 'Järvenpää'");*/
         map.addLayers([IC_layer, QU_layer, PP_layer]);
-        //map.zoomToExtent(bounds);
         var select = new OpenLayers.Control.SelectFeature(
             [QU_layer, IC_layer, PP_layer],
             {
@@ -205,6 +180,14 @@ gnt.dashboard.init = function () {
                 $('body').addClass(this.parentNode.classList[0]);
         });
     
-    });
+    };
+
+gnt.dashboard.init = function () {
+
+    gnt.map_loaded = gnt.maps.create_map('map');
+    if (gnt.map_loaded){
+        gnt.after_map_loaded();
+    }
+
 };
 
