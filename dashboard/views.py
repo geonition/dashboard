@@ -5,11 +5,21 @@ from django.shortcuts import render_to_response
 from base_page.models import OrganizationSetting
 from dashboard.models import ExtraProjectUrl
 from django.conf import settings
+from django.utils.translation import get_language
+from django.utils.translation import to_locale
+from django.core.cache import cache
 
 import urllib2
 import json
 
 def dashboard(request):
+    lang = to_locale(get_language()).lower()
+    cache_id = 'dashboard_resp_{0}_{1}'.format(request.META['HTTP_HOST'],lang)
+    resp = cache.get(cache_id)
+    if resp is not None:
+        return resp
+
+
     """
     The main dashboard page
     """
@@ -27,14 +37,15 @@ def dashboard(request):
     if "geoforms" in settings.INSTALLED_APPS:
         QU_projects.extend(get_questionnaires()['content'])
 
-    print 'pp', PP_projects
-    return render_to_response('dashboard.html',
+    resp = render_to_response('dashboard.html',
                               {'PP_projects': PP_projects,
                                'IC_projects': IC_projects,
                                'QU_projects': QU_projects,
                                'org_settings': org_settings,
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },
                               context_instance = RequestContext(request))
+    cache.set(cache_id, resp, 600)
+    return resp
 
 
 def dashboard_js(request):
