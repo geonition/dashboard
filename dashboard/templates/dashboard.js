@@ -137,35 +137,38 @@ gnt.after_map_loaded = function(){
     
     
         {% if request.META.HTTP_HOST == "oregonstateparks.maptionnaire.com" %}
-        $('li.project').css('background','white');
         map.setCenter(new OpenLayers.LonLat(-13575293.937978, 5709272.0092249),10);
         {% else %} 
         map.zoomToExtent(bounds);
         {% endif %}
         //connect the list hover with the feature
-        $('.project').hover(function (event) {
-            var layer,feature;
-            for (layer in map.layers) {
-                if (map.layers[layer].getFeatureByFid) {
-                    feature = map.layers[layer].getFeatureByFid(this.id);
-                    if (feature) {
-                        map.getControl('selectcontrol').select(feature);
-                    }
-                }
-            }
-        },
-            function (event) {
-            var layer,
-                feature;
+        if (questionnaires.length < 2){
+            $('li.project').css('background','white');
+        } else {
+            $('.project').hover(function (event) {
+                var layer,feature;
                 for (layer in map.layers) {
                     if (map.layers[layer].getFeatureByFid) {
                         feature = map.layers[layer].getFeatureByFid(this.id);
                         if (feature) {
-                            map.getControl('selectcontrol').unselect(feature);
+                            map.getControl('selectcontrol').select(feature);
                         }
                     }
                 }
-            });
+            },
+                function (event) {
+                var layer,
+                    feature;
+                    for (layer in map.layers) {
+                        if (map.layers[layer].getFeatureByFid) {
+                            feature = map.layers[layer].getFeatureByFid(this.id);
+                            if (feature) {
+                                map.getControl('selectcontrol').unselect(feature);
+                            }
+                        }
+                    }
+                });
+        }
         //this is for setting links on features
         $('.olMapViewport').click(function (event) {
             if ($('.project.hover a').length > 0) {
