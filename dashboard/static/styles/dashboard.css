@@ -1,3 +1,10 @@
+.span_left {
+    width: 450px;
+}
+.span_right {
+    left: 450px;
+}
+
 ul.breadcrumb {
     margin-bottom: 10px;
 }
