@@ -18,7 +18,7 @@
     {% if forloop.first %}
     <li>
 
-    {% if request.META.HTTP_HOST != "oregonstateparks.maptionnaire.com" %}
+    {% if QU_projects|length > 1 %}
         <ul class="breadcrumb">
             <li class="disk base_bgcolor">
                 <h3>
