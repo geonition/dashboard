@@ -44,7 +44,8 @@ def dashboard(request):
                                'org_settings': org_settings,
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },
                               context_instance = RequestContext(request))
-    cache.set(cache_id, resp, 600)
+    if not request.user.is_authenticated():
+        cache.set(cache_id, resp, 1800)
     return resp
 
 
