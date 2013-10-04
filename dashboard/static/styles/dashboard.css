@@ -36,6 +36,8 @@ ul.breadcrumb {
 }
 .begin a {
   color: #ffffff;
+  text-decoration: none;
+  font-family: 'Raleway';
 } 
 .begin {
   display: inline-block;
