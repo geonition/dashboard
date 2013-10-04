@@ -39,6 +39,9 @@ ul.breadcrumb {
   text-decoration: none;
   font-family: 'Raleway';
 } 
+.begin a:hover {
+  text-decoration: underline;
+}
 .begin {
   display: inline-block;
   padding: 10px;
