@@ -5,6 +5,15 @@
 .span_right {
     left: 450px;
 }
+@media screen and (max-width:767px) {
+    .span_left {
+        float: none;
+        width: 100%;
+    }
+    .span_right {
+        width: 100%;
+    }
+}
 
 ul.breadcrumb {
     margin-bottom: 10px;
