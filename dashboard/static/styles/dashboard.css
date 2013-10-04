@@ -1,5 +1,6 @@
 .span_left {
     width: 450px;
+    background-color: #f2f2f2;
 }
 .span_right {
     left: 450px;
@@ -7,6 +8,7 @@
 
 ul.breadcrumb {
     margin-bottom: 10px;
+    margin-top: 0px;
 }
 .list-view {
     padding: 0px;
