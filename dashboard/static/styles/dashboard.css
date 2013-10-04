@@ -39,7 +39,7 @@ ul.breadcrumb {
 .begin a {
   color: #ffffff;
   text-decoration: none;
-  font-family: 'Raleway';
+  font-family: sans-serif;
 } 
 .begin a:hover {
   text-decoration: underline;
