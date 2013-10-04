@@ -98,9 +98,11 @@
     {% endif %}
 {% endfor %}
 </ul>
+{% if request.META.HTTP_HOST != "oregonstateparks.maptionnaire.com" %}
 <div id="mapita_buildings">
 <img src="/static/img/talot_horiz_east.png" alt="talot" width="250" height="194" />
 </div>
+{% endif %}
 
 {% endblock content %}
 
