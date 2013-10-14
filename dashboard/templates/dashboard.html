@@ -35,6 +35,7 @@
                 <h3 class="base_bgcolor base-gradient">{{ p.name }}</h3>
                 <p>{{ p.description|safe }}</p>
                 <div class="begin base_bgcolor base-gradient"><a href="{{ p.project_url }}">{% trans "Begin" %}</a></div>
+                <div class="begin-no-save"><a href="{{ p.project_url }}no-save">{% trans "Try without saving answers" %}</a></div>
                 
             </li>
 
