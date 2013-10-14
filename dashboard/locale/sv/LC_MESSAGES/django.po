@@ -5,13 +5,15 @@
 # Translators:
 # ksnabb <kristoffer.snabb@geonition.org>, 2012
 # ksnabb <kristoffer.snabb@geonition.org>, 2012
+# sellonen <sakari.ellonen@mapita.fi>, 2013
+# sellonen <sakari.ellonen@mapita.fi>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-27 19:00-0500\n"
-"PO-Revision-Date: 2013-09-11 00:00+0000\n"
-"Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
+"POT-Creation-Date: 2013-10-09 03:03-0500\n"
+"PO-Revision-Date: 2013-10-09 08:00+0000\n"
+"Last-Translator: sellonen <sakari.ellonen@mapita.fi>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/geonition/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +72,7 @@ msgstr ""
 
 #: templates/dashboard.html:37
 msgid "Begin"
-msgstr ""
+msgstr "Börja"
 
 #: templates/dashboard.html:53
 msgid "Idea competitions"
