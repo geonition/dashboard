@@ -100,11 +100,33 @@
 </ul>
 {% if request.META.HTTP_HOST != "oregonstateparks.maptionnaire.com" %}
 <div id="mapita_buildings">
+{% if request.META.HTTP_HOST == "helsinki.asiatkartalle.fi" %}
+<img src="/static/img/talot_yleiskaava.png" alt="talot" width="250" height="194" />
+{% else %}
 <img src="/static/img/talot_horiz_east.png" alt="talot" width="250" height="194" />
+{% endif %}
 </div>
 {% endif %}
 
 {% endblock content %}
+
+{% block map %}
+    {% if PHOTO_COLLAGE != "" %}
+    <div id="photo_collage" style="height:100%;width:100%;background-image:url({{STATIC_URL}}img/{{PHOTO_COLLAGE.0}});">
+            {% for photo in PHOTO_COLLAGE %}
+                {% if forloop.first %}
+                {% else %}
+                <div class="collage-photo">
+                    <img src="{{STATIC_URL}}img/{{photo}}" alt="collage_photo" />
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div id="map">
+        </div>
+    {% endif %}
+{% endblock map %}
 
 
 

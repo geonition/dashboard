@@ -16,7 +16,7 @@ def dashboard(request):
     lang = to_locale(get_language()).lower()
     cache_id = 'dashboard_resp_{0}_{1}'.format(request.META['HTTP_HOST'],lang)
     resp = cache.get(cache_id)
-    if resp is not None:
+    if not request.user.is_authenticated() and resp is not None:
         return resp
 
 
@@ -42,6 +42,7 @@ def dashboard(request):
                                'IC_projects': IC_projects,
                                'QU_projects': QU_projects,
                                'org_settings': org_settings,
+                               'PHOTO_COLLAGE' : getattr(settings,'PHOTO_COLLAGE',''),
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },
                               context_instance = RequestContext(request))
     if not request.user.is_authenticated():

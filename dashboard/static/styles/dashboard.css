@@ -49,6 +49,7 @@ ul.breadcrumb {
   color: #ffffff;
   text-decoration: none;
   font-family: sans-serif;
+  font-weight: bold;
 } 
 .begin a:hover {
   text-decoration: underline;
@@ -63,6 +64,22 @@ ul.breadcrumb {
 
 div#mapita_buildings {
   margin-top: 30px;
+}
+div.collage-photo {
+  float: left;
+  padding: 15px;
+  margin: 27px 15px;
+  max-width: 370px;
+  max-height: 320px;
+  background: white;
+}
+div.collage-photo img {
+  padding: 0px;
+  margin: 0px;
+  border: 0;
+  max-width: 340px;
+  max-height: 300px;
+  box-shadow: 3px 3px 8px 2px #b6b6b6;
 }
 
 
