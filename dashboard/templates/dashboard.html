@@ -112,13 +112,11 @@
 
 {% block map %}
     {% if PHOTO_COLLAGE != "" %}
-    <div id="photo_collage" style="height:100%;width:100%;background-image:url({{STATIC_URL}}img/{{PHOTO_COLLAGE.0}});">
+    <div id="photo-collage" style="height:100%;width:100%;background-image:url({{STATIC_URL}}img/{{PHOTO_COLLAGE.0}});">
             {% for photo in PHOTO_COLLAGE %}
                 {% if forloop.first %}
                 {% else %}
-                <div class="collage-photo">
                     <img src="{{STATIC_URL}}img/{{photo}}" alt="collage_photo" />
-                </div>
                 {% endif %}
             {% endfor %}
         </div>
