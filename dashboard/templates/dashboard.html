@@ -223,9 +223,10 @@ projects_PP['crs'] = {
 {% endfor %}
 
 $(window).load(function() {
-    gnt.dashboard.init();
-{% if request.META.HTTP_HOST == "127.0.0.1:8000" %}
+{% if request.META.HTTP_HOST == "helsinki.asiatkartalle.fi" %}
     $('#main .span_left').css('background','url(/static/img/Yleiskaava-kuvio-pysty.png)');
+{% else %}
+    gnt.dashboard.init();
 {% endif %}
 });
 
