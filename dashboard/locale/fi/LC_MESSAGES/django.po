@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-16 04:27-0500\n"
+"POT-Creation-Date: 2013-10-16 11:44+0300\n"
 "PO-Revision-Date: 2013-09-24 08:00+0000\n"
 "Last-Translator: sellonen <sakari.ellonen@mapita.fi>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/geonition/"
@@ -83,7 +83,7 @@ msgstr "Aloita"
 
 #: templates/dashboard.html:38
 msgid "Try without saving answers"
-msgstr ""
+msgstr "Kokeile tallentamatta vastauksia"
 
 #: templates/dashboard.html:54
 msgid "Idea competitions"

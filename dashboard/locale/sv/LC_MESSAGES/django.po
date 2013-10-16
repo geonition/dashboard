@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-16 04:27-0500\n"
+"POT-Creation-Date: 2013-10-16 11:44+0300\n"
 "PO-Revision-Date: 2013-10-09 08:00+0000\n"
 "Last-Translator: sellonen <sakari.ellonen@mapita.fi>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/geonition/"
@@ -59,9 +59,9 @@ msgstr ""
 #: models.py:54
 msgid ""
 "This is the link to the project rest endpoint. The link "
-"has                                                 to be a full link "
+"has to be a full link "
 "starting with http:// or https:// "
-"and                                                  ending with /active/,"
+"and ending with /active/,"
 "<br /> e.g. http://somehost/somepath/geoforms/active/"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr "Börja"
 
 #: templates/dashboard.html:38
 msgid "Try without saving answers"
-msgstr ""
+msgstr "Testa utan att spara dina svar"
 
 #: templates/dashboard.html:54
 msgid "Idea competitions"
