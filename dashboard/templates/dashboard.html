@@ -100,11 +100,13 @@
 {% endfor %}
 </ul>
 {% if request.META.HTTP_HOST != "oregonstateparks.maptionnaire.com" %}
-{% if request.META.HTTP_HOST != "helsinki.asiatkartalle.fi" %}
 <div id="mapita_buildings">
+{% if CUSTOM_DASHBOARD_IMAGE_FILE != "" %}
+<img src="/static/img/{{CUSTOM_DASHBOARD_IMAGE_FILE}}" alt="customimage" />
+{% else %}
 <img src="/static/img/talot_horiz_east.png" alt="talot" width="250" height="194" />
-</div>
 {% endif %}
+</div>
 {% endif %}
 
 {% endblock content %}
