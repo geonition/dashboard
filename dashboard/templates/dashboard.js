@@ -18,7 +18,7 @@ gnt.after_map_loaded = function(){
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
-            fillOpacity: 0.4
+            fillOpacity: 0.1
         },
         "select": {
             strokeWidth: 1,
