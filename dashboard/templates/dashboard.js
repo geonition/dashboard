@@ -171,8 +171,8 @@ gnt.after_map_loaded = function(){
         }
         //this is for setting links on features
         $('.olMapViewport').click(function (event) {
-            if ($('.project.hover a').length > 0) {
-                window.location = $('.project.hover a').last()[0].href;
+            if ($('.project.hover div.begin a').length > 0) {
+                window.location = $('.project.hover div.begin a')[0].href;
             }
         });
         $('ul.nav li a').click(
