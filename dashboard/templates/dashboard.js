@@ -14,14 +14,14 @@ gnt.dashboard.geojsonFormat = new OpenLayers.Format.GeoJSON();
 gnt.after_map_loaded = function(){
     var style_map = new OpenLayers.StyleMap({
         "default": {
-            strokeWidth: 1,
+            strokeWidth: 4,
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
             fillOpacity: 0.1
         },
         "select": {
-            strokeWidth: 1,
+            strokeWidth: 4,
             strokeColor: $('body').css('background-color'),
             cursor: 'pointer',
             fillColor: $('body').css('background-color'),
