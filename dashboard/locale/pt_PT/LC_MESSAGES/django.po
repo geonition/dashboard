@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-18 15:53+0300\n"
-"PO-Revision-Date: 2013-09-11 00:00+0000\n"
+"POT-Creation-Date: 2013-10-09 03:03-0500\n"
+"PO-Revision-Date: 2013-10-20 00:10+0000\n"
 "Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
-"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/"
-"geonition/language/pt_PT/)\n"
-"Language: pt_PT\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/geonition/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:41
@@ -38,9 +37,7 @@ msgstr "Concurso de Ideia"
 msgid ""
 "This is the link to the project page. The link has to be a full link "
 "starting with http:// or https://"
-msgstr ""
-"Este é o link para a página do projeto. Este link tem de ser um link "
-"completo a iniciar com http:// ou https://"
+msgstr "Este é o link para a página do projeto. Este link tem de ser um link completo a iniciar com http:// ou https://"
 
 #: models.py:31
 msgid "Link to project"
@@ -48,19 +45,17 @@ msgstr "Link para o projeto"
 
 #: models.py:33
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area "
-"will be clickable and work as a link that takes the user to the project."
-msgstr ""
-"Esta é a localização do projeto que aparece no painel de instrumentos. A "
-"área será clicável e funciona como um link que leva o utilizador ao projeto."
+"This is the location of the project that is shown on the dashboard. The area"
+" will be clickable and work as a link that takes the user to the project."
+msgstr "Esta é a localização do projeto que aparece no painel de instrumentos. A área será clicável e funciona como um link que leva o utilizador ao projeto."
 
 #: models.py:54
 msgid ""
-"This is the link to the project rest endpoint. The link "
-"has                                                 to be a full link "
-"starting with http:// or https:// "
-"and                                                  ending with /active/,"
-"<br /> e.g. http://somehost/somepath/geoforms/active/"
+"This is the link to the project rest endpoint. The link has"
+"                                                 to be a full link starting "
+"with http:// or https:// and"
+"                                                  ending with /active/,<br "
+"/> e.g. http://somehost/somepath/geoforms/active/"
 msgstr ""
 
 #: models.py:57
@@ -75,18 +70,14 @@ msgstr ""
 msgid "Begin"
 msgstr "Começar"
 
-#: templates/dashboard.html:38
-msgid "Try without saving answers"
-msgstr "Experimentar sem gravar respostas"
-
-#: templates/dashboard.html:54
+#: templates/dashboard.html:53
 msgid "Idea competitions"
 msgstr "Concursos de Ideia"
 
-#: templates/dashboard.html:65 templates/dashboard.html.py:92
+#: templates/dashboard.html:64 templates/dashboard.html.py:91
 msgid "Start"
 msgstr ""
 
-#: templates/dashboard.html:81
+#: templates/dashboard.html:80
 msgid "Planning projects"
 msgstr "Projetos de Planeamento"
