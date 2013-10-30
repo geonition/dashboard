@@ -62,11 +62,12 @@ ul.breadcrumb {
   margin: 0px 0px 10px 42px;
 } 
 .begin-no-save {
-  margin: 0px 0px 10px 42px;
+  margin: 10px 0px 10px 42px;
 }
 .begin-no-save a {
   color: #198B8B;
   text-decoration: none;
+  font-size: 12px;
 }
 .begin-no-save a:hover {
   text-decoration: underline;
