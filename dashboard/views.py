@@ -43,6 +43,7 @@ def dashboard(request):
                                'QU_projects': QU_projects,
                                'org_settings': org_settings,
                                'PHOTO_COLLAGE' : getattr(settings,'PHOTO_COLLAGE',''),
+                               'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP' : getattr(settings,'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP',False),
                                'CUSTOM_DASHBOARD_IMAGE_FILE' : getattr(settings,'CUSTOM_DASHBOARD_IMAGE_FILE',''),
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },
                               context_instance = RequestContext(request))

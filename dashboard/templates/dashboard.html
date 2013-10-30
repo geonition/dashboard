@@ -228,6 +228,11 @@ $(window).load(function() {
 {% if request.META.HTTP_HOST == "helsinki.asiatkartalle.fi" %}
     $('#main .span_left').css('background','#ffd200');
 {% endif %}
+{% if DO_NOT_ADD_AREA_ON_DASHBOARD_MAP %}
+    gnt.dashboard.add_area = false;
+{% else %}
+    gnt.dashboard.add_area = true;
+{% endif %}
     gnt.dashboard.init();
 });
 
