@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # sellonen <sakari.ellonen@mapita.fi>, 2013
 # sellonen <sakari.ellonen@mapita.fi>, 2013
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-09 03:03-0500\n"
+"POT-Creation-Date: 2013-10-31 13:44+0200\n"
 "PO-Revision-Date: 2013-09-11 12:20+0000\n"
 "Last-Translator: sellonen <sakari.ellonen@mapita.fi>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/geonition/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/geonition/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:41
@@ -47,17 +48,17 @@ msgstr ""
 
 #: models.py:33
 msgid ""
-"This is the location of the project that is shown on the dashboard. The area"
-" will be clickable and work as a link that takes the user to the project."
+"This is the location of the project that is shown on the dashboard. The area "
+"will be clickable and work as a link that takes the user to the project."
 msgstr ""
 
 #: models.py:54
 msgid ""
-"This is the link to the project rest endpoint. The link has"
-"                                                 to be a full link starting "
-"with http:// or https:// and"
-"                                                  ending with /active/,<br "
-"/> e.g. http://somehost/somepath/geoforms/active/"
+"This is the link to the project rest endpoint. The link "
+"has                                                 to be a full link "
+"starting with http:// or https:// "
+"and                                                  ending with /active/,"
+"<br /> e.g. http://somehost/somepath/geoforms/active/"
 msgstr ""
 
 #: models.py:57
@@ -72,14 +73,18 @@ msgstr ""
 msgid "Begin"
 msgstr "Anfang"
 
-#: templates/dashboard.html:53
+#: templates/dashboard.html:38
+msgid "Try without saving answers"
+msgstr "Den Fragebogen testen ohne zu speichern"
+
+#: templates/dashboard.html:54
 msgid "Idea competitions"
 msgstr ""
 
-#: templates/dashboard.html:64 templates/dashboard.html.py:91
+#: templates/dashboard.html:65 templates/dashboard.html.py:92
 msgid "Start"
 msgstr ""
 
-#: templates/dashboard.html:80
+#: templates/dashboard.html:81
 msgid "Planning projects"
 msgstr ""
