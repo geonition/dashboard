@@ -112,14 +112,11 @@
 {% endblock content %}
 
 {% block map %}
-    {% if PHOTO_COLLAGE != "" %}
-        <div id="photo-collage">
-            <img src="{{STATIC_URL}}img/{{PHOTO_COLLAGE}}" alt="collage_photo" />
-        </div>
-    {% else %}
         <div id="map">
-        </div>
+    {% if PHOTO_COLLAGE != "" %}
+            <img id="photo-collage" src="{{STATIC_URL}}img/{{PHOTO_COLLAGE}}" alt="collage_photo" />
     {% endif %}
+        </div>
 {% endblock map %}
 
 
