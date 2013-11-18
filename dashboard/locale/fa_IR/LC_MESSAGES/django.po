@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: geonition\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 13:44+0200\n"
+"POT-Creation-Date: 2013-11-18 12:30+0200\n"
 "PO-Revision-Date: 2013-10-16 09:50+0000\n"
 "Last-Translator: ksnabb <kristoffer.snabb@geonition.org>\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/geonition/"
@@ -75,8 +75,7 @@ msgstr "شروع"
 
 #: templates/dashboard.html:38
 msgid "Try without saving answers"
-msgstr "بدون ذخیره"
-"کردن پاسخ ها، امتحان کنید"
+msgstr "بدون ذخيره كردن پاسخ ها امتحان كنيد"
 
 #: templates/dashboard.html:54
 msgid "Idea competitions"
