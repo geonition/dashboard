@@ -77,11 +77,11 @@ msgstr ""
 
 #: templates/dashboard.html:37
 msgid "Begin"
-msgstr ""
+msgstr "Começar"
 
 #: templates/dashboard.html:38
 msgid "Try without saving answers"
-msgstr ""
+msgstr "Experimentar sem gravar respostas"
 
 #: templates/dashboard.html:54
 msgid "Idea competitions"
