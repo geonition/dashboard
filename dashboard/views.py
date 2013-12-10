@@ -7,6 +7,7 @@ from dashboard.models import ExtraProjectUrl
 from django.conf import settings
 from django.utils.translation import get_language
 from django.utils.translation import to_locale
+from django.utils.translation import ugettext as _
 from django.core.cache import cache
 
 import urllib2
@@ -43,6 +44,10 @@ def dashboard(request):
                                'QU_projects': QU_projects,
                                'org_settings': org_settings,
                                'PHOTO_COLLAGE' : getattr(settings,'PHOTO_COLLAGE',''),
+                               'EMPTY_DASHBOARD_MESSAGE' : getattr(
+                                   settings,
+                                   'EMPTY_DASHBOARD_MESSAGE',
+                                   {lang:_('Currently there are no open questionnaires. Please come back later!')})[lang],
                                'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP' : getattr(settings,'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP',False),
                                'CUSTOM_DASHBOARD_IMAGE_FILE' : getattr(settings,'CUSTOM_DASHBOARD_IMAGE_FILE',''),
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },

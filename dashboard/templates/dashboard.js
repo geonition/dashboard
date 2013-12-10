@@ -28,28 +28,18 @@ gnt.after_map_loaded = function(){
             fillOpacity: 0.7
         }
     }),
-        PP_layer = new OpenLayers.Layer.Vector("Plan proposals layer", {
-            styleMap: style_map,
-            visibility: true
-            }),
-        IC_layer = new OpenLayers.Layer.Vector("Idea competitions layer", {
-            styleMap: style_map,
-            visibility: true
-            }),
         QU_layer = new OpenLayers.Layer.Vector("Questionnaires layer", {
             styleMap: style_map,
             visibility: true
         }),
         questionnaires = gnt.dashboard.geojsonFormat.read(projects_QU),
-        idea_competitions = gnt.dashboard.geojsonFormat.read(projects_IC),
-        plan_projects = gnt.dashboard.geojsonFormat.read(projects_PP),
         bounds,
         i,
         j,
         k;
-        map.addLayers([IC_layer, QU_layer, PP_layer]);
+        map.addLayers([QU_layer]);
         var select = new OpenLayers.Control.SelectFeature(
-            [QU_layer, IC_layer, PP_layer],
+            [QU_layer],
             {
                 id: 'selectcontrol',
                 hover: true,
@@ -74,14 +64,8 @@ gnt.after_map_loaded = function(){
             source_proj,
             target_proj,
             city_ol_feature;
-        if(projects_IC.crs !== undefined) {
-            source_proj_code = projects_IC.crs.properties.code;
-        }
-        else if(projects_QU.crs !== undefined) {
+        if(projects_QU.crs !== undefined) {
             source_proj_code = projects_QU.crs.properties.code;
-        }
-        else if(projects_PP.crs !== undefined) {
-            source_proj_code = projects_PP.crs.properties.code;
         }
         else if (city_polygon.crs !== undefined){ // fallback to Organization area
             source_proj_code = city_polygon.crs.properties.code;
@@ -89,41 +73,19 @@ gnt.after_map_loaded = function(){
         source_proj = new OpenLayers.Projection(source_proj_code);
         target_proj = new OpenLayers.Projection(map.getProjection());
     
-        for (i = 0; i < idea_competitions.length; i++) {
-            idea_competitions[i].geometry.transform(source_proj, target_proj);
-        }
         for (j = 0; j < questionnaires.length; j++) {
             questionnaires[j].geometry.transform(source_proj, target_proj);
-        }
-        for (k = 0; k < plan_projects.length; k++) {
-            plan_projects[k].geometry.transform(source_proj, target_proj);
         }
     
         if (gnt.dashboard.add_area){
         QU_layer.addFeatures(questionnaires);
-        IC_layer.addFeatures(idea_competitions);
-        IC_layer.addFeatures(plan_projects);
         }
         //count the bounds for the map
-        for (i = 0; i < idea_competitions.length; i++) {
-            if (bounds === undefined) {
-                bounds = idea_competitions[i].geometry.getBounds();
-            } else {
-                bounds.extend(idea_competitions[i].geometry.getBounds());
-            }
-        }
         for (j = 0; j < questionnaires.length; j++) {
             if (bounds === undefined) {
                 bounds = questionnaires[j].geometry.getBounds();
             } else {
                 bounds.extend(questionnaires[j].geometry.getBounds());
-            }
-        }
-        for (k = 0; k < plan_projects.length; k++) {
-            if (bounds === undefined) {
-                bounds = plan_projects[k].geometry.getBounds();
-            } else {
-                bounds.extend(plan_projects[k].geometry.getBounds());
             }
         }
         if (bounds === undefined) {
