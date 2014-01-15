@@ -49,6 +49,7 @@ def dashboard(request):
                                    'EMPTY_DASHBOARD_MESSAGE',
                                    {lang:_('Currently there are no open questionnaires. Please come back later!')})[lang],
                                'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP' : getattr(settings,'DO_NOT_ADD_AREA_ON_DASHBOARD_MAP',False),
+                               'DO_NOT_SHOW_DASHBOARD_MAP' : getattr(settings,'DO_NOT_SHOW_DASHBOARD_MAP',False),
                                'CUSTOM_DASHBOARD_IMAGE_FILE' : getattr(settings,'CUSTOM_DASHBOARD_IMAGE_FILE',''),
                                'LOGIN_REDIRECT_URL': settings.LOGIN_REDIRECT_URL },
                               context_instance = RequestContext(request))
