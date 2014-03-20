@@ -62,7 +62,7 @@
 {% endblock content %}
 
 {% block map %}
-        <div id="map">
+<div id="map"{% if PHOTO_COLLAGE != "" %}style='background:white;'{% endif %}>
     {% if PHOTO_COLLAGE != "" %}
             <img id="photo-collage" src="{{STATIC_URL}}img/{{PHOTO_COLLAGE}}" alt="collage_photo" />
     {% endif %}
