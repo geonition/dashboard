@@ -1,7 +1,7 @@
 # Create your views here.
 
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,redirect
 from base_page.models import OrganizationSetting
 from dashboard.models import ExtraProjectUrl
 from django.conf import settings
@@ -14,6 +14,8 @@ import urllib2
 import json
 
 def dashboard(request):
+    if request.get_host().startswith('demo')
+        return redirect('http://maptionnaire.com/', permanent=True)
     lang = to_locale(get_language()).lower()
     cache_id = 'dashboard_resp_{0}_{1}'.format(request.META['HTTP_HOST'],lang)
     resp = cache.get(cache_id)
