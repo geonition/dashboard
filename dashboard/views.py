@@ -14,7 +14,7 @@ import urllib2
 import json
 
 def dashboard(request):
-    if request.get_host().startswith('demo')
+    if request.get_host().startswith('demo'):
         return redirect('http://maptionnaire.com/', permanent=True)
     lang = to_locale(get_language()).lower()
     cache_id = 'dashboard_resp_{0}_{1}'.format(request.META['HTTP_HOST'],lang)
